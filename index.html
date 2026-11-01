@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Munthasir Rahman | Full-Stack & Bot Engineer // UI/UX Designer</title>
-  <meta name="description" content="Portfolio of Munthasir Rahman (munthasirdevs). Full-Stack & Bot Engineer, Web Developer & UI/UX Designer based in Chuadanga, Bangladesh. Laravel SaaS, Discord bots, and high-performance interfaces.">
+  <meta name="description" content="Portfolio of Munthasir Rahman (munthasirdevs). Full-Stack & Bot Engineer, Web Developer & UI/UX Designer based in Dhaka, Bangladesh. Laravel SaaS, Discord bots, and high-performance interfaces.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
@@ -32,18 +32,10 @@
   <!-- Film Grain Texture Overlay (Reference 1 & 2) -->
   <div class="film-grain-overlay"></div>
 
-  <!-- Custom Vector Selection Cursor (Reference 6) -->
-  <div id="custom-cursor-pointer" class="hidden md:block pointer-events-none fixed z-[9999]">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,0 14,5 7,7 5,14" fill="#DEDEDE" />
-    </svg>
-  </div>
-  <div id="custom-cursor-box" class="hidden md:block pointer-events-none fixed z-[9998]">
-    <span class="cursor-node cursor-node-tl"></span>
-    <span class="cursor-node cursor-node-tr"></span>
-    <span class="cursor-node cursor-node-bl"></span>
-    <span class="cursor-node cursor-node-br"></span>
-  </div>
+  <!-- High-Precision Architectural Custom Cursor (Pointer Dot + Fluid Follower Ring) -->
+  <div id="custom-cursor-dot" class="pointer-events-none fixed z-[99999] opacity-0" aria-hidden="true"></div>
+  <div id="custom-cursor-ring" class="pointer-events-none fixed z-[99998] opacity-0" aria-hidden="true"></div>
+
 
   <!-- Environmental Spatial Background Layers -->
   <!-- Layer 1A: Fluted Curtain Ribs across upper viewport (Reference 3) -->
@@ -90,7 +82,7 @@
         <div class="flex items-center gap-2 border border-thunder/50 px-3 py-1 rounded-full bg-chaos/80">
           <span class="text-[10px] text-dust" id="preloader-audio-status">♫ AUDIO ENGINE ACTIVE</span>
         </div>
-        <span class="text-[10px] text-dull mt-1.5 hidden sm:inline">CHUADANGA, BD // 2026</span>
+        <span class="text-[10px] text-dull mt-1.5 hidden sm:inline">DHAKA, BD // 2026</span>
       </div>
     </div>
 
@@ -156,11 +148,7 @@
     <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
       <!-- Navbar Brand Mark -->
       <a href="#hero" class="navbar-brand flex items-center gap-3 group">
-        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
-          MR<span class="text-dust blinking-cursor">_</span>
-        </span>
-        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
-        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+        <span class="font-serif-editorial italic text-2xl text-kingly group-hover:text-white transition-colors">
           Munthasir
         </span>
       </a>
@@ -209,9 +197,30 @@
   </header>
 
   <!-- Left Sticky Social Rail (Reference 5) -->
-  <aside id="social-rail" class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-5">
-    <div class="w-[1px] h-16 bg-gradient-to-b from-transparent via-thunder to-shoewax"></div>
+  <aside id="social-rail" class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4">
+    <div class="w-[1px] h-12 bg-gradient-to-b from-transparent via-thunder to-shoewax"></div>
     
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/munthasir.devs" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="Facebook (@munthasir.devs)">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/munthasir.devs/" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="Instagram (@munthasir.devs)">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+
+    <!-- X (formerly Twitter) -->
+    <a href="https://x.com/munthasir_devs" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="X (@munthasir_devs)">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+
     <!-- GitHub -->
     <a href="https://github.com/munthasirdevs" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="GitHub (@munthasirdevs)">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -219,26 +228,21 @@
       </svg>
     </a>
 
-    <!-- Email -->
-    <a href="mailto:munthasirrahman@gmail.com" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="Direct Email">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="WhatsApp Messaging">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/munthasir-devs/" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="LinkedIn (@munthasir-devs)">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12.031 2C6.516 2 2.022 6.49 2.022 12c0 1.97.575 3.805 1.572 5.352L2.001 22.083l4.896-1.554A9.97 9.97 0 0012.031 22c5.515 0 10.01-4.49 10.01-10s-4.495-10-10.01-10zm5.82 14.237c-.244.685-1.22 1.256-1.705 1.306-.486.05-1.12.072-3.606-.957-2.986-1.233-4.89-4.275-5.04-4.472-.148-.198-1.205-1.603-1.205-3.057 0-1.455.76-2.17.1.03-2.463.27-.294.59-.368.788-.368.197 0 .394.002.565.011.182.01.424-.069.664.506.244.588.835 2.034.908 2.182.074.148.123.321.025.516-.099.197-.148.32-.296.493-.148.173-.31.386-.443.518-.148.148-.302.31-.13.605.172.296.764 1.258 1.637 2.036 1.124.998 2.071 1.308 2.366 1.455.295.148.468.123.64-.074.173-.197.74-.862.937-1.157.197-.296.394-.247.665-.148.271.098 1.723.813 2.018.96.296.148.493.222.566.345.074.123.074.714-.17 1.399z"/>
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     </a>
 
-    <!-- Terminal / Projects -->
-    <a href="projects.html" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center font-mono text-xs font-bold transition-all duration-300" title="9 Public Repositories">
-      &lt;/&gt;
+    <!-- Gmail -->
+    <a href="mailto:connect@munthasir.com" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="Email (connect@munthasir.com)">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
     </a>
 
-    <div class="w-[1px] h-16 bg-gradient-to-t from-transparent via-thunder to-shoewax"></div>
+    <div class="w-[1px] h-12 bg-gradient-to-t from-transparent via-thunder to-shoewax"></div>
   </aside>
 
   <!-- ==========================================================================
@@ -338,7 +342,7 @@
           <div class="p-5 overflow-x-auto">
             <pre id="ide-code-content" class="font-mono text-xs sm:text-[13px] leading-relaxed text-dust font-normal">01 <span class="text-dust">const</span> <span class="text-kingly font-bold">MunthasirRahman</span> = {
 02   <span class="text-dust">handle</span>: <span class="text-kingly">'munthasirdevs'</span>,
-03   <span class="text-dust">location</span>: <span class="text-kingly">'Chuadanga, Khulna, BD'</span>,
+03   <span class="text-dust">location</span>: <span class="text-kingly">'Dhaka, Bangladesh'</span>,
 04   <span class="text-dust">roles</span>: [
 05     <span class="text-kingly">'Full-Stack & Bot Engineer'</span>,
 06     <span class="text-kingly">'Web Developer & UI/UX Designer'</span>
@@ -359,7 +363,7 @@
           <!-- Bottom Telemetry Status Pill -->
           <div class="px-5 py-2.5 bg-chaos border-t border-shoewax/60 flex items-center justify-between font-mono text-[11px] text-dull">
             <span>TERMINAL: READY</span>
-            <span class="text-dust">LATENCY: 14ms</span>
+            <span class="text-dust">LATENCY: 12ms</span>
           </div>
         </div>
       </div>
@@ -376,7 +380,7 @@
       <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
         <div class="flex items-center gap-2 mb-1">
           <span class="font-mono text-dust text-sm">&gt;_</span>
-          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="3" data-suffix="+">0</h3>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="5" data-suffix="+">0</h3>
         </div>
         <h6 class="font-mono text-xs uppercase tracking-wider text-dust">YEARS OF EXPERIENCE</h6>
         <span class="text-xs text-dull mt-1">Full-Stack & UI/UX Engineering</span>
@@ -386,7 +390,7 @@
       <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
         <div class="flex items-center gap-2 mb-1">
           <span class="font-mono text-dust text-sm">&lt;/&gt;</span>
-          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="23" data-suffix="+">0</h3>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="19" data-suffix="">0</h3>
         </div>
         <h6 class="font-mono text-xs uppercase tracking-wider text-dust">PROJECTS DELIVERED</h6>
         <span class="text-xs text-dull mt-1">Production Web Apps & SaaS</span>
@@ -442,7 +446,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-chaos via-transparent to-transparent opacity-80"></div>
                 <div class="absolute bottom-4 left-4 right-4 font-mono text-xs text-kingly flex justify-between items-center border-t border-shoewax pt-3">
                   <span>MUNTHASIR RAHMAN</span>
-                  <span class="text-dust">CHUADANGA, BD</span>
+                  <span class="text-dust">DHAKA, BD</span>
                 </div>
               </div>
             </div>
@@ -474,21 +478,21 @@
             I'm Munthasir Rahman, an engineer who values <span class="font-serif-editorial italic text-dust">clean architecture</span> and pixel precision.
           </h2>
           <p class="font-sans text-base lg:text-lg text-spanish leading-relaxed mb-5">
-            Based in Chuadanga, Khulna, Bangladesh, I specialize in building responsive, user-friendly websites, custom Discord automation bots, and scalable full-stack applications that pair seamless backend logic with refined visual interfaces.
+            Based in Dhaka, Bangladesh, with 5 years of professional engineering experience, I specialize in building responsive, user-friendly websites, custom Discord automation bots, and scalable full-stack applications that pair seamless backend logic with refined visual interfaces.
           </p>
           <p class="font-sans text-base text-spanish leading-relaxed mb-8">
-            I believe in building in public. My 25+ repositories on GitHub are free to explore, fork, and learn from as I actively contribute to the Laravel and open-source ecosystem. Currently, my engineering focus centers on architecting production-ready SaaS applications with Laravel, integrating AI/ML patterns, and orchestrating cloud-native deployments with Docker and Kubernetes toward launching my first open-source SaaS boilerplate.
+            I believe in building in public with 19 delivered production projects. My public repositories on GitHub are free to explore, fork, and learn from as I actively contribute to the Laravel and open-source ecosystem. Currently, my engineering focus centers on architecting production-ready SaaS applications with Laravel, integrating AI/ML patterns, and orchestrating cloud-native deployments with Docker and Kubernetes toward launching my first open-source SaaS boilerplate.
           </p>
 
           <!-- 3-Column Metadata Strip -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-shoewax font-mono text-xs">
             <div>
               <span class="text-dull block mb-1">LOCATION</span>
-              <span class="text-kingly font-bold">Chuadanga, BD</span>
+              <span class="text-kingly font-bold">Dhaka, BD</span>
             </div>
             <div>
               <span class="text-dull block mb-1">DIRECT EMAIL</span>
-              <a href="mailto:munthasirrahman@gmail.com" class="text-kingly font-bold hover:underline">munthasirrahman@gmail.com</a>
+              <a href="mailto:connect@munthasir.com" class="text-kingly font-bold hover:underline">connect@munthasir.com</a>
             </div>
             <div>
               <span class="text-dull block mb-1">NEXT MILESTONE</span>
@@ -1178,43 +1182,56 @@ class TenantProvisioner
 
           <!-- Vertical Timeline Axis (Reference 5) -->
           <div class="border-l border-thunder pl-8 space-y-10 relative ml-3">
-            <!-- Card 01 -->
+            <!-- Card 01: Famewoven -->
             <div class="relative group">
               <!-- Square Timeline Node (Reference 5) -->
               <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-kingly group-hover:bg-kingly transition-colors"></span>
               <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-kingly uppercase inline-block mb-2">
-                2024 — PRESENT
+                SEPTEMBER 1, 2026 — PRESENT
               </span>
-              <h3 class="font-display text-xl font-bold text-kingly">Full-Stack & Bot Engineer</h3>
-              <h4 class="font-mono text-xs text-dust mb-3">munthasirdevs // Independent SaaS & Automation Architect</h4>
+              <h3 class="font-display text-xl font-bold text-kingly">Chief Technology Officer (CTO)</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Famewoven // Technical Leadership & Platform Architecture</h4>
               <p class="font-sans text-sm text-spanish leading-relaxed">
-                Architecting custom automation systems, Discord bots, and production-ready SaaS applications with Laravel. Spearheading open-source developer tools including linkOpener and the upcoming Laravel SaaS Boilerplate.
+                Directing organizational technology strategy, core system architecture, cloud scaling, and end-to-end product engineering for creative digital web platforms and client solutions.
               </p>
             </div>
 
-            <!-- Card 02 -->
+            <!-- Card 02: Sixolab -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-kingly group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-kingly uppercase inline-block mb-2">
+                JULY 2026 — PRESENT
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Senior Website Developer</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Sixolab // Digital Agency & Full-Stack Solutions</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Engineering high-performance web applications, bespoke client agency portals, and modular backend integrations pairing modern frontend frameworks with robust PHP/MySQL infrastructure.
+              </p>
+            </div>
+
+            <!-- Card 03: Xenon Studios -->
             <div class="relative group">
               <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dust group-hover:bg-kingly transition-colors"></span>
               <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dust uppercase inline-block mb-2">
-                2023 — PRESENT
+                FEBRUARY 2026 — PRESENT
               </span>
-              <h3 class="font-display text-xl font-bold text-kingly">Web Developer & UI/UX Designer</h3>
-              <h4 class="font-mono text-xs text-dust mb-3">Munthasir.com // Global Freelance & White-Label Partner</h4>
+              <h3 class="font-display text-xl font-bold text-kingly">Web Application Designer</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Xenon Studios // Interactive Systems & Design Tokens</h4>
               <p class="font-sans text-sm text-spanish leading-relaxed">
-                Delivered 23+ responsive web applications and brand interfaces with a 96% client satisfaction rate. Executed full-lifecycle frontend engineering (HTML, Tailwind CSS, JS) and PHP/MySQL backend development for international clients and agencies.
+                Crafting intuitive web application user experiences, responsive component design systems, and seamless interactive interfaces bridging Figma design tokens with production code.
               </p>
             </div>
 
-            <!-- Card 03 -->
+            <!-- Card 04: GitLink IT Solutions -->
             <div class="relative group">
               <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dull group-hover:bg-kingly transition-colors"></span>
               <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dull uppercase inline-block mb-2">
-                2022 — 2023
+                NOVEMBER 2025 — PRESENT
               </span>
-              <h3 class="font-display text-xl font-bold text-kingly">Frontend & UI/UX Specialist</h3>
-              <h4 class="font-mono text-xs text-dust mb-3">XenonStudios & Early Digital Ventures</h4>
+              <h3 class="font-display text-xl font-bold text-kingly">Founder</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">GitLink IT Solutions // Software Engineering & Automation</h4>
               <p class="font-sans text-sm text-spanish leading-relaxed">
-                Established core mobile-first responsive workflows, interactive UI systems with Bootstrap, jQuery, and modern CSS, and foundational user-experience wireframing.
+                Founding and steering an independent IT venture delivering custom Discord automation systems, client digital portals, and production full-stack SaaS solutions with 19 delivered projects.
               </p>
             </div>
           </div>
@@ -1292,10 +1309,12 @@ class TenantProvisioner
 
       <!-- 12-Card Grid (Reference 7 Percentage Cards) -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-        <!-- Skill 01 -->
+        <!-- Skill 01: HTML5 -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            HTML5
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="HTML5">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059-.001.23-2.625L4.471 4.405l.698 8.032h10.428l-.348 3.738-3.272.906-3.277-.906-.21-2.344H5.875l.414 4.671 5.688 1.579 5.687-1.579.782-8.352H8.531z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="98">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1305,10 +1324,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Accessibility, SEO</span>
         </div>
 
-        <!-- Skill 02 -->
+        <!-- Skill 02: CSS3 -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            CSS3
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="CSS3">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.24 2.628 10.59.003-.314 3.486H6.043l.242 2.628h9.097l-.445 4.693-2.96.81-2.963-.81-.19-2.07H6.621l.375 4.29 4.981 1.382 4.984-1.382 1.629-17.475z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="96">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1318,10 +1339,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Grid, Flexbox, Vars</span>
         </div>
 
-        <!-- Skill 03 -->
+        <!-- Skill 03: Tailwind CSS -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            TW
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="Tailwind CSS">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="96">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1331,10 +1354,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Design Tokens</span>
         </div>
 
-        <!-- Skill 04 -->
+        <!-- Skill 04: JavaScript -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            JS
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="JavaScript">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.621-1.554-1.276 0-.575.449-.851 1.058-.851.644 0 1.08.253 1.403.782.529-.345.529-.345.92-.61-.437-.667-1.092-1.07-2.241-1.07-1.391 0-2.322.862-2.322 2.07 0 1.31.862 1.885 2.322 2.46 1.035.414 1.403.736 1.403 1.345 0 .632-.609.966-1.425.966-.989 0-1.54-.517-1.908-1.195l-.943.563c.483.977 1.368 1.529 2.828 1.529 1.77 0 2.678-.851 2.678-2.149zm-8.851.276V12.75h-1.241v5.885c0 1.345-.736 1.885-1.862 1.885-.621 0-1.127-.184-1.471-.506l-.69.759c.529.506 1.288.759 2.23.759 1.816 0 3.034-1.011 3.034-3.22z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="94">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1344,10 +1369,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">ES6+, Canvas 2D</span>
         </div>
 
-        <!-- Skill 05 -->
+        <!-- Skill 05: PHP -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            PHP
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="PHP">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 4.03 0 9c0 3.327 2.41 6.216 6.07 7.72L5.27 24l5.33-4.26C11.19 19.89 11.59 20 12 20c6.627 0 12-4.03 12-9s-5.373-11-12-11zm-5.5 13H5l1.5-6h2.25c1.24 0 2.25.76 2.25 2s-1.01 2-2.25 2H7.25l-.75 3zm6.5 0h-1.5l1.5-6h1.5l-1.5 6zm5.5 0h-1.5l1.5-6h2.25c1.24 0 2.25.76 2.25 2s-1.01 2-2.25 2h-1.5l-.75 3z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="92">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1357,10 +1384,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">OOP, REST APIs</span>
         </div>
 
-        <!-- Skill 06 -->
+        <!-- Skill 06: Laravel -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            LVL
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="Laravel">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.955 6.643a1.503 1.503 0 00-.7-.615L13.11.892a1.493 1.493 0 00-1.428 0L2.536 6.028a1.5 1.5 0 00-.7.615l-.01.018a1.5 1.5 0 00-.076.621v10.276a1.502 1.502 0 00.75 1.306l9.145 5.137a1.493 1.493 0 001.428 0l9.146-5.137a1.5 1.5 0 00.75-1.306V7.282a1.5 1.5 0 00-.076-.621l-.013-.018h-.005zm-1.897 1.054l-3.373 1.896-3.374-1.896 3.374-1.896 3.373 1.896zm-7.973 4.481l-3.373 1.896-3.374-1.896 3.374-1.896 3.373 1.896zM3.86 8.528l3.374 1.896v3.792L3.86 12.32V8.528zm9.358 12.632l-3.374-1.896v-3.793l3.374 1.896v3.793zm1.226-5.69l3.374-1.896 3.374 1.896-3.374 1.896-3.374-1.896zm0-7.585l3.374-1.896v3.792l-3.374-1.896zm4.6 9.481v-3.792l3.374-1.896v3.792l-3.374 1.896z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="95">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1370,10 +1399,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Multi-Tenancy, Auth</span>
         </div>
 
-        <!-- Skill 07 -->
+        <!-- Skill 07: MySQL -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            SQL
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="MySQL">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3c-4.97 0-9 1.79-9 4s4.03 4 9 4 9-1.79 9-4-4.03-4-9-4zm0 6c-3.87 0-7-1.12-7-2.5S8.13 4 12 4s7 1.12 7 2.5S15.87 9 12 9zm7 3.5c0 1.38-3.13 2.5-7 2.5s-7-1.12-7-2.5V8.88c1.78 1.15 4.25 1.62 7 1.62s5.22-.47 7-1.62v3.62zm0 5c0 1.38-3.13 2.5-7 2.5s-7-1.12-7-2.5v-3.62c1.78 1.15 4.25 1.62 7 1.62s5.22-.47 7-1.62v3.62z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="90">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1383,10 +1414,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Indexing, Schema</span>
         </div>
 
-        <!-- Skill 08 -->
+        <!-- Skill 08: Discord Bots -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            BOT
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="Discord Bots">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.894.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="95">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1396,10 +1429,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Slash, Webhooks</span>
         </div>
 
-        <!-- Skill 09 -->
+        <!-- Skill 09: UI/UX & Wireframing -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            UX
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="UI/UX & Wireframing">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c0-1.657-1.343-3-3-3s-3 1.343-3 3 1.343 3 3 3 3-1.343 3-3zm0 0c0 1.657 1.343 3 3 3s3-1.343 3-3-1.343-3-3-3-3 1.343-3 3zm0-6c0-1.657-1.343-3-3-3S6 4.343 6 6s1.343 3 3 3h3V6zm0 0h3c1.657 0 3-1.343 3-3s-1.343-3-3-3h-3v6zm-6 12c0 1.657 1.343 3 3 3s3-1.343 3-3v-3H9c-1.657 0-3 1.343-3 3z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="94">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1409,10 +1444,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Design Systems</span>
         </div>
 
-        <!-- Skill 10 -->
+        <!-- Skill 10: TypeScript -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            TS
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="TypeScript">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm14.342 18.238c-.768.423-1.746.685-2.923.685-3.084 0-5.114-1.89-5.114-5.26 0-3.323 2.115-5.353 5.37-5.353 1.06 0 1.93.208 2.553.515l-.653 2.053c-.569-.269-1.23-.423-1.923-.423-1.838 0-3.007 1.169-3.007 3.161 0 1.954 1.146 3.13 3.015 3.13.769 0 1.407-.161 1.908-.4l.774 1.892zm6.277-.169c-.438.254-1.146.477-1.992.477-1.846 0-2.93-1.03-2.93-2.823V10.43h-1.5v-1.93h1.5V6.36h2.246v2.14h2.277v1.93h-2.277v5.138c0 .769.377 1.146.992 1.146.438 0 .823-.077 1.069-.177l.415 1.932z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="85">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1422,10 +1459,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Strict Typing</span>
         </div>
 
-        <!-- Skill 11 -->
+        <!-- Skill 11: Docker & K8s -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            DCK
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="Docker & Kubernetes">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.186.185.186zm0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.186.185.186zm-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.888c0 .102.083.186.185.186zm-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.186.186.186zm5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185zm-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185zm-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185zm-2.928 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.186-.186h-2.12a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185zM23.76 9.89c-.365-2.164-2.42-3.136-2.42-3.136s-.786 1.48-1.572 1.956c-.66.4-1.397.472-2.106.472h-1.026v2.084h4.417c.502 0 1.83.084 2.707-1.376zm-9.777 4.086c-4.908 0-9.816.634-11.834 3.037-.58.692-.816 1.464-.816 2.146 0 3.284 3.42 4.841 8.52 4.841 7.234 0 11.833-3.176 13.565-8.497-1.127.348-2.316.514-3.522.514-1.97 0-3.957-.456-5.913-2.041z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="84">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1435,10 +1474,12 @@ class TenantProvisioner
           <span class="font-mono text-[10px] text-dull mt-1">Containers, Cloud</span>
         </div>
 
-        <!-- Skill 12 -->
+        <!-- Skill 12: AI/ML Integration -->
         <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
-          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
-            AI
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors" title="AI/ML Integration">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a1 1 0 011 1v1.07A8.003 8.003 0 0120.93 11H22a1 1 0 110 2h-1.07A8.003 8.003 0 0113 20.93V22a1 1 0 11-2 0v-1.07A8.003 8.003 0 013.07 13H2a1 1 0 110-2h1.07A8.003 8.003 0 0111 3.07V2a1 1 0 011-1zm0 4a6 6 0 100 12A6 6 0 0012 6zm0 2a4 4 0 110 8 4 4 0 010-8zm-1 2h2v4h-2v-4z"/>
+            </svg>
           </div>
           <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="86">0%</span>
           <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
@@ -1604,13 +1645,13 @@ class TenantProvisioner
 
             <!-- Channel Pills (Reference 5) -->
             <div class="space-y-3 font-mono text-xs">
-              <a href="mailto:munthasirrahman@gmail.com" class="copy-email-btn spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust hover:text-kingly cursor-pointer transition-all">
+              <a href="mailto:connect@munthasir.com" class="copy-email-btn spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust hover:text-kingly cursor-pointer transition-all">
                 <span class="text-base">✉</span>
-                <span class="truncate">munthasirrahman@gmail.com</span>
+                <span class="truncate">connect@munthasir.com</span>
               </a>
               <div class="spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust">
                 <span class="text-base">⌖</span>
-                <span>Chuadanga, Khulna, Bangladesh [GMT+6]</span>
+                <span>Dhaka, Bangladesh [GMT+6]</span>
               </div>
               <div class="spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust">
                 <span class="w-2.5 h-2.5 rounded-full bg-kingly pulsing-dot"></span>
@@ -1620,7 +1661,7 @@ class TenantProvisioner
           </div>
 
           <div class="pt-8 mt-8 border-t border-shoewax font-mono text-xs text-dull">
-            <span>CHUADANGA GATEWAY TIME: </span>
+            <span>DHAKA GATEWAY TIME: </span>
             <span class="text-kingly font-bold live-clock-bd">00:00:00 [GMT+6]</span>
           </div>
         </div>
@@ -1693,10 +1734,10 @@ class TenantProvisioner
         <!-- Copyright & Scroll-To-Top Row -->
         <div class="w-full flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-dull border-t border-shoewax/60 pt-8 gap-4">
           <div>
-            MR_ © 2026 Munthasir Rahman (<a href="https://github.com/munthasirdevs" class="hover:underline text-dust">munthasirdevs</a>). All rights reserved.
+            © 2026 Munthasir Rahman (<a href="https://github.com/munthasirdevs" class="hover:underline text-dust">munthasirdevs</a>). All rights reserved.
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-dust">CHUADANGA, BD</span>
+            <span class="text-dust">DHAKA, BD</span>
             <button id="scroll-to-top-btn" class="w-8 h-8 rounded bg-shoewax hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos flex items-center justify-center transition-all" title="Back to Top">
               ↑
             </button>

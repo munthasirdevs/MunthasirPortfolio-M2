@@ -98,7 +98,7 @@ function initHeroCodeCompiler() {
 
   const rawSourceCode = `01 const MunthasirRahman = {
 02   handle: 'munthasirdevs',
-03   location: 'Chuadanga, Khulna, BD',
+03   location: 'Dhaka, Bangladesh',
 04   roles: [
 05     'Full-Stack & Bot Engineer',
 06     'Web Developer & UI/UX Designer'
@@ -121,17 +121,17 @@ function initHeroCodeCompiler() {
 04   "runtime": "Node.js v20.12.2 / PHP 8.3",
 05   "architecture": "Clean Modular Monolith + Discord Microservices",
 06   "verifiedStats": {
-07     "experience": "03+ Years",
-08     "deliveredProjects": 23,
+07     "experience": "05 Years",
+08     "deliveredProjects": 19,
 09     "satisfactionRate": "96%",
-10     "publicRepositories": 26
+10     "publicRepositories": 9
 11   },
 12   "activeEngagements": [
 13     "SaaS Architecture Partnerships",
 14     "High-Uptime Discord Automation",
 15     "Agency White-Label Web Systems"
 16   ],
-17   "latency": "14ms // Chuadanga Server Gateway"
+17   "latency": "12ms // Dhaka Server Gateway"
 18 }`;
 
   compileBtn.addEventListener('click', () => {
@@ -408,11 +408,11 @@ function initEmailCopy() {
   emailButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const email = 'munthasirrahman@gmail.com';
+      const email = 'connect@munthasir.com';
       navigator.clipboard.writeText(email).then(() => {
         const originalText = btn.getAttribute('data-original-text') || btn.innerHTML;
         btn.setAttribute('data-original-text', originalText);
-        btn.innerHTML = `<span class="text-kingly font-mono text-xs">✓ COPIED (munthasirrahman@gmail.com)</span>`;
+        btn.innerHTML = `<span class="text-kingly font-mono text-xs">✓ COPIED (connect@munthasir.com)</span>`;
         setTimeout(() => {
           btn.innerHTML = originalText;
         }, 2500);
@@ -423,7 +423,7 @@ function initEmailCopy() {
   });
 }
 
-// 8. LIVE CHUADANGA, BANGLADESH CLOCK (GMT+6)
+// 8. LIVE DHAKA, BANGLADESH CLOCK (GMT+6)
 function initLiveBangladeshClock() {
   const clockElements = document.querySelectorAll('.live-clock-bd');
   if (!clockElements.length) return;
@@ -577,7 +577,7 @@ function initContactConfigurator() {
         track: selectedTrack,
         selectedStack: selectedStack,
         timestamp: new Date().toISOString(),
-        locationGateway: 'Chuadanga, BD (GMT+6)',
+        locationGateway: 'Dhaka, BD (GMT+6)',
         status: 'READY_TO_TRANSMIT'
       }
     };
