@@ -48,56 +48,76 @@ body {
   color: var(--color-chaos);
 }
 
-/* Custom Vector Selection Cursor (Reference 6) */
-@media (pointer: fine) {
-  body.has-custom-cursor {
-    cursor: none;
+/* Architectural High-Precision Custom Cursor */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, input, select, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
   }
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor input,
-  body.has-custom-cursor select,
-  body.has-custom-cursor textarea,
-  body.has-custom-cursor .cursor-pointer {
-    cursor: none;
+
+  #custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-kingly);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    opacity: 0;
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.25s ease;
+  }
+
+  #custom-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(222, 222, 222, 0.45);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    will-change: transform, width, height, border-color, background-color;
+    opacity: 0;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease,
+                background-color 0.25s ease,
+                opacity 0.25s ease;
+  }
+
+  #custom-cursor-ring.cursor-hover {
+    width: 52px;
+    height: 52px;
+    border-color: rgba(222, 222, 222, 0.85);
+    background-color: rgba(222, 222, 222, 0.08);
+    backdrop-filter: blur(1px);
+  }
+
+  #custom-cursor-dot.cursor-hover {
+    width: 4px;
+    height: 4px;
+    background-color: #FFFFFF;
+  }
+
+  #custom-cursor-ring.cursor-click {
+    width: 26px;
+    height: 26px;
+    border-color: #FFFFFF;
+    background-color: rgba(222, 222, 222, 0.28);
   }
 }
 
-#custom-cursor-pointer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-2px, -2px);
-  transition: transform 0.05s ease-out;
+/* Safe fallback on touchscreens / mobile */
+@media (hover: none) or (pointer: coarse) {
+  #custom-cursor-dot,
+  #custom-cursor-ring {
+    display: none !important;
+  }
 }
 
-#custom-cursor-box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1px dashed var(--color-spanish);
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-18px, -18px);
-  will-change: transform;
-}
-
-.cursor-node {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--color-kingly);
-}
-.cursor-node-tl { top: -2px; left: -2px; }
-.cursor-node-tr { top: -2px; right: -2px; }
-.cursor-node-bl { bottom: -2px; left: -2px; }
-.cursor-node-br { bottom: -2px; right: -2px; }
 
 /* Global Film Grain Texture Overlay */
 .film-grain-overlay {

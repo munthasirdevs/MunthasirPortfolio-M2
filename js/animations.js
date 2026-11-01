@@ -12,6 +12,7 @@ if (typeof gsap !== 'undefined') {
 class CyberAudioSynthesizer {
   constructor() {
     this.ctx = null;
+    this.noiseBuffer = null;
     this.enabled = true;
     this.lastTickTime = 0;
   }
@@ -21,11 +22,31 @@ class CyberAudioSynthesizer {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (AudioCtx) {
         this.ctx = new AudioCtx();
+        this._buildNoiseBuffer();
       }
     }
     if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(() => {});
     }
+    return this.isReady();
+  }
+
+  _buildNoiseBuffer() {
+    if (!this.ctx || this.noiseBuffer) return;
+    try {
+      const sampleRate = this.ctx.sampleRate;
+      const bufferSize = Math.floor(sampleRate * 0.05);
+      const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * 0.65;
+      }
+      this.noiseBuffer = buffer;
+    } catch (e) {}
+  }
+
+  isReady() {
+    return !!(this.ctx && this.ctx.state === 'running');
   }
 
   playScrambleTick() {
@@ -35,26 +56,60 @@ class CyberAudioSynthesizer {
       if (!this.ctx || this.ctx.state !== 'running') return;
 
       const now = this.ctx.currentTime;
-      if (now - this.lastTickTime < 0.035) return; // throttle ticks
+      if (now - this.lastTickTime < 0.026) return; // throttle ticks
       this.lastTickTime = now;
 
+      // Master tick gain
+      const masterGain = this.ctx.createGain();
+      masterGain.gain.setValueAtTime(0.18, now);
+      masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
+      masterGain.connect(this.ctx.destination);
+
+      // Layer A: Crisp mechanical noise click (relay snap)
+      if (this.noiseBuffer) {
+        const noiseSource = this.ctx.createBufferSource();
+        noiseSource.buffer = this.noiseBuffer;
+
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(2800 + Math.random() * 1400, now);
+        filter.Q.setValueAtTime(3.8, now);
+
+        const noiseGain = this.ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.7, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.022);
+
+        noiseSource.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(masterGain);
+
+        noiseSource.start(now);
+        noiseSource.stop(now + 0.025);
+      }
+
+      // Layer B: Snappy frequency down-chirp (data transient)
       const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-
-      const freq = 1100 + Math.random() * 800;
+      const oscGain = this.ctx.createGain();
+      const startFreq = 1600 + Math.random() * 900;
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, now);
-      osc.frequency.exponentialRampToValueAtTime(280, now + 0.022);
+      osc.frequency.setValueAtTime(startFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(260, now + 0.02);
 
-      gain.gain.setValueAtTime(0.04, now);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.022);
+      oscGain.gain.setValueAtTime(0.35, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.022);
 
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      osc.connect(oscGain);
+      oscGain.connect(masterGain);
 
       osc.start(now);
       osc.stop(now + 0.025);
     } catch (e) {}
+  }
+
+  playBurst(count = 4) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => this.playScrambleTick(), i * 30);
+    }
   }
 
   playCompletionChime() {
@@ -64,23 +119,24 @@ class CyberAudioSynthesizer {
       if (!this.ctx || this.ctx.state !== 'running') return;
 
       const now = this.ctx.currentTime;
-      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
-      notes.forEach((freq, idx) => {
+      // Architectural crystal harmonic chime: D5, F#5, A5, D6
+      const chords = [587.33, 739.99, 880.00, 1174.66];
+      chords.forEach((freq, idx) => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
-        const noteTime = now + idx * 0.07;
+        const noteTime = now + idx * 0.075;
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, noteTime);
 
-        gain.gain.setValueAtTime(0.06, noteTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.55);
+        gain.gain.setValueAtTime(0.12, noteTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.7);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
 
         osc.start(noteTime);
-        osc.stop(noteTime + 0.6);
+        osc.stop(noteTime + 0.75);
       });
     } catch (e) {}
   }
@@ -170,12 +226,37 @@ function initPreloader() {
   document.body.classList.add('overflow-hidden');
 
   const audioSynth = new CyberAudioSynthesizer();
+  audioSynth.init();
 
-  // Unlock audio context on any initial user touch or click
-  const unlockAudio = () => audioSynth.init();
-  preloader.addEventListener('click', unlockAudio, { once: true });
-  window.addEventListener('keydown', unlockAudio, { once: true });
-  window.addEventListener('touchstart', unlockAudio, { once: true });
+  const audioStatus = document.getElementById('preloader-audio-status');
+  const updateAudioUI = () => {
+    if (!audioStatus) return;
+    if (audioSynth.isReady()) {
+      audioStatus.innerHTML = '<span class="text-kingly font-bold">● AUDIO ENGINE ACTIVE</span>';
+    } else {
+      audioStatus.innerHTML = '<span class="text-spanish animate-pulse">♫ CLICK ANYWHERE FOR SOUND</span>';
+    }
+  };
+
+  updateAudioUI();
+
+  // Unlock audio context immediately on any user gesture or interaction
+  const unlockAudio = () => {
+    if (audioSynth.ctx && audioSynth.ctx.state === 'suspended') {
+      audioSynth.ctx.resume().then(() => {
+        updateAudioUI();
+        audioSynth.playBurst(4);
+      }).catch(() => {});
+    } else {
+      updateAudioUI();
+    }
+  };
+
+  ['pointerdown', 'mousedown', 'keydown', 'touchstart', 'click'].forEach(evt => {
+    window.addEventListener(evt, unlockAudio, { passive: true });
+    preloader.addEventListener(evt, unlockAudio, { passive: true });
+  });
+  window.addEventListener('pointermove', unlockAudio, { once: true, passive: true });
 
   const counterEl = document.getElementById('preloader-counter');
   const progressBar = document.getElementById('preloader-progress-bar');
@@ -207,19 +288,19 @@ function initPreloader() {
     }
   }, 85);
 
-  // Trigger initial text scramble sequence
+  // Trigger initial text scramble sequence (tuned for 2-second preloader)
   if (titleScrambler) {
-    titleScrambler.setText('ARCHITECTING SOFTWARE', 0.9).then(() => {
+    titleScrambler.setText('ARCHITECTING SOFTWARE', 0.5).then(() => {
       setTimeout(() => {
-        if (titleScrambler) titleScrambler.setText('MUNTHASIR RAHMAN', 1.0);
-      }, 350);
+        if (titleScrambler) titleScrambler.setText('MUNTHASIR RAHMAN', 0.6);
+      }, 200);
     });
   }
 
   if (subScrambler) {
     setTimeout(() => {
-      subScrambler.setText('FULL-STACK & BOT ENGINEER // UI/UX DESIGNER', 1.1);
-    }, 600);
+      subScrambler.setText('FULL-STACK & BOT ENGINEER // UI/UX DESIGNER', 0.7);
+    }, 250);
   }
 
   const counterObj = { val: 0 };
@@ -234,11 +315,11 @@ function initPreloader() {
     }
   });
 
-  // Emergency fail-safe: guarantee preloader dismissal after 4.2s
+  // Emergency fail-safe: guarantee preloader dismissal after 2.1s
   setTimeout(() => {
     if (preloader && preloader.style.display !== 'none') {
       clearInterval(binaryInterval);
-      preloader.style.transition = 'opacity 0.4s ease';
+      preloader.style.transition = 'opacity 0.25s ease';
       preloader.style.opacity = '0';
       setTimeout(() => {
         preloader.style.display = 'none';
@@ -246,14 +327,14 @@ function initPreloader() {
         document.body.classList.remove('overflow-hidden');
         initScrollAnimations();
         initPlanarInteractions();
-      }, 400);
+      }, 250);
     }
-  }, 4200);
+  }, 2100);
 
-  // Increment counter and progress bar from 000 to 100
+  // Increment counter and progress bar from 000 to 100 in 1.35s
   tl.to(counterObj, {
     val: 100,
-    duration: 2.7,
+    duration: 1.35,
     ease: 'power2.inOut',
     onUpdate: () => {
       const current = Math.floor(counterObj.val);
@@ -274,6 +355,11 @@ function initPreloader() {
         if (phaseTag) phaseTag.textContent = step.phase;
       }
 
+      // Play scramble ticks during counter progression
+      if (current % 3 === 0) {
+        audioSynth.playScrambleTick();
+      }
+
       // Play chime when reaching 100%
       if (current >= 100 && !chimePlayed) {
         chimePlayed = true;
@@ -282,19 +368,19 @@ function initPreloader() {
     }
   }, 0);
 
-  // Stage 4: Fade out all preloader UI rows & lift 5-Column Shutters
+  // Stage 4: Fade out all preloader UI rows & lift 5-Column Shutters to reveal site at 2s
   tl.to(['#preloader-top-row', '#preloader-center-content', '#preloader-bottom-row'], {
     opacity: 0,
-    y: -15,
-    duration: 0.35,
+    y: -10,
+    duration: 0.2,
     ease: 'power2.in'
-  }, 2.75)
+  }, 1.38)
   .to('.preloader-shutter', {
     yPercent: -100,
-    duration: 0.8,
-    stagger: 0.05,
+    duration: 0.45,
+    stagger: 0.02,
     ease: 'expo.inOut'
-  }, 2.95)
+  }, 1.5)
   .set('#preloader', { display: 'none', pointerEvents: 'none' });
 }
 
@@ -500,42 +586,94 @@ function initMatrixPulsingCells() {
   setInterval(randomizeBoxes, 3800);
 }
 
-// 5. CUSTOM VECTOR SELECTION CURSOR (Reference 6)
+// 5. HIGH-PRECISION ARCHITECTURAL CUSTOM CURSOR (Pointer Dot + Fluid Follower Ring)
 function initCustomCursor() {
-  const pointer = document.getElementById('custom-cursor-pointer');
-  const box = document.getElementById('custom-cursor-box');
-  if (!pointer || !box || window.matchMedia('(pointer: coarse)').matches) return;
+  if (typeof window === 'undefined') return;
+  if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) return;
 
-  document.body.classList.add('has-custom-cursor');
+  let dot = document.getElementById('custom-cursor-dot');
+  let ring = document.getElementById('custom-cursor-ring');
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
+  // Auto-inject cursor elements if page does not have them in markup
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.id = 'custom-cursor-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(dot);
+  }
+  if (!ring) {
+    ring = document.createElement('div');
+    ring.id = 'custom-cursor-ring';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+  }
 
-  const boxXTo = gsap.quickTo(box, 'x', { duration: 0.18, ease: 'power2.out' });
-  const boxYTo = gsap.quickTo(box, 'y', { duration: 0.18, ease: 'power2.out' });
+  if (typeof gsap === 'undefined') return;
+
+  // Center coordinate alignment
+  gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
+
+  // Ultra-responsive zero-lag dot + momentum-damped trailing ring
+  const dotXTo = gsap.quickTo(dot, 'x', { duration: 0.04, ease: 'power3.out' });
+  const dotYTo = gsap.quickTo(dot, 'y', { duration: 0.04, ease: 'power3.out' });
+  const ringXTo = gsap.quickTo(ring, 'x', { duration: 0.18, ease: 'power2.out' });
+  const ringYTo = gsap.quickTo(ring, 'y', { duration: 0.18, ease: 'power2.out' });
+
+  let isVisible = false;
+
+  const showCursor = () => {
+    if (!isVisible) {
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+      isVisible = true;
+    }
+  };
+
+  const hideCursor = () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+    isVisible = false;
+  };
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    showCursor();
+    dotXTo(e.clientX);
+    dotYTo(e.clientY);
+    ringXTo(e.clientX);
+    ringYTo(e.clientY);
+  }, { passive: true });
 
-    pointer.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-    boxXTo(mouseX - 18);
-    boxYTo(mouseY - 18);
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
+
+  // Click bounce reaction
+  window.addEventListener('mousedown', () => {
+    ring.classList.add('cursor-click');
   });
 
-  // Scale cursor over interactive elements
-  const interactives = document.querySelectorAll('a, button, input, select, textarea, .interactive-hover');
-  interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      gsap.to(box, { width: 50, height: 50, x: mouseX - 25, y: mouseY - 25, borderColor: '#DEDEDE', duration: 0.2 });
-    });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(box, { width: 36, height: 36, x: mouseX - 18, y: mouseY - 18, borderColor: '#979797', duration: 0.2 });
-    });
+  window.addEventListener('mouseup', () => {
+    ring.classList.remove('cursor-click');
+  });
+
+  // Delegated interactive element magnetic hover detection
+  const interactiveSelector = 'a, button, input, select, textarea, [role="button"], .interactive-hover, .magnetic-btn, .spotlight-card, .counter-val, #ide-compile-btn, .copy-email-btn';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      ring.classList.add('cursor-hover');
+      dot.classList.add('cursor-hover');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      ring.classList.remove('cursor-hover');
+      dot.classList.remove('cursor-hover');
+    }
   });
 }
 
-// Auto-run cursor and initialize animations on pages without preloader
+// Initialize Custom Cursor immediately on script load & DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
