@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initRepoSearchAndFilter();
   init3DTagCloudCanvas();
   initGsxBotTerminal();
-  initXenonOsMockup();
-  initStudyBloomTimer();
   initParticleSphereCanvas();
 });
 
@@ -820,94 +818,7 @@ function initGsxBotTerminal() {
   });
 }
 
-// 17. XENON-OS WEB MOCKUP
-function initXenonOsMockup() {
-  const appIcons = document.querySelectorAll('.xenon-app-icon');
-  const activeAppTitle = document.getElementById('xenon-active-app');
-  const activeAppBody = document.getElementById('xenon-app-body');
-  if (!appIcons.length || !activeAppTitle || !activeAppBody) return;
-
-  const appContents = {
-    'terminal': {
-      title: 'XenonOS // Terminal v1.0',
-      body: 'root@xenonos:~$ php artisan route:list\n+--------+----------+-----------------------+\n| Method | URI      | Action                |\n+--------+----------+-----------------------+\n| GET    | /api/v1  | ApiController@index   |\n| POST   | /auth    | AuthController@login  |\n+--------+----------+-----------------------+'
-    },
-    'files': {
-      title: 'XenonOS // Storage Explorer',
-      body: '📁 /app/Http/Controllers/\n📁 /app/Models/User.php\n📁 /routes/web.php\n📁 /resources/views/xenon-dashboard.blade.php'
-    },
-    'settings': {
-      title: 'XenonOS // System Configurations',
-      body: 'Database Driver : MySQL 8.0\nCache Engine    : Redis Sentinel\nQueue Worker    : Beanstalkd Active\nSecurity Mode   : Production Hardened'
-    }
-  };
-
-  appIcons.forEach(icon => {
-    icon.addEventListener('click', () => {
-      appIcons.forEach(i => i.classList.remove('border-kingly'));
-      icon.classList.add('border-kingly');
-      const app = icon.getAttribute('data-app');
-      if (appContents[app]) {
-        activeAppTitle.textContent = appContents[app].title;
-        activeAppBody.textContent = appContents[app].body;
-      }
-    });
-  });
-}
-
-// 18. STUDYBLOOM POMODORO TIMER MOCKUP
-function initStudyBloomTimer() {
-  const timeDisplay = document.getElementById('studybloom-timer-display');
-  const startBtn = document.getElementById('studybloom-start-btn');
-  const resetBtn = document.getElementById('studybloom-reset-btn');
-  if (!timeDisplay || !startBtn) return;
-
-  let timeLeft = 25 * 60;
-  let timerId = null;
-  let isRunning = false;
-
-  function updateDisplay() {
-    const mins = String(Math.floor(timeLeft / 60)).padStart(2, '0');
-    const secs = String(timeLeft % 60).padStart(2, '0');
-    timeDisplay.textContent = `${mins}:${secs}`;
-  }
-
-  startBtn.addEventListener('click', () => {
-    if (!isRunning) {
-      isRunning = true;
-      startBtn.textContent = 'PAUSE';
-      startBtn.classList.add('bg-dust', 'text-chaos');
-      timerId = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft--;
-          updateDisplay();
-        } else {
-          clearInterval(timerId);
-          isRunning = false;
-          startBtn.textContent = 'START FOCUS';
-        }
-      }, 1000);
-    } else {
-      isRunning = false;
-      clearInterval(timerId);
-      startBtn.textContent = 'RESUME';
-      startBtn.classList.remove('bg-dust');
-    }
-  });
-
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      clearInterval(timerId);
-      isRunning = false;
-      timeLeft = 25 * 60;
-      updateDisplay();
-      startBtn.textContent = 'START FOCUS';
-      startBtn.classList.remove('bg-dust');
-    });
-  }
-}
-
-// 19. PARTICLE SPHERE INTERACTIVE CANVAS
+// 17. PARTICLE SPHERE INTERACTIVE CANVAS
 function initParticleSphereCanvas() {
   const canvas = document.getElementById('particle-sphere-canvas');
   if (!canvas) return;
