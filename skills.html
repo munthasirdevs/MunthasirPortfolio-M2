@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Stack & R&D Lab | Munthasir Rahman</title>
+  <meta name="description" content="Four-quadrant technical matrix covering frontend engineering, Laravel backend architecture, Discord bot automation, and cloud-native R&D.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <div class="film-grain-overlay"></div>
+  <div class="fluted-ribs-bg"></div>
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <a href="index.html" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">HOME</a>
+        <a href="about.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly">SKILLS</a>
+        <a href="contact.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="contact.html" class="magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/80 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+          <span>COLLABORATE</span>
+          <span class="arrow-rotate text-sm">↗</span>
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="index.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">01 // HOME</a>
+      <a href="about.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">02 // ABOUT</a>
+      <a href="services.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">03 // SERVICES</a>
+      <a href="projects.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">04 // PROJECTS ARCHIVE</a>
+      <a href="skills.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">05 // SKILLS</a>
+      <a href="contact.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">06 // CONTACT</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24">
+    <!-- Header -->
+    <section class="max-w-7xl mx-auto px-6 pb-16 border-b border-shoewax">
+      <div class="max-w-3xl">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // ARSENAL & CAPABILITIES
+        </h5>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-kingly uppercase tracking-tight text-metallic">
+          TECHNICAL STACK & R&D LAB
+        </h1>
+        <h2 class="font-mono text-sm sm:text-base text-dust mt-3 uppercase tracking-wider">
+          Frontend Precision, Laravel Backend Architecture & Cloud-Native Automation
+        </h2>
+      </div>
+    </section>
+
+    <!-- Four-Quadrant Categorized Matrices -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-b border-shoewax">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Quadrant 1: Frontend Engineering -->
+        <div class="spotlight-card rounded-2xl p-8 bg-shoewax/20 border border-shoewax">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-shoewax">
+            <h3 class="font-display text-xl font-bold text-kingly">Quadrant 01: Frontend Engineering</h3>
+            <span class="font-mono text-xs text-dust">DOM & MOTION</span>
+          </div>
+          <div class="space-y-4 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">HTML5 & Semantic Architecture</span>
+                <span class="text-kingly font-bold">98%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[98%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">CSS3 (Grid, Flexbox, Fluid Clamps)</span>
+                <span class="text-kingly font-bold">96%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[96%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Tailwind CSS & Token Systems</span>
+                <span class="text-kingly font-bold">96%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[96%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">JavaScript (ES6+, Async, DOM)</span>
+                <span class="text-kingly font-bold">94%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[94%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">TypeScript & State Contracts</span>
+                <span class="text-kingly font-bold">85%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[85%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">GSAP & ScrollTrigger Non-3D Motion</span>
+                <span class="text-kingly font-bold">90%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[90%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadrant 2: Backend & Database -->
+        <div class="spotlight-card rounded-2xl p-8 bg-shoewax/20 border border-shoewax">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-shoewax">
+            <h3 class="font-display text-xl font-bold text-kingly">Quadrant 02: Backend & Database</h3>
+            <span class="font-mono text-xs text-dust">SERVER & DATA</span>
+          </div>
+          <div class="space-y-4 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Laravel 11 & Ecosystem</span>
+                <span class="text-kingly font-bold">95%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[95%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">PHP 8.x Clean Architecture</span>
+                <span class="text-kingly font-bold">92%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[92%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">MySQL Relational Schema Design</span>
+                <span class="text-kingly font-bold">90%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[90%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">RESTful API Design & OpenAPI</span>
+                <span class="text-kingly font-bold">94%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[94%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Multi-Tenancy Isolation Patterns</span>
+                <span class="text-kingly font-bold">92%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[92%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Queue Workers & Redis Caching</span>
+                <span class="text-kingly font-bold">86%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[86%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadrant 3: Bot & Automation -->
+        <div class="spotlight-card rounded-2xl p-8 bg-shoewax/20 border border-shoewax">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-shoewax">
+            <h3 class="font-display text-xl font-bold text-kingly">Quadrant 03: Bot & Automation</h3>
+            <span class="font-mono text-xs text-dust">DISCORD & CLUSTERS</span>
+          </div>
+          <div class="space-y-4 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Discord.js Cluster Gateways</span>
+                <span class="text-kingly font-bold">95%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[95%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Real-Time Web Control Dashboards</span>
+                <span class="text-kingly font-bold">92%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[92%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Browser Automation & Regex Parsers</span>
+                <span class="text-kingly font-bold">96%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[96%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Event-Driven WebSocket Sync</span>
+                <span class="text-kingly font-bold">88%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[88%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadrant 4: UI/UX & Cloud R&D -->
+        <div class="spotlight-card rounded-2xl p-8 bg-shoewax/20 border border-shoewax">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-shoewax">
+            <h3 class="font-display text-xl font-bold text-kingly">Quadrant 04: UI/UX & Cloud R&D</h3>
+            <span class="font-mono text-xs text-dust">SYSTEMS & SCALE</span>
+          </div>
+          <div class="space-y-4 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">UI/UX Design Systems & Wireframing</span>
+                <span class="text-kingly font-bold">94%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[94%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Docker Containerization</span>
+                <span class="text-kingly font-bold">85%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[85%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">Kubernetes Orchestration & Ingress</span>
+                <span class="text-kingly font-bold">80%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[80%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-dust">AI/ML API Integration & Streaming</span>
+                <span class="text-kingly font-bold">86%</span>
+              </div>
+              <div class="h-1.5 w-full bg-chaos rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[86%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Code Conventions Sandbox -->
+    <section class="max-w-5xl mx-auto px-6 py-20">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-2">
+          // ARCHITECTURAL CONVENTIONS
+        </h5>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-kingly">
+          Interactive Coding Conventions Viewer
+        </h2>
+        <p class="font-sans text-sm text-spanish mt-2">
+          Click any technology button to inspect actual production syntax and patterns.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <button class="skill-interactive-card px-4 py-2 rounded-lg bg-shoewax/60 border border-shoewax hover:border-kingly text-kingly font-mono text-xs" data-skill-key="laravel" data-skill-name="Laravel Clean Service">
+          Laravel 11 Service
+        </button>
+        <button class="skill-interactive-card px-4 py-2 rounded-lg bg-shoewax/60 border border-shoewax hover:border-kingly text-kingly font-mono text-xs" data-skill-key="discord" data-skill-name="Discord Bot Gateway">
+          Discord.js Cluster
+        </button>
+        <button class="skill-interactive-card px-4 py-2 rounded-lg bg-shoewax/60 border border-shoewax hover:border-kingly text-kingly font-mono text-xs" data-skill-key="html" data-skill-name="Semantic HTML5">
+          Semantic HTML5
+        </button>
+        <button class="skill-interactive-card px-4 py-2 rounded-lg bg-shoewax/60 border border-shoewax hover:border-kingly text-kingly font-mono text-xs" data-skill-key="css" data-skill-name="Modern CSS Grid">
+          Modern CSS Grid
+        </button>
+        <button class="skill-interactive-card px-4 py-2 rounded-lg bg-shoewax/60 border border-shoewax hover:border-kingly text-kingly font-mono text-xs" data-skill-key="docker" data-skill-name="Production Dockerfile">
+          Docker Multi-Stage
+        </button>
+      </div>
+
+      <div class="rounded-2xl bg-chaos border border-thunder overflow-hidden shadow-2xl">
+        <div class="px-5 py-3 bg-shoewax/70 border-b border-shoewax flex items-center justify-between font-mono text-xs">
+          <span id="skill-title-display" class="text-kingly font-bold">// Coding Conventions: Laravel Clean Service</span>
+          <span class="text-dull">STRICT TYPE SAFETY</span>
+        </div>
+        <div class="p-6">
+          <pre class="font-mono text-xs sm:text-[13px] text-dust overflow-x-auto leading-relaxed"><code id="skill-code-display">&lt;?php
+// Laravel 11 Clean Service Architecture
+namespace App\Domain\SaaS\Services;
+
+class TenantService
+{
+    public function __construct(
+        protected DatabaseManager $db,
+        protected EventDispatcher $events
+    ) {}
+
+    public function provision(string $tenantId): void
+    {
+        $this->db->statement("CREATE DATABASE tenant_{$tenantId}");
+        $this->events->dispatch(new TenantProvisioned($tenantId));
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-shoewax py-12 px-6 bg-chaos text-center font-mono text-xs text-dull">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MR_ © 2026 Munthasir Rahman. Technical Stack & R&D Lab.</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-kingly">HOME</a>
+        <a href="about.html" class="hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="contact.html" class="hover:text-kingly">CONTACT</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

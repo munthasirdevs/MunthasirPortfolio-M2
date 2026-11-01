@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solutions & Collaboration Tracks | Munthasir Rahman</title>
+  <meta name="description" content="SaaS partnerships, custom web applications, Discord automation systems, and agency white-label development by Munthasir Rahman.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <div class="film-grain-overlay"></div>
+  <div class="fluted-ribs-bg"></div>
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <a href="index.html" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">HOME</a>
+        <a href="about.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="contact.html" class="magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/80 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+          <span>COLLABORATE</span>
+          <span class="arrow-rotate text-sm">↗</span>
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="index.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">01 // HOME</a>
+      <a href="about.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">02 // ABOUT</a>
+      <a href="services.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">03 // SERVICES</a>
+      <a href="projects.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">04 // PROJECTS ARCHIVE</a>
+      <a href="skills.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">05 // SKILLS</a>
+      <a href="contact.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">06 // CONTACT</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24">
+    <!-- Header -->
+    <section class="max-w-7xl mx-auto px-6 pb-16 border-b border-shoewax">
+      <div class="max-w-3xl">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // ENGAGEMENT PROTOCOLS & BLUEPRINTS
+        </h5>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-kingly uppercase tracking-tight text-metallic">
+          SOLUTIONS & COLLABORATION
+        </h1>
+        <h2 class="font-mono text-sm sm:text-base text-dust mt-3 uppercase tracking-wider">
+          SaaS Partnerships, Custom Web Apps, Discord Bots & White-Label Execution
+        </h2>
+      </div>
+    </section>
+
+    <!-- Four Detailed Collaboration Tracks -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-b border-shoewax space-y-12">
+      <!-- Track 01: SaaS Partnerships -->
+      <article class="spotlight-card rounded-2xl p-8 lg:p-10 bg-shoewax/20 border border-shoewax">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-xl font-bold text-dust">TRACK // 01</span>
+              <span class="px-3 py-0.5 rounded-full bg-kingly text-chaos font-mono text-xs font-bold uppercase">FLAGSHIP</span>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+              SaaS Co-Founding & Product Engineering
+            </h3>
+            <p class="font-sans text-spanish text-base leading-relaxed mb-6">
+              Partnering directly with founders to architect, build, and deploy production-grade multi-tenant SaaS products. From relational database schema design to automated subscription pipelines, queue workers, and clean dashboard UI.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-dust">
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">ARCHITECTURE</span>
+                <span class="text-kingly font-bold">Modular Laravel Monolith</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">INFRASTRUCTURE</span>
+                <span class="text-kingly font-bold">Docker, MySQL, Redis</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">GUARANTEE</span>
+                <span class="text-kingly font-bold">Zero Technical Debt</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col justify-between h-full pt-4 lg:pt-0 lg:border-l lg:border-shoewax lg:pl-8">
+            <div>
+              <span class="font-mono text-xs text-dull block mb-2">ENGAGEMENT MODEL</span>
+              <span class="font-display text-xl font-bold text-kingly block mb-4">Milestone or Retainer</span>
+              <p class="font-sans text-xs text-spanish mb-6">Includes full architecture documentation, test coverage, and deployment handover.</p>
+            </div>
+            <a href="contact.html?track=saas" class="w-full py-3.5 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase text-center tracking-wider transition-all">
+              Scope This Track →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Track 02: Custom Web Applications -->
+      <article class="spotlight-card rounded-2xl p-8 lg:p-10 bg-shoewax/20 border border-shoewax">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-xl font-bold text-dust">TRACK // 02</span>
+              <span class="px-3 py-0.5 rounded-full bg-shoewax border border-thunder text-kingly font-mono text-xs uppercase">FULL-LIFECYCLE</span>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+              Freelance Custom Web Applications & UI/UX
+            </h3>
+            <p class="font-sans text-spanish text-base leading-relaxed mb-6">
+              Tailored web application development for brands and organizations seeking high performance, mobile-first responsiveness, and distinct visual authority without bloated templates.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-dust">
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">FRONTEND</span>
+                <span class="text-kingly font-bold">HTML5, Tailwind, GSAP</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">BACKEND</span>
+                <span class="text-kingly font-bold">PHP 8.x / MySQL REST API</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">LIGHTHOUSE</span>
+                <span class="text-kingly font-bold">95+ Performance Score</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col justify-between h-full pt-4 lg:pt-0 lg:border-l lg:border-shoewax lg:pl-8">
+            <div>
+              <span class="font-mono text-xs text-dull block mb-2">ENGAGEMENT MODEL</span>
+              <span class="font-display text-xl font-bold text-kingly block mb-4">Fixed-Scope Project</span>
+              <p class="font-sans text-xs text-spanish mb-6">Transparent roadmap, weekly sprints, and verified 96% client satisfaction history.</p>
+            </div>
+            <a href="contact.html?track=freelance" class="w-full py-3.5 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase text-center tracking-wider transition-all">
+              Scope This Track →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Track 03: Discord Bots & Dashboards -->
+      <article class="spotlight-card rounded-2xl p-8 lg:p-10 bg-shoewax/20 border border-shoewax">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-xl font-bold text-dust">TRACK // 03</span>
+              <span class="px-3 py-0.5 rounded-full bg-shoewax border border-thunder text-kingly font-mono text-xs uppercase">AUTOMATION</span>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+              Custom Discord Bots & Web Automation Dashboards
+            </h3>
+            <p class="font-sans text-spanish text-base leading-relaxed mb-6">
+              Engineering high-concurrency bot clusters that replace dozens of fragmented tools with one tailored automation system, backed by an intuitive browser-based control panel.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-dust">
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">FRAMEWORK</span>
+                <span class="text-kingly font-bold">Discord.js v14 Gateway</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">DASHBOARD</span>
+                <span class="text-kingly font-bold">Real-Time WebSockets</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">UPTIME</span>
+                <span class="text-kingly font-bold">99.9% High Availability</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col justify-between h-full pt-4 lg:pt-0 lg:border-l lg:border-shoewax lg:pl-8">
+            <div>
+              <span class="font-mono text-xs text-dull block mb-2">ENGAGEMENT MODEL</span>
+              <span class="font-display text-xl font-bold text-kingly block mb-4">Custom Bot Build</span>
+              <p class="font-sans text-xs text-spanish mb-6">Includes deployment setup on VPS/Cloud and staff moderation training.</p>
+            </div>
+            <a href="contact.html?track=discord" class="w-full py-3.5 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase text-center tracking-wider transition-all">
+              Scope This Track →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Track 04: Agency White-Label Delivery -->
+      <article class="spotlight-card rounded-2xl p-8 lg:p-10 bg-shoewax/20 border border-shoewax">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-xl font-bold text-dust">TRACK // 04</span>
+              <span class="px-3 py-0.5 rounded-full bg-shoewax border border-thunder text-kingly font-mono text-xs uppercase">CONFIDENTIAL</span>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+              White-Label Agency Engineering Partner
+            </h3>
+            <p class="font-sans text-spanish text-base leading-relaxed mb-6">
+              Serving as a trusted, invisible technical partner for creative agencies. Delivering pristine frontend code, strict Figma-to-DOM fidelity, and full-stack integration under strict NDA.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-dust">
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">CONFIDENTIALITY</span>
+                <span class="text-kingly font-bold">Strict NDA Protection</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">FIDELITY</span>
+                <span class="text-kingly font-bold">1:1 Figma Translation</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-dull block mb-1">COMMUNICATION</span>
+                <span class="text-kingly font-bold">Slack / Discord / Git</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col justify-between h-full pt-4 lg:pt-0 lg:border-l lg:border-shoewax lg:pl-8">
+            <div>
+              <span class="font-mono text-xs text-dull block mb-2">ENGAGEMENT MODEL</span>
+              <span class="font-display text-xl font-bold text-kingly block mb-4">White-Label Retainer</span>
+              <p class="font-sans text-xs text-spanish mb-6">Seamless integration into your agency workflow with predictable sprint capacity.</p>
+            </div>
+            <a href="contact.html?track=agency" class="w-full py-3.5 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase text-center tracking-wider transition-all">
+              Scope This Track →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4-Step Delivery Lifecycle Schematic -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-b border-shoewax">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-2">
+          // METHODOLOGY & RIGOR
+        </h5>
+        <h2 class="font-display text-3xl font-bold text-kingly">
+          The 4-Step Engineering Delivery Lifecycle
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="spotlight-card rounded-xl p-6 bg-shoewax/15 border border-shoewax">
+          <div class="font-mono text-3xl font-bold text-dust mb-3">01</div>
+          <h4 class="font-display text-lg font-bold text-kingly mb-2">Discovery & Architecture</h4>
+          <p class="font-sans text-xs text-spanish leading-relaxed">
+            Requirements scoping, database modeling, API contract definition, and tech stack selection.
+          </p>
+        </div>
+        <div class="spotlight-card rounded-xl p-6 bg-shoewax/15 border border-shoewax">
+          <div class="font-mono text-3xl font-bold text-dust mb-3">02</div>
+          <h4 class="font-display text-lg font-bold text-kingly mb-2">Tokens & Wireframes</h4>
+          <p class="font-sans text-xs text-spanish leading-relaxed">
+            Mapping component tokens, mobile-first responsive wireframes, and high-contrast usability reviews.
+          </p>
+        </div>
+        <div class="spotlight-card rounded-xl p-6 bg-shoewax/15 border border-shoewax">
+          <div class="font-mono text-3xl font-bold text-dust mb-3">03</div>
+          <h4 class="font-display text-lg font-bold text-kingly mb-2">Full-Stack Engineering</h4>
+          <p class="font-sans text-xs text-spanish leading-relaxed">
+            Writing modular, type-safe code in Laravel/PHP and JavaScript with planar GSAP micro-interactions.
+          </p>
+        </div>
+        <div class="spotlight-card rounded-xl p-6 bg-shoewax/15 border border-shoewax">
+          <div class="font-mono text-3xl font-bold text-dust mb-3">04</div>
+          <h4 class="font-display text-lg font-bold text-kingly mb-2">Deployment & Handover</h4>
+          <p class="font-sans text-xs text-spanish leading-relaxed">
+            Containerization with Docker, CI/CD pipeline verification, documentation, and clean handoff.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical FAQ Accordion -->
+    <section class="max-w-4xl mx-auto px-6 py-20">
+      <div class="text-center mb-12">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-2">// FREQUENTLY ASKED QUESTIONS</h5>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-kingly">Technical Collaboration FAQ</h2>
+      </div>
+
+      <div class="space-y-4 font-mono text-xs">
+        <details class="spotlight-card rounded-xl p-5 border border-shoewax bg-chaos/60 cursor-pointer">
+          <summary class="font-bold text-kingly flex justify-between items-center">
+            <span>What is your typical turnaround timeline for a SaaS prototype or MVP?</span>
+            <span class="text-dust">↓</span>
+          </summary>
+          <p class="font-sans text-spanish text-sm pt-4 leading-relaxed">
+            A production-ready SaaS MVP typically takes between 3 to 6 weeks, depending on the complexity of multi-tenancy, authentication pipelines, and third-party API integrations.
+          </p>
+        </details>
+
+        <details class="spotlight-card rounded-xl p-5 border border-shoewax bg-chaos/60 cursor-pointer">
+          <summary class="font-bold text-kingly flex justify-between items-center">
+            <span>Do you offer ongoing retainer support after product launch?</span>
+            <span class="text-dust">↓</span>
+          </summary>
+          <p class="font-sans text-spanish text-sm pt-4 leading-relaxed">
+            Yes. Monthly engineering retainers are available for automated database backup oversight, Discord bot cluster maintenance, feature scaling, and performance audits.
+          </p>
+        </details>
+
+        <details class="spotlight-card rounded-xl p-5 border border-shoewax bg-chaos/60 cursor-pointer">
+          <summary class="font-bold text-kingly flex justify-between items-center">
+            <span>How do you handle collaboration across different time zones?</span>
+            <span class="text-dust">↓</span>
+          </summary>
+          <p class="font-sans text-spanish text-sm pt-4 leading-relaxed">
+            Located in Chuadanga, Bangladesh (GMT+6), I maintain daily overlapping working hours with clients in Europe, North America, and Australia, utilizing asynchronous Git workflows, Loom walk-throughs, and instant communication via Discord and Slack.
+          </p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-shoewax py-12 px-6 bg-chaos text-center font-mono text-xs text-dull">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MR_ © 2026 Munthasir Rahman. Solutions & Collaboration.</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-kingly">HOME</a>
+        <a href="about.html" class="hover:text-kingly">ABOUT</a>
+        <a href="projects.html" class="hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="hover:text-kingly">CONTACT</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

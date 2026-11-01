@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Systems Philosophy | Munthasir Rahman</title>
+  <meta name="description" content="Biography, systems architecture philosophy, and live GitHub README inspector for Munthasir Rahman (munthasirdevs). Chuadanga, Bangladesh.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <div class="film-grain-overlay"></div>
+  <div class="fluted-ribs-bg"></div>
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <a href="index.html" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">HOME</a>
+        <a href="about.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly">ABOUT</a>
+        <a href="services.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="contact.html" class="magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/80 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+          <span>COLLABORATE</span>
+          <span class="arrow-rotate text-sm">↗</span>
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="index.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">01 // HOME</a>
+      <a href="about.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">02 // ABOUT</a>
+      <a href="services.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">03 // SERVICES</a>
+      <a href="projects.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">04 // PROJECTS ARCHIVE</a>
+      <a href="skills.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">05 // SKILLS</a>
+      <a href="contact.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">06 // CONTACT</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24">
+    <!-- Header -->
+    <section class="max-w-7xl mx-auto px-6 pb-16 border-b border-shoewax">
+      <div class="max-w-3xl">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // BIOGRAPHY & SYSTEM ARCHITECTURE
+        </h5>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-kingly uppercase tracking-tight text-metallic">
+          ARCHITECTING CLEAN SOFTWARE
+        </h1>
+        <h2 class="font-mono text-sm sm:text-base text-dust mt-3 uppercase tracking-wider">
+          Munthasir Rahman — Web Developer, UI/UX Designer & Full-Stack Bot Engineer
+        </h2>
+      </div>
+    </section>
+
+    <!-- Section 1: Dual Identity Progression -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-b border-shoewax">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+        <!-- 5 Cols: Framed Portrait with Selection Anchor Nodes -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-sm">
+            <div class="bounding-box-frame p-3 rounded-2xl bg-shoewax/20">
+              <span class="corner-node node-tl"></span>
+              <span class="corner-node node-tc"></span>
+              <span class="corner-node node-tr"></span>
+              <span class="corner-node node-ml"></span>
+              <span class="corner-node node-mr"></span>
+              <span class="corner-node node-bl"></span>
+              <span class="corner-node node-bc"></span>
+              <span class="corner-node node-br"></span>
+
+              <div class="aspect-[4/5] rounded-xl overflow-hidden bg-shoewax border border-thunder relative flex items-center justify-center">
+                <img src="heroimg.jpeg" alt="Munthasir Rahman" class="w-full h-full object-cover grayscale contrast-125" />
+                <div class="absolute inset-0 bg-gradient-to-t from-chaos via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-4 left-4 right-4 font-mono text-xs text-kingly flex justify-between items-center border-t border-shoewax pt-2">
+                  <span>MUNTHASIR RAHMAN</span>
+                  <span class="text-dust">EST. 2022</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Callout Badges -->
+            <div class="absolute -bottom-6 -left-4 sm:-left-6 px-4 py-2 rounded-xl bg-chaos border border-thunder shadow-xl font-mono text-xs text-kingly">
+              <span class="text-dust">VERIFIED:</span> 23+ Production Deploys
+            </div>
+            <div class="absolute -top-4 -right-4 px-4 py-2 rounded-xl bg-chaos border border-thunder shadow-xl font-mono text-xs text-kingly">
+              <span class="text-dust">RATING:</span> 96% Satisfaction
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 Cols: Expanded Narrative -->
+        <div class="lg:col-span-7">
+          <h2 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-6">
+            Where UI/UX Artistry Meets Full-Stack & Bot Engineering
+          </h2>
+          <div class="space-y-4 font-sans text-spanish text-base leading-relaxed">
+            <p>
+              My journey began in Chuadanga, Khulna, Bangladesh, driven by an obsession with clean code and intuitive design. Early in my career, I focused on crafting responsive, mobile-first websites with semantic HTML, modern CSS, and fluid interactive touches that transformed client visions into pixel-accurate digital portals.
+            </p>
+            <p>
+              As client requirements expanded toward complex business logic, I progressed into full-stack software development—mastering server-side PHP, relational schema engineering with MySQL, and high-concurrency event-driven systems using Laravel and Node.js. Concurrently, seeing communities and server administrators struggle with fragmented bots inspired me to engineer custom Discord bot ecosystems equipped with real-time web dashboards and WebSocket telemetry.
+            </p>
+            <p>
+              Today, my work synthesizes both worlds: backend systems with strict clean architecture and automated queues, paired with frontend experiences that look, feel, and function with editorial elegance.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8 mt-8 border-t border-shoewax font-mono text-xs">
+            <div>
+              <span class="text-dull block mb-1">ORIGIN</span>
+              <span class="text-kingly font-bold">Chuadanga, BD</span>
+            </div>
+            <div>
+              <span class="text-dull block mb-1">PRIMARY FRAMEWORK</span>
+              <span class="text-kingly font-bold">Laravel 11 & Node</span>
+            </div>
+            <div>
+              <span class="text-dull block mb-1">OPEN-SOURCE</span>
+              <span class="text-kingly font-bold">Building in Public</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Live munthasirdevs/README.md Terminal Inspector (Reference 4) -->
+    <section class="max-w-5xl mx-auto px-6 py-20">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-2">
+          // GITHUB PROFILE MANIFESTO
+        </h5>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-kingly">
+          munthasirdevs / README.md — Live System Manifesto
+        </h2>
+        <p class="font-sans text-sm text-spanish mt-2">
+          Directly reflecting the developer philosophy and roadmap published on GitHub.
+        </p>
+      </div>
+
+      <!-- Dual-Tab Terminal Inspector -->
+      <div class="rounded-2xl bg-chaos border border-thunder overflow-hidden shadow-2xl">
+        <!-- Terminal Header with Tabs -->
+        <div class="px-5 py-3 bg-shoewax/70 border-b border-shoewax flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-thunder inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-dull inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-dust inline-block"></span>
+            <span class="ml-2 font-mono text-xs text-dust">munthasirdevs/manifesto.sh</span>
+          </div>
+          <div class="flex gap-2">
+            <button class="readme-tab-btn px-3 py-1 rounded font-mono text-xs font-bold bg-kingly text-chaos" data-tab="yaml">
+              current_focus.yaml
+            </button>
+            <button class="readme-tab-btn px-3 py-1 rounded font-mono text-xs text-spanish hover:text-kingly" data-tab="md">
+              open_source_manifesto.md
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 1: YAML Config View -->
+        <div id="readme-yaml-view" class="p-6 font-mono text-xs sm:text-sm text-dust overflow-x-auto leading-relaxed">
+<pre>author: "Munthasir Rahman"
+handle: "munthasirdevs"
+location: "Chuadanga, Khulna, Bangladesh"
+timezone: "Asia/Dhaka (GMT+6)"
+
+specialties:
+  - "Full-Stack Web Development (Laravel, PHP, MySQL)"
+  - "Discord Bot Automation & Custom Web Dashboards"
+  - "UI/UX Architecture & Responsive Frontend Engineering"
+
+current_focus: "Architecting production-ready SaaS applications with Laravel"
+next_milestone: "Launch first open-source SaaS boilerplate"
+
+open_source_principles:
+  transparency: true
+  public_repositories: 25
+  modular_reusability: "High"
+  clean_code_guarantee: true
+
+collaboration_routes:
+  - "SaaS Partnerships"
+  - "Freelance Custom Web Applications"
+  - "White-Label Agency Development"
+  - "Open-Source Tooling"</pre>
+        </div>
+
+        <!-- Tab 2: Rendered Markdown View (Hidden by default) -->
+        <div id="readme-md-view" class="p-6 font-sans text-sm text-spanish leading-relaxed hidden space-y-4">
+          <h3 class="font-display text-xl font-bold text-kingly">Hi, I'm Munthasir Rahman 👋</h3>
+          <p>
+            I am a full-stack developer and bot engineer passionate about building scalable, high-performance software and clean, human-friendly user interfaces.
+          </p>
+          <div class="font-mono text-xs text-dust p-4 rounded-lg bg-shoewax/30 border border-shoewax">
+            &gt; "Clean architecture is not a luxury—it is the foundation that enables software to adapt and endure."
+          </div>
+          <p>
+            Feel free to inspect my 26 public repositories on <a href="https://github.com/munthasirdevs" class="text-kingly underline">GitHub</a> or get in touch for custom engineering engagements.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-shoewax py-12 px-6 bg-chaos text-center font-mono text-xs text-dull">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MR_ © 2026 Munthasir Rahman. Chuadanga, Bangladesh.</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-kingly">HOME</a>
+        <a href="services.html" class="hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="hover:text-kingly">CONTACT</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

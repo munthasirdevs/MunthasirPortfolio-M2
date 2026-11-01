@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Initiate Project Scoping | Munthasir Rahman</title>
+  <meta name="description" content="Dedicated 3-step project architecture configurator and direct contact channel with Munthasir Rahman (munthasirdevs). Chuadanga, Bangladesh.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <div class="film-grain-overlay"></div>
+  <div class="fluted-ribs-bg"></div>
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <a href="index.html" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">HOME</a>
+        <a href="about.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="contact.html" class="magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-kingly text-chaos font-mono text-xs uppercase tracking-wider font-bold">
+          <span>LIVE BRIDGE</span>
+          <span class="arrow-rotate text-sm">→</span>
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="index.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">01 // HOME</a>
+      <a href="about.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">02 // ABOUT</a>
+      <a href="services.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">03 // SERVICES</a>
+      <a href="projects.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">04 // PROJECTS ARCHIVE</a>
+      <a href="skills.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">05 // SKILLS</a>
+      <a href="contact.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">06 // CONTACT</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24">
+    <!-- Header -->
+    <section class="max-w-7xl mx-auto px-6 pb-16 border-b border-shoewax">
+      <div class="max-w-3xl">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // DIRECT TELEMETRY GATEWAY
+        </h5>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-kingly uppercase tracking-tight text-metallic">
+          INITIATE PROJECT SCOPING
+        </h1>
+        <h2 class="font-mono text-sm sm:text-base text-dust mt-3 uppercase tracking-wider">
+          Direct Engineering Channel — Chuadanga, Bangladesh to Worldwide
+        </h2>
+      </div>
+    </section>
+
+    <!-- Interactive 3-Step Project Configurator -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-b border-shoewax">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- Configurator Controls (7 Cols) -->
+        <div class="lg:col-span-7 space-y-10">
+          <div>
+            <h3 class="font-display text-xl font-bold text-kingly mb-2">
+              Interactive Project Architecture Configurator
+            </h3>
+            <p class="font-sans text-sm text-spanish">
+              Configure your requirements below to automatically compile an architectural brief payload.
+            </p>
+          </div>
+
+          <!-- Step 1: Select Collaboration Track -->
+          <div>
+            <span class="font-mono text-xs text-dust block mb-3 uppercase tracking-wider">
+              STEP 01 // SELECT COLLABORATION TRACK
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button class="config-track-pill p-4 rounded-xl border border-shoewax bg-kingly text-chaos font-mono text-xs font-bold text-left transition-all" data-value="SaaS Partnership">
+                ✦ 1. SaaS Architecture Partnership
+              </button>
+              <button class="config-track-pill p-4 rounded-xl border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly font-mono text-xs text-left transition-all" data-value="Custom Web App">
+                ✦ 2. Freelance Web Application
+              </button>
+              <button class="config-track-pill p-4 rounded-xl border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly font-mono text-xs text-left transition-all" data-value="Discord Bot">
+                ✦ 3. Discord Bot & Dashboard
+              </button>
+              <button class="config-track-pill p-4 rounded-xl border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly font-mono text-xs text-left transition-all" data-value="Agency Retainer">
+                ✦ 4. Agency White-Label Retainer
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Select Stack Components -->
+          <div>
+            <span class="font-mono text-xs text-dust block mb-3 uppercase tracking-wider">
+              STEP 02 // SELECT REQUIRED STACK COMPONENTS
+            </span>
+            <div class="flex flex-wrap gap-2.5 font-mono text-xs">
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-kingly text-chaos font-bold" data-value="Laravel">
+                ✓ Laravel 11
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-kingly text-chaos font-bold" data-value="MySQL">
+                ✓ MySQL Relational DB
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-kingly text-chaos font-bold" data-value="Tailwind CSS">
+                ✓ Tailwind CSS
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly" data-value="TypeScript">
+                + TypeScript
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly" data-value="Docker">
+                + Docker Containers
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly" data-value="Discord.js">
+                + Discord.js
+              </button>
+              <button class="config-stack-pill px-4 py-2.5 rounded-lg border border-shoewax bg-shoewax/40 text-spanish hover:text-kingly" data-value="AI/ML Integration">
+                + AI/ML Pipelines
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Brief Form -->
+          <div>
+            <span class="font-mono text-xs text-dust block mb-3 uppercase tracking-wider">
+              STEP 03 // TRANSMIT PROJECT SCOPING DETAILS
+            </span>
+            <form id="contact-project-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="text" name="name" required placeholder="Your Name" class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none" />
+                <input type="email" name="email" required placeholder="Your Email" class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none" />
+              </div>
+              <textarea name="brief" rows="4" required placeholder="Describe target timeline, core features, or technical requirements..." class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none"></textarea>
+              
+              <button type="submit" id="contact-submit-btn" class="w-full py-4 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase tracking-widest transition-all">
+                TRANSMIT COMPILED BRIEF →
+              </button>
+              <div id="contact-status-output" class="hidden p-3 rounded bg-chaos border border-shoewax mt-2 text-center"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Pane: Live JSON Telemetry Terminal (5 Cols) -->
+        <div class="lg:col-span-5">
+          <div class="spotlight-card rounded-2xl bg-chaos border border-thunder p-6 sticky top-28 shadow-2xl">
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-shoewax font-mono text-xs">
+              <span class="text-kingly font-bold">COMPILED TELEMETRY PACKET</span>
+              <span class="text-dust live-clock-bd">00:00:00 [GMT+6]</span>
+            </div>
+            <pre class="font-mono text-xs text-dust overflow-x-auto leading-relaxed"><code id="config-json-preview">{
+  "clientRequest": {
+    "track": "SaaS Partnership",
+    "selectedStack": [
+      "Laravel",
+      "MySQL",
+      "Tailwind CSS"
+    ],
+    "timestamp": "2026-11-01T00:00:00.000Z",
+    "locationGateway": "Chuadanga, BD (GMT+6)",
+    "status": "READY_TO_TRANSMIT"
+  }
+}</code></pre>
+
+            <div class="mt-6 pt-6 border-t border-shoewax space-y-3 font-mono text-xs">
+              <div class="text-dull">DIRECT CHANNELS:</div>
+              <a href="mailto:munthasirrahman@gmail.com" class="copy-email-btn flex items-center justify-between p-3 rounded-lg bg-shoewax/30 border border-shoewax hover:border-kingly text-dust hover:text-kingly">
+                <span>✉ munthasirrahman@gmail.com</span>
+                <span class="text-[10px]">COPY ↗</span>
+              </a>
+              <a href="https://github.com/munthasirdevs" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-lg bg-shoewax/30 border border-shoewax hover:border-kingly text-dust hover:text-kingly">
+                <span>📁 GitHub: @munthasirdevs</span>
+                <span class="text-[10px]">26 REPOS ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-shoewax py-12 px-6 bg-chaos text-center font-mono text-xs text-dull">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MR_ © 2026 Munthasir Rahman. Chuadanga, Bangladesh (GMT+6).</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-kingly">HOME</a>
+        <a href="about.html" class="hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="hover:text-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="hover:text-kingly">SKILLS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
