@@ -8,7 +8,155 @@ if (typeof gsap !== 'undefined') {
   if (typeof TextPlugin !== 'undefined') gsap.registerPlugin(TextPlugin);
 }
 
-// 1. CREATIVE GSAP PRELOADER ("Munthasir" Reference 1 Calligraphic Sequence)
+// 1. WEB AUDIO API SYNTHESIZER (Mechanical Ticks & Completion Harmonic Chime)
+class CyberAudioSynthesizer {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true;
+    this.lastTickTime = 0;
+  }
+
+  init() {
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        this.ctx = new AudioCtx();
+      }
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
+  }
+
+  playScrambleTick() {
+    if (!this.enabled) return;
+    try {
+      this.init();
+      if (!this.ctx || this.ctx.state !== 'running') return;
+
+      const now = this.ctx.currentTime;
+      if (now - this.lastTickTime < 0.035) return; // throttle ticks
+      this.lastTickTime = now;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      const freq = 1100 + Math.random() * 800;
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(280, now + 0.022);
+
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.022);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.025);
+    } catch (e) {}
+  }
+
+  playCompletionChime() {
+    if (!this.enabled) return;
+    try {
+      this.init();
+      if (!this.ctx || this.ctx.state !== 'running') return;
+
+      const now = this.ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        const noteTime = now + idx * 0.07;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, noteTime);
+
+        gain.gain.setValueAtTime(0.06, noteTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.55);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(noteTime);
+        osc.stop(noteTime + 0.6);
+      });
+    } catch (e) {}
+  }
+}
+
+// TEXT SCRAMBLE ENGINE (Random Glyph Cycling with Resolution Easing)
+class TextScrambler {
+  constructor(el, audioSynth) {
+    this.el = el;
+    this.audioSynth = audioSynth;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    this.queue = [];
+    this.frame = 0;
+    this.frameRequest = null;
+    this.resolve = null;
+  }
+
+  setText(newText, duration = 1.0) {
+    const oldText = this.el.innerText || '';
+    const length = Math.max(oldText.length, newText.length);
+    const totalFrames = Math.max(30, Math.floor(duration * 60));
+
+    this.queue = [];
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * (totalFrames * 0.4));
+      const end = start + Math.floor(Math.random() * (totalFrames * 0.6));
+      this.queue.push({ from, to, start, end, char: '' });
+    }
+
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+
+    return new Promise(resolve => {
+      this.resolve = resolve;
+      this.update();
+    });
+  }
+
+  update() {
+    let output = '';
+    let complete = 0;
+
+    for (let i = 0; i < this.queue.length; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.chars[Math.floor(Math.random() * this.chars.length)];
+          this.queue[i].char = char;
+          if (this.audioSynth) {
+            this.audioSynth.playScrambleTick();
+          }
+        }
+        output += `<span class="text-spanish">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+
+    this.el.innerHTML = output;
+
+    if (complete === this.queue.length) {
+      if (this.resolve) this.resolve();
+    } else {
+      this.frame++;
+      this.frameRequest = requestAnimationFrame(() => this.update());
+    }
+  }
+}
+
+// 2. CREATIVE GSAP PRELOADER (Black Background + Top-Left % + Bottom-Right Bar + Center Scramble + Audio)
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   if (!preloader) {
@@ -18,98 +166,136 @@ function initPreloader() {
     return;
   }
 
-  // Disable scroll while preloader runs
+  // Lock scroll while preloader runs
   document.body.classList.add('overflow-hidden');
 
-  const counterObj = { val: 0 };
-  const counterEl = document.getElementById('preloader-counter');
-  const statusEl = document.getElementById('preloader-status-text');
+  const audioSynth = new CyberAudioSynthesizer();
 
-  const statusMessages = [
-    'SYS.INIT // MUNTHASIR.DEVS [v2026.4]',
-    'LOADING LARAVEL SAAS MODULES...',
-    'MOUNTING DISCORD BOT GATEWAYS...',
-    'COMPILING UI/UX DESIGN TOKENS...',
-    'SYSTEM READY // ARCHITECTURE LOADED'
+  // Unlock audio context on any initial user touch or click
+  const unlockAudio = () => audioSynth.init();
+  preloader.addEventListener('click', unlockAudio, { once: true });
+  window.addEventListener('keydown', unlockAudio, { once: true });
+  window.addEventListener('touchstart', unlockAudio, { once: true });
+
+  const counterEl = document.getElementById('preloader-counter');
+  const progressBar = document.getElementById('preloader-progress-bar');
+  const barVal = document.getElementById('preloader-bar-val');
+  const statusEl = document.getElementById('preloader-status-text');
+  const scrambleTitle = document.getElementById('preloader-scramble-text');
+  const scrambleSubtitle = document.getElementById('preloader-sub-scramble');
+  const phaseTag = document.getElementById('preloader-phase-tag');
+  const binaryEl = document.getElementById('preloader-scramble-binary');
+
+  const titleScrambler = scrambleTitle ? new TextScrambler(scrambleTitle, audioSynth) : null;
+  const subScrambler = scrambleSubtitle ? new TextScrambler(scrambleSubtitle, null) : null;
+
+  // Status telemetry steps
+  const statusSteps = [
+    { threshold: 0, text: 'SYS.INIT // CORE_KERNEL', phase: 'INITIALIZING PROTOCOL' },
+    { threshold: 25, text: 'MOUNTING DISCORD BOT GATEWAYS...', phase: 'ROUTING WEBSOCKETS' },
+    { threshold: 50, text: 'LOADING LARAVEL SAAS ARCHITECTURE...', phase: 'MIGRATING SCHEMAS' },
+    { threshold: 75, text: 'COMPILING UI/UX TOKENS & 3D CANVAS...', phase: 'CALIBRATING FIBONACCI' },
+    { threshold: 96, text: 'SYSTEM READY // ACCESS GRANTED', phase: 'SYSTEM VERIFIED' }
   ];
 
-  let currentMsgIdx = 0;
-  const statusInterval = setInterval(() => {
-    if (statusEl && currentMsgIdx < statusMessages.length) {
-      statusEl.textContent = statusMessages[currentMsgIdx];
-      currentMsgIdx++;
+  // Binary stream visual flicker
+  const binaryInterval = setInterval(() => {
+    if (binaryEl) {
+      const b1 = Math.floor(Math.random() * 256).toString(2).padStart(8, '0');
+      const b2 = Math.floor(Math.random() * 256).toString(2).padStart(8, '0');
+      binaryEl.textContent = `${b1} ${b2}`;
     }
-  }, 500);
+  }, 85);
+
+  // Trigger initial text scramble sequence
+  if (titleScrambler) {
+    titleScrambler.setText('ARCHITECTING SOFTWARE', 0.9).then(() => {
+      setTimeout(() => {
+        if (titleScrambler) titleScrambler.setText('MUNTHASIR RAHMAN', 1.0);
+      }, 350);
+    });
+  }
+
+  if (subScrambler) {
+    setTimeout(() => {
+      subScrambler.setText('FULL-STACK & BOT ENGINEER // UI/UX DESIGNER', 1.1);
+    }, 600);
+  }
+
+  const counterObj = { val: 0 };
+  let chimePlayed = false;
 
   const tl = gsap.timeline({
     onComplete: () => {
-      clearInterval(statusInterval);
+      clearInterval(binaryInterval);
       document.body.classList.remove('overflow-hidden');
       initScrollAnimations();
       initPlanarInteractions();
     }
   });
 
-  // Stage 1: Orbital calibration and counter tick (0.0s - 0.8s)
-  tl.fromTo('.preloader-orbital-arc',
-    { strokeDasharray: 1200, strokeDashoffset: 1200 },
-    { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut', stagger: 0.12 }, 0
-  )
-  .fromTo('.preloader-bounding-box',
-    { scale: 0.92, opacity: 0 },
-    { scale: 1.0, opacity: 1, duration: 0.8, ease: 'back.out(1.5)' }, 0.1
-  )
-  .to(counterObj, {
+  // Emergency fail-safe: guarantee preloader dismissal after 4.2s
+  setTimeout(() => {
+    if (preloader && preloader.style.display !== 'none') {
+      clearInterval(binaryInterval);
+      preloader.style.transition = 'opacity 0.4s ease';
+      preloader.style.opacity = '0';
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        preloader.style.pointerEvents = 'none';
+        document.body.classList.remove('overflow-hidden');
+        initScrollAnimations();
+        initPlanarInteractions();
+      }, 400);
+    }
+  }, 4200);
+
+  // Increment counter and progress bar from 000 to 100
+  tl.to(counterObj, {
     val: 100,
-    duration: 2.3,
+    duration: 2.7,
     ease: 'power2.inOut',
     onUpdate: () => {
+      const current = Math.floor(counterObj.val);
       if (counterEl) {
-        counterEl.textContent = String(Math.floor(counterObj.val)).padStart(3, '0');
+        counterEl.textContent = String(current).padStart(3, '0');
+      }
+      if (progressBar) {
+        progressBar.style.width = `${current}%`;
+      }
+      if (barVal) {
+        barVal.textContent = `${current}%`;
+      }
+
+      // Update status copy
+      const step = [...statusSteps].reverse().find(s => current >= s.threshold);
+      if (step) {
+        if (statusEl) statusEl.textContent = step.text;
+        if (phaseTag) phaseTag.textContent = step.phase;
+      }
+
+      // Play chime when reaching 100%
+      if (current >= 100 && !chimePlayed) {
+        chimePlayed = true;
+        audioSynth.playCompletionChime();
       }
     }
-  }, 0)
+  }, 0);
 
-  // Stage 2: Serif letters & liquid calligraphic script "h" (0.4s - 1.8s)
-  .from('.preloader-serif-letter', {
-    y: 35,
+  // Stage 4: Fade out all preloader UI rows & lift 5-Column Shutters
+  tl.to(['#preloader-top-row', '#preloader-center-content', '#preloader-bottom-row'], {
     opacity: 0,
-    duration: 0.7,
-    stagger: 0.04,
-    ease: 'expo.out'
-  }, 0.35)
-  .fromTo('.preloader-script-h',
-    { strokeDasharray: 2400, strokeDashoffset: 2400 },
-    { strokeDashoffset: 0, duration: 1.15, ease: 'power3.inOut' }, 0.7
-  )
-
-  // Stage 3: Specular metallic light sweep (1.8s - 2.4s)
-  .fromTo('.preloader-metallic-sheen',
-    { xPercent: -120 },
-    { xPercent: 120, duration: 0.65, ease: 'power2.inOut' }, 1.75
-  )
-  .to('.preloader-anchor-node', {
-    backgroundColor: '#DEDEDE',
-    boxShadow: '0 0 10px rgba(222,222,222,0.8)',
-    duration: 0.3,
-    stagger: 0.05
-  }, 2.0)
-
-  // Stage 4: Five-Column Shutter Lift (2.4s - 3.1s)
-  .to('#preloader-center-content', {
-    scale: 0.92,
-    y: -25,
-    opacity: 0,
-    duration: 0.45,
-    ease: 'power3.in'
-  }, 2.4)
+    y: -15,
+    duration: 0.35,
+    ease: 'power2.in'
+  }, 2.75)
   .to('.preloader-shutter', {
     yPercent: -100,
-    duration: 0.75,
-    stagger: 0.06,
+    duration: 0.8,
+    stagger: 0.05,
     ease: 'expo.inOut'
-  }, 2.55)
-  .set('#preloader', { display: 'none' });
+  }, 2.95)
+  .set('#preloader', { display: 'none', pointerEvents: 'none' });
 }
 
 // 2. PLANAR (NON-3D) SPOTLIGHT BORDER TRACKING & 2D MAGNETIC BUTTON PULL
@@ -349,10 +535,20 @@ function initCustomCursor() {
   });
 }
 
-// Auto-run cursor immediately
+// Auto-run cursor and initialize animations on pages without preloader
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCustomCursor);
+  document.addEventListener('DOMContentLoaded', () => {
+    initCustomCursor();
+    if (!document.getElementById('preloader')) {
+      initScrollAnimations();
+      initPlanarInteractions();
+    }
+  });
 } else {
   initCustomCursor();
+  if (!document.getElementById('preloader')) {
+    initScrollAnimations();
+    initPlanarInteractions();
+  }
 }
 

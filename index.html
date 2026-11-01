@@ -56,11 +56,13 @@
   <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
 
   <!-- ==========================================================================
-       CREATIVE GSAP PRELOADER SEQUENCE ("The Architect's Signature & System Boot")
-       Reference 1 Calligraphic Mark + Reference 3 Vertical Shutters + Reference 6 Vector Frame
+       CREATIVE GSAP PRELOADER (Totally Black Background + Scramble Animation + Audio)
+       Top-Left: Loading Percentage
+       Bottom-Right: Loading Progress Bar
+       Center: Dynamic Text Scramble with Synthesized Web Audio Effects
        ========================================================================== -->
-  <div id="preloader" class="fixed inset-0 z-[100] flex flex-col justify-between p-6 lg:p-12 bg-chaos overflow-hidden">
-    <!-- Five Vertical Background Shutters (Reference 3) -->
+  <div id="preloader" class="fixed inset-0 z-[100] flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-transparent overflow-hidden select-none cursor-pointer" title="Click anywhere to unlock audio synthesis">
+    <!-- Five Vertical Background Shutters -->
     <div class="preloader-shutter-container">
       <div class="preloader-shutter"></div>
       <div class="preloader-shutter"></div>
@@ -69,84 +71,78 @@
       <div class="preloader-shutter"></div>
     </div>
 
-    <!-- Top Telemetry Row -->
-    <div class="relative z-10 flex items-center justify-between font-mono text-[11px] lg:text-xs text-dust tracking-wider border-b border-shoewax/60 pb-4">
-      <div class="flex items-center gap-3">
-        <span class="w-2 h-2 rounded-full bg-kingly pulsing-dot"></span>
-        <span>SYS.INIT // MUNTHASIR.DEVS [v2026.4]</span>
+    <!-- Top Row -->
+    <div id="preloader-top-row" class="relative z-10 flex items-start justify-between w-full">
+      <!-- TOP-LEFT CORNER: Loading Percentage -->
+      <div class="flex flex-col font-mono">
+        <div class="flex items-center gap-2 text-[10px] sm:text-xs text-dull tracking-widest uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-kingly pulsing-dot"></span>
+          <span>SYSTEM LOADING</span>
+        </div>
+        <div class="flex items-baseline gap-1 mt-1">
+          <span id="preloader-counter" class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-kingly tracking-tighter">000</span>
+          <span class="text-sm sm:text-base text-dust font-bold font-mono">%</span>
+        </div>
       </div>
-      <div class="hidden sm:block text-dull">
-        CHUADANGA, KHULNA, BD // 23.6439° N, 88.8556° E
+
+      <!-- TOP-RIGHT CORNER: Audio & System Status -->
+      <div class="flex flex-col items-end font-mono text-[11px] text-dull tracking-wider">
+        <div class="flex items-center gap-2 border border-thunder/50 px-3 py-1 rounded-full bg-chaos/80">
+          <span class="text-[10px] text-dust" id="preloader-audio-status">♫ AUDIO ENGINE ACTIVE</span>
+        </div>
+        <span class="text-[10px] text-dull mt-1.5 hidden sm:inline">CHUADANGA, BD // 2026</span>
       </div>
     </div>
 
-    <!-- Center Calligraphic Emblem Stage (Reference 1 Reconstruction) -->
-    <div id="preloader-center-content" class="relative z-10 flex flex-col items-center justify-center my-auto">
-      <div class="preloader-bounding-box bounding-box-frame p-8 sm:p-12 rounded-xl bg-chaos/40 backdrop-blur-sm max-w-2xl w-full">
-        <!-- Corner Anchor Nodes (Reference 6) -->
-        <span class="corner-node node-tl preloader-anchor-node"></span>
-        <span class="corner-node node-tr preloader-anchor-node"></span>
-        <span class="corner-node node-bl preloader-anchor-node"></span>
-        <span class="corner-node node-br preloader-anchor-node"></span>
+    <!-- CENTER STAGE: Text Scramble Animation Chamber -->
+    <div id="preloader-center-content" class="relative z-10 flex flex-col items-center justify-center my-auto px-4 max-w-4xl w-full mx-auto text-center">
+      <!-- High-Precision Dashed Architectural Frame -->
+      <div class="bounding-box-frame p-8 sm:p-12 lg:p-14 rounded-2xl bg-black/80 border border-dashed border-thunder/80 max-w-2xl w-full relative shadow-2xl">
+        <span class="corner-node node-tl"></span>
+        <span class="corner-node node-tr"></span>
+        <span class="corner-node node-bl"></span>
+        <span class="corner-node node-br"></span>
 
-        <!-- SVG Reconstruction of Reference 1 Brand Mark -->
-        <div id="preloader-svg-wrap" class="relative overflow-hidden flex items-center justify-center">
-          <svg viewBox="0 0 760 280" class="w-full max-w-[620px] h-auto">
-            <defs>
-              <linearGradient id="metallicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#DEDEDE" />
-                <stop offset="45%" stop-color="#BCBCBC" />
-                <stop offset="50%" stop-color="#717171" />
-                <stop offset="100%" stop-color="#DEDEDE" />
-              </linearGradient>
-            </defs>
-
-            <!-- Layer 1: Orbital Elliptical Hairlines -->
-            <g class="orbital-arcs" stroke="#4D4D4D" stroke-width="1.2" fill="none">
-              <ellipse class="preloader-orbital-arc" cx="380" cy="140" rx="360" ry="110" transform="rotate(-14 380 140)" />
-              <ellipse class="preloader-orbital-arc" cx="380" cy="140" rx="310" ry="85" transform="rotate(8 380 140)" />
-            </g>
-
-            <!-- Layer 2: Editorial Serif Letters "Munt" -->
-            <text x="80" y="165" font-family="'Playfair Display', serif" font-weight="700" font-style="italic" font-size="118" fill="url(#metallicGrad)" letter-spacing="-2">
-              <tspan class="preloader-serif-letter">M</tspan>
-              <tspan class="preloader-serif-letter">u</tspan>
-              <tspan class="preloader-serif-letter">n</tspan>
-              <tspan class="preloader-serif-letter">t</tspan>
-            </text>
-
-            <!-- Layer 3: Calligraphic Flourish Script "h" connecting "t" to "asir" -->
-            <path class="preloader-script-h" d="M 335 150 C 370 70, 410 -20, 520 25 C 640 75, 510 130, 420 180 C 340 220, 230 300, 310 320 C 380 340, 450 240, 490 160 C 505 130, 520 165, 535 165" 
-                  fill="none" stroke="url(#metallicGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
-
-            <!-- Layer 4: Editorial Serif Letters "asir" -->
-            <text x="500" y="165" font-family="'Playfair Display', serif" font-weight="700" font-style="italic" font-size="118" fill="url(#metallicGrad)" letter-spacing="-2">
-              <tspan class="preloader-serif-letter">a</tspan>
-              <tspan class="preloader-serif-letter">s</tspan>
-              <tspan class="preloader-serif-letter">i</tspan>
-              <tspan class="preloader-serif-letter">r</tspan>
-            </text>
-          </svg>
-
-          <!-- Specular Light Sweep Shimmer Layer -->
-          <div class="preloader-metallic-sheen absolute inset-0 bg-gradient-to-r from-transparent via-kingly/30 to-transparent pointer-events-none transform -skew-x-12"></div>
+        <div class="font-mono text-[11px] sm:text-xs text-dust tracking-[0.3em] uppercase mb-4 flex items-center justify-center gap-2">
+          <span>&lt;</span>
+          <span id="preloader-phase-tag">INITIALIZING PROTOCOL</span>
+          <span>/&gt;</span>
         </div>
 
-        <div class="mt-4 text-center font-mono text-xs tracking-widest text-dust">
-          FULL-STACK & BOT ENGINEERING // UI/UX DESIGN
+        <h1 id="preloader-scramble-text" class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-kingly min-h-[1.3em] flex items-center justify-center text-metallic">
+          MUNTHASIR RAHMAN
+        </h1>
+
+        <p id="preloader-sub-scramble" class="font-mono text-xs sm:text-sm text-spanish tracking-[0.2em] uppercase mt-4 min-h-[1.5em] flex items-center justify-center">
+          FULL-STACK &amp; BOT ENGINEER // UI/UX DESIGNER
+        </p>
+
+        <!-- Dynamic Binary Decryption Telemetry Bar -->
+        <div class="mt-8 pt-4 border-t border-shoewax/50 flex items-center justify-between font-mono text-[10px] text-dull w-full">
+          <span>DECRYPT // 256-BIT</span>
+          <span id="preloader-scramble-binary" class="text-dust font-bold tracking-widest">01001101 01010010</span>
+          <span>SEC.LEVEL 0</span>
         </div>
       </div>
     </div>
 
-    <!-- Bottom Telemetry & Large Counter Row -->
-    <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between border-t border-shoewax/60 pt-4 gap-4">
-      <div id="preloader-status-text" class="font-mono text-xs text-spanish tracking-wider">
-        INITIALIZING ARCHITECTURAL ENVIRONMENT...
+    <!-- Bottom Row -->
+    <div id="preloader-bottom-row" class="relative z-10 flex items-end justify-between w-full">
+      <!-- BOTTOM-LEFT CORNER: Identity Meta -->
+      <div class="hidden sm:flex flex-col font-mono text-[11px] text-dull tracking-wider">
+        <span class="text-dust">SYS.INIT // MUNTHASIR.DEVS</span>
+        <span class="text-[10px] text-dull">[v2026.4] PRODUCTION BUILD</span>
       </div>
-      <div class="flex items-baseline gap-2 font-mono">
-        <span class="text-xs text-dull">COMPILATION:</span>
-        <span id="preloader-counter" class="text-4xl sm:text-6xl font-extrabold text-kingly tracking-tighter">000</span>
-        <span class="text-sm text-dull">%</span>
+
+      <!-- BOTTOM-RIGHT CORNER: Loading Bar -->
+      <div class="flex flex-col items-end gap-2 w-64 sm:w-80 ml-auto">
+        <div class="flex items-center justify-between w-full font-mono text-[11px] text-dull tracking-wider">
+          <span id="preloader-status-text" class="text-dust truncate max-w-[200px]">SYS.CALIBRATING...</span>
+          <span id="preloader-bar-val" class="text-kingly font-bold">0%</span>
+        </div>
+        <div class="w-full h-1.5 bg-shoewax/70 rounded-full overflow-hidden border border-thunder/40">
+          <div id="preloader-progress-bar" class="h-full bg-kingly w-0 shadow-[0_0_14px_rgba(222,222,222,0.95)] transition-all"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1715,10 +1711,12 @@ class TenantProvisioner
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
   <script>
-    // Initialize Preloader on Window Load
-    window.addEventListener('load', () => {
+    // Initialize Preloader immediately when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPreloader);
+    } else {
       initPreloader();
-    });
+    }
   </script>
 </body>
 </html>
