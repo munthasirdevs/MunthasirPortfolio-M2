@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Munthasir Rahman | Full-Stack & Bot Engineer // UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Munthasir Rahman (munthasirdevs). Full-Stack & Bot Engineer, Web Developer & UI/UX Designer based in Chuadanga, Bangladesh. Laravel SaaS, Discord bots, and high-performance interfaces.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <!-- GSAP Animation Suite CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <!-- Film Grain Texture Overlay (Reference 1 & 2) -->
+  <div class="film-grain-overlay"></div>
+
+  <!-- Custom Vector Selection Cursor (Reference 6) -->
+  <div id="custom-cursor-pointer" class="hidden md:block pointer-events-none fixed z-[9999]">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 14,5 7,7 5,14" fill="#DEDEDE" />
+    </svg>
+  </div>
+  <div id="custom-cursor-box" class="hidden md:block pointer-events-none fixed z-[9998]">
+    <span class="cursor-node cursor-node-tl"></span>
+    <span class="cursor-node cursor-node-tr"></span>
+    <span class="cursor-node cursor-node-bl"></span>
+    <span class="cursor-node cursor-node-br"></span>
+  </div>
+
+  <!-- Environmental Spatial Background Layers -->
+  <!-- Layer 1A: Fluted Curtain Ribs across upper viewport (Reference 3) -->
+  <div class="fluted-ribs-bg"></div>
+
+  <!-- Layer 1B: Architectural Coordinate Matrix Grid (Reference 4) -->
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+
+  <!-- Layer 2: Ambient 3D Fibonacci Wireframe Canvas (References 1 & 5) -->
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- ==========================================================================
+       CREATIVE GSAP PRELOADER SEQUENCE ("The Architect's Signature & System Boot")
+       Reference 1 Calligraphic Mark + Reference 3 Vertical Shutters + Reference 6 Vector Frame
+       ========================================================================== -->
+  <div id="preloader" class="fixed inset-0 z-[100] flex flex-col justify-between p-6 lg:p-12 bg-chaos overflow-hidden">
+    <!-- Five Vertical Background Shutters (Reference 3) -->
+    <div class="preloader-shutter-container">
+      <div class="preloader-shutter"></div>
+      <div class="preloader-shutter"></div>
+      <div class="preloader-shutter"></div>
+      <div class="preloader-shutter"></div>
+      <div class="preloader-shutter"></div>
+    </div>
+
+    <!-- Top Telemetry Row -->
+    <div class="relative z-10 flex items-center justify-between font-mono text-[11px] lg:text-xs text-dust tracking-wider border-b border-shoewax/60 pb-4">
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-kingly pulsing-dot"></span>
+        <span>SYS.INIT // MUNTHASIR.DEVS [v2026.4]</span>
+      </div>
+      <div class="hidden sm:block text-dull">
+        CHUADANGA, KHULNA, BD // 23.6439° N, 88.8556° E
+      </div>
+    </div>
+
+    <!-- Center Calligraphic Emblem Stage (Reference 1 Reconstruction) -->
+    <div id="preloader-center-content" class="relative z-10 flex flex-col items-center justify-center my-auto">
+      <div class="preloader-bounding-box bounding-box-frame p-8 sm:p-12 rounded-xl bg-chaos/40 backdrop-blur-sm max-w-2xl w-full">
+        <!-- Corner Anchor Nodes (Reference 6) -->
+        <span class="corner-node node-tl preloader-anchor-node"></span>
+        <span class="corner-node node-tr preloader-anchor-node"></span>
+        <span class="corner-node node-bl preloader-anchor-node"></span>
+        <span class="corner-node node-br preloader-anchor-node"></span>
+
+        <!-- SVG Reconstruction of Reference 1 Brand Mark -->
+        <div id="preloader-svg-wrap" class="relative overflow-hidden flex items-center justify-center">
+          <svg viewBox="0 0 760 280" class="w-full max-w-[620px] h-auto">
+            <defs>
+              <linearGradient id="metallicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DEDEDE" />
+                <stop offset="45%" stop-color="#BCBCBC" />
+                <stop offset="50%" stop-color="#717171" />
+                <stop offset="100%" stop-color="#DEDEDE" />
+              </linearGradient>
+            </defs>
+
+            <!-- Layer 1: Orbital Elliptical Hairlines -->
+            <g class="orbital-arcs" stroke="#4D4D4D" stroke-width="1.2" fill="none">
+              <ellipse class="preloader-orbital-arc" cx="380" cy="140" rx="360" ry="110" transform="rotate(-14 380 140)" />
+              <ellipse class="preloader-orbital-arc" cx="380" cy="140" rx="310" ry="85" transform="rotate(8 380 140)" />
+            </g>
+
+            <!-- Layer 2: Editorial Serif Letters "Munt" -->
+            <text x="80" y="165" font-family="'Playfair Display', serif" font-weight="700" font-style="italic" font-size="118" fill="url(#metallicGrad)" letter-spacing="-2">
+              <tspan class="preloader-serif-letter">M</tspan>
+              <tspan class="preloader-serif-letter">u</tspan>
+              <tspan class="preloader-serif-letter">n</tspan>
+              <tspan class="preloader-serif-letter">t</tspan>
+            </text>
+
+            <!-- Layer 3: Calligraphic Flourish Script "h" connecting "t" to "asir" -->
+            <path class="preloader-script-h" d="M 335 150 C 370 70, 410 -20, 520 25 C 640 75, 510 130, 420 180 C 340 220, 230 300, 310 320 C 380 340, 450 240, 490 160 C 505 130, 520 165, 535 165" 
+                  fill="none" stroke="url(#metallicGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- Layer 4: Editorial Serif Letters "asir" -->
+            <text x="500" y="165" font-family="'Playfair Display', serif" font-weight="700" font-style="italic" font-size="118" fill="url(#metallicGrad)" letter-spacing="-2">
+              <tspan class="preloader-serif-letter">a</tspan>
+              <tspan class="preloader-serif-letter">s</tspan>
+              <tspan class="preloader-serif-letter">i</tspan>
+              <tspan class="preloader-serif-letter">r</tspan>
+            </text>
+          </svg>
+
+          <!-- Specular Light Sweep Shimmer Layer -->
+          <div class="preloader-metallic-sheen absolute inset-0 bg-gradient-to-r from-transparent via-kingly/30 to-transparent pointer-events-none transform -skew-x-12"></div>
+        </div>
+
+        <div class="mt-4 text-center font-mono text-xs tracking-widest text-dust">
+          FULL-STACK & BOT ENGINEERING // UI/UX DESIGN
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Telemetry & Large Counter Row -->
+    <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between border-t border-shoewax/60 pt-4 gap-4">
+      <div id="preloader-status-text" class="font-mono text-xs text-spanish tracking-wider">
+        INITIALIZING ARCHITECTURAL ENVIRONMENT...
+      </div>
+      <div class="flex items-baseline gap-2 font-mono">
+        <span class="text-xs text-dull">COMPILATION:</span>
+        <span id="preloader-counter" class="text-4xl sm:text-6xl font-extrabold text-kingly tracking-tighter">000</span>
+        <span class="text-sm text-dull">%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 0: FIXED GLOBAL CHROME (Top Glass Navbar, Left Social Rail)
+       References 5 (Adrian Cole) & 6 (Tyapkovv)
+       ========================================================================== -->
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header transition-all duration-300">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <!-- Navbar Brand Mark -->
+      <a href="#hero" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <!-- Desktop Nav Scroll-Spy Links -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#hero" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly transition-colors">HOME</a>
+        <a href="#about" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">ABOUT</a>
+        <a href="#services" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">SERVICES</a>
+        <a href="#projects" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">PROJECTS</a>
+        <a href="#experience" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">EXPERIENCE</a>
+        <a href="#skills" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">SKILLS</a>
+        <a href="#contact" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly transition-colors">CONTACT</a>
+      </nav>
+
+      <!-- Right Action CTA & Mobile Trigger -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="nav-cta magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/80 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all duration-300">
+          <span>LET'S COLLABORATE</span>
+          <span class="arrow-rotate text-sm">↗</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="#hero" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">01 // HOME</a>
+      <a href="#about" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">02 // ABOUT</a>
+      <a href="#services" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">03 // SERVICES</a>
+      <a href="#projects" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">04 // PROJECTS</a>
+      <a href="#experience" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">05 // EXPERIENCE</a>
+      <a href="#skills" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">06 // SKILLS</a>
+      <a href="#contact" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish hover:text-kingly">07 // CONTACT</a>
+      <div class="pt-4 border-t border-shoewax flex items-center justify-between">
+        <span class="font-mono text-xs text-dull live-clock-bd">00:00:00 [GMT+6]</span>
+        <a href="#contact" class="px-4 py-2 rounded bg-kingly text-chaos font-mono text-xs font-bold uppercase">COLLABORATE ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Left Sticky Social Rail (Reference 5) -->
+  <aside id="social-rail" class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-5">
+    <div class="w-[1px] h-16 bg-gradient-to-b from-transparent via-thunder to-shoewax"></div>
+    
+    <!-- GitHub -->
+    <a href="https://github.com/munthasirdevs" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="GitHub (@munthasirdevs)">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+      </svg>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:munthasirrahman@gmail.com" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="Direct Email">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center transition-all duration-300" title="WhatsApp Messaging">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.031 2C6.516 2 2.022 6.49 2.022 12c0 1.97.575 3.805 1.572 5.352L2.001 22.083l4.896-1.554A9.97 9.97 0 0012.031 22c5.515 0 10.01-4.49 10.01-10s-4.495-10-10.01-10zm5.82 14.237c-.244.685-1.22 1.256-1.705 1.306-.486.05-1.12.072-3.606-.957-2.986-1.233-4.89-4.275-5.04-4.472-.148-.198-1.205-1.603-1.205-3.057 0-1.455.76-2.17.1.03-2.463.27-.294.59-.368.788-.368.197 0 .394.002.565.011.182.01.424-.069.664.506.244.588.835 2.034.908 2.182.074.148.123.321.025.516-.099.197-.148.32-.296.493-.148.173-.31.386-.443.518-.148.148-.302.31-.13.605.172.296.764 1.258 1.637 2.036 1.124.998 2.071 1.308 2.366 1.455.295.148.468.123.64-.074.173-.197.74-.862.937-1.157.197-.296.394-.247.665-.148.271.098 1.723.813 2.018.96.296.148.493.222.566.345.074.123.074.714-.17 1.399z"/>
+      </svg>
+    </a>
+
+    <!-- Terminal / Projects -->
+    <a href="projects.html" class="magnetic-btn w-10 h-10 rounded-lg bg-chaos/80 border border-shoewax hover:border-kingly text-spanish hover:text-kingly flex items-center justify-center font-mono text-xs font-bold transition-all duration-300" title="26 Public Repositories">
+      &lt;/&gt;
+    </a>
+
+    <div class="w-[1px] h-16 bg-gradient-to-t from-transparent via-thunder to-shoewax"></div>
+  </aside>
+
+  <!-- ==========================================================================
+       SECTION 1: HERO SECTION (Dual-Column Engineering & Editorial Showcase)
+       References 1, 4, 5, 6
+       ========================================================================== -->
+  <section id="hero" class="relative min-h-screen pt-32 pb-20 px-6 flex items-center bg-transparent z-10 overflow-hidden">
+    <!-- Reference 1 Background Typography Watermark -->
+    <div class="absolute right-[-5%] top-[12%] w-[680px] opacity-[0.035] pointer-events-none select-none font-serif-editorial italic text-kingly text-9xl leading-none hidden xl:block">
+      Munthasir
+    </div>
+
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Column: Typographic Narrative (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        <!-- Eyebrow Tag -->
+        <span class="hero-eyebrow font-mono text-sm text-dust mb-4 tracking-wide block">
+          &lt; Hello, I'm /&gt;
+        </span>
+
+        <!-- Reference 6 Dashed Vector Selection Frame with Corner Anchors -->
+        <div class="hero-bounding-box bounding-box-frame p-4 sm:p-6 -ml-2 sm:-ml-4 mb-4 rounded-xl bg-shoewax/15 border-dashed border-thunder/80 relative">
+          <!-- 8 Anchor Nodes (Reference 6) -->
+          <span class="corner-node node-tl"></span>
+          <span class="corner-node node-tc"></span>
+          <span class="corner-node node-tr"></span>
+          <span class="corner-node node-ml"></span>
+          <span class="corner-node node-mr"></span>
+          <span class="corner-node node-bl"></span>
+          <span class="corner-node node-bc"></span>
+          <span class="corner-node node-br"></span>
+
+          <!-- Corner Metadata Badge (Reference 6) -->
+          <div class="absolute -top-3 right-4 px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-kingly uppercase">
+            2026 // BD
+          </div>
+
+          <!-- Hero Display Title (H1) -->
+          <h1 id="hero-title" class="font-display text-4xl sm:text-6xl lg:text-[68px] font-extrabold tracking-tighter leading-none uppercase text-metallic">
+            MUNTHASIR RAHMAN
+          </h1>
+
+          <!-- Calligraphic Script Overlay Signature (Reference 1) -->
+          <div class="hero-script-overlay absolute -bottom-6 right-2 sm:right-6 pointer-events-none select-none">
+            <span class="font-script text-3xl sm:text-4xl text-dust/85 italic">
+              Munthasir
+            </span>
+          </div>
+        </div>
+
+        <!-- Role Subtitle (H2) -->
+        <h2 class="hero-subtitle font-mono text-sm sm:text-base lg:text-lg text-dust tracking-[0.14em] uppercase mt-2 mb-6">
+          FULL-STACK & BOT ENGINEER // UI/UX DESIGNER
+        </h2>
+
+        <!-- Lead Narrative Bio -->
+        <p class="hero-bio font-sans text-base lg:text-lg text-spanish max-w-xl leading-relaxed mb-8">
+          Architecting custom automation, high-concurrency Discord bots, and production-ready Laravel SaaS applications. Passionate about creating functional, user-centered digital experiences that turn complex ideas into scalable software through clean code and intentional design.
+        </p>
+
+        <!-- Dual CTA Buttons -->
+        <div class="hero-cta-group flex flex-wrap items-center gap-4 mb-8">
+          <a href="#projects" class="btn-primary magnetic-btn px-7 py-4 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase tracking-widest shadow-[0_0_25px_rgba(222,222,222,0.15)] flex items-center gap-2 transition-all">
+            <span>VIEW MY WORK</span>
+            <span class="arrow-rotate">→</span>
+          </a>
+          <a href="projects.html" class="btn-secondary magnetic-btn px-7 py-4 rounded-lg bg-shoewax/50 hover:bg-shoewax border border-thunder hover:border-kingly text-kingly font-mono text-xs uppercase tracking-widest flex items-center gap-2 transition-all">
+            <span>EXPLORE GITHUB (26 REPOS)</span>
+            <span class="arrow-rotate">↗</span>
+          </a>
+        </div>
+
+        <!-- Availability Status Bar -->
+        <div class="hero-status font-mono text-xs text-dull tracking-wider flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-kingly pulsing-dot"></span>
+          <span>AVAILABLE FOR SAAS PARTNERSHIPS, FREELANCE & AGENCY WHITE-LABEL</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive macOS IDE Code Window (5 Cols) (Reference 4 & 5) -->
+      <div id="hero-ide-window" class="lg:col-span-5 relative">
+        <div class="spotlight-card rounded-2xl bg-chaos/90 backdrop-blur-xl border border-shoewax overflow-hidden shadow-2xl">
+          <!-- IDE Header with Window Controls & Compile Action Button -->
+          <div class="px-4 py-3 bg-shoewax/60 border-b border-shoewax flex items-center justify-between font-mono text-xs text-spanish">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-thunder inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-dull inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-dust inline-block"></span>
+              <span class="ml-2 text-dust text-[11px]">munthasir.rahman@devs</span>
+            </div>
+            <button id="ide-compile-btn" class="px-2.5 py-1 rounded bg-shoewax hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos text-[11px] font-mono tracking-wider transition-all">
+              <span>▶ Compile</span>
+            </button>
+          </div>
+
+          <!-- Code Body Container -->
+          <div class="p-5 overflow-x-auto">
+            <pre id="ide-code-content" class="font-mono text-xs sm:text-[13px] leading-relaxed text-dust font-normal">01 <span class="text-dust">const</span> <span class="text-kingly font-bold">MunthasirRahman</span> = {
+02   <span class="text-dust">handle</span>: <span class="text-kingly">'munthasirdevs'</span>,
+03   <span class="text-dust">location</span>: <span class="text-kingly">'Chuadanga, Khulna, BD'</span>,
+04   <span class="text-dust">roles</span>: [
+05     <span class="text-kingly">'Full-Stack & Bot Engineer'</span>,
+06     <span class="text-kingly">'Web Developer & UI/UX Designer'</span>
+07   ],
+08   <span class="text-dust">principles</span>: [<span class="text-kingly">'Clean Code'</span>, <span class="text-kingly">'Creative Design'</span>, <span class="text-kingly">'Responsive'</span>],
+09   <span class="text-dust">currentFocus</span>: <span class="text-kingly">'Production-ready SaaS with Laravel'</span>,
+10   <span class="text-dust">stack</span>: [
+11     <span class="text-kingly">'Laravel'</span>, <span class="text-kingly">'PHP'</span>, <span class="text-kingly">'MySQL'</span>, <span class="text-kingly">'JavaScript'</span>,
+12     <span class="text-kingly">'TypeScript'</span>, <span class="text-kingly">'Tailwind CSS'</span>, <span class="text-kingly">'Docker'</span>, <span class="text-kingly">'K8s'</span>
+13   ],
+14   <span class="text-dust">nextMilestone</span>: <span class="text-kingly">'Open-Source SaaS Boilerplate'</span>,
+15   <span class="text-dust">openSource</span>: <span class="text-kingly">true</span>
+16 };
+17 
+18 <span class="text-dull">// Turning ideas into production software through clean architecture.</span></pre>
+          </div>
+
+          <!-- Bottom Telemetry Status Pill -->
+          <div class="px-5 py-2.5 bg-chaos border-t border-shoewax/60 flex items-center justify-between font-mono text-[11px] text-dull">
+            <span>TERMINAL: READY</span>
+            <span class="text-dust">LATENCY: 14ms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: TELEMETRY AND CAREER METRICS STRIP
+       References 3 (SentoBot Strip) & 7 (Gerold Counters)
+       ========================================================================== -->
+  <section id="telemetry" class="relative z-10 bg-shoewax/25 border-y border-shoewax py-10 px-6 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-shoewax">
+      <!-- Metric 01 -->
+      <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-dust text-sm">&gt;_</span>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="3" data-suffix="+">0</h3>
+        </div>
+        <h6 class="font-mono text-xs uppercase tracking-wider text-dust">YEARS OF EXPERIENCE</h6>
+        <span class="text-xs text-dull mt-1">Full-Stack & UI/UX Engineering</span>
+      </div>
+
+      <!-- Metric 02 -->
+      <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-dust text-sm">&lt;/&gt;</span>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="23" data-suffix="+">0</h3>
+        </div>
+        <h6 class="font-mono text-xs uppercase tracking-wider text-dust">PROJECTS DELIVERED</h6>
+        <span class="text-xs text-dull mt-1">Production Web Apps & SaaS</span>
+      </div>
+
+      <!-- Metric 03 -->
+      <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-dust text-sm">[★]</span>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="96" data-suffix="%">0</h3>
+        </div>
+        <h6 class="font-mono text-xs uppercase tracking-wider text-dust">CLIENT SATISFACTION</h6>
+        <span class="text-xs text-dull mt-1">Global Freelance & Agency Partners</span>
+      </div>
+
+      <!-- Metric 04 -->
+      <div class="pt-4 lg:pt-0 lg:px-6 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-dust text-sm">{}</span>
+          <h3 class="counter-val font-mono text-3xl sm:text-4xl font-extrabold text-kingly" data-target="25" data-suffix="">0</h3>
+        </div>
+        <h6 class="font-mono text-xs uppercase tracking-wider text-dust">PUBLIC REPOSITORIES</h6>
+        <span class="text-xs text-dull mt-1">Open-Source & Building in Public</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: ABOUT ME AND ARCHITECTURAL PHILOSOPHY
+       References 5 (Portrait Narrative), 6 (Vector Handles), 3 (3-Pillar Cards)
+       ========================================================================== -->
+  <section id="about" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <!-- Part A: Portrait & Narrative Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center mb-24">
+        <!-- 5 Cols: Framed Monochrome Portrait with Vector Selection Frame (Reference 6) -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-sm">
+            <!-- Dashed Bounding Box with 8 Corner Anchor Nodes -->
+            <div class="bounding-box-frame p-3 rounded-2xl bg-shoewax/20">
+              <span class="corner-node node-tl"></span>
+              <span class="corner-node node-tc"></span>
+              <span class="corner-node node-tr"></span>
+              <span class="corner-node node-ml"></span>
+              <span class="corner-node node-mr"></span>
+              <span class="corner-node node-bl"></span>
+              <span class="corner-node node-bc"></span>
+              <span class="corner-node node-br"></span>
+
+              <!-- High Contrast Monochrome Portrait/Visual Container -->
+              <div class="aspect-[4/5] rounded-xl overflow-hidden bg-shoewax border border-thunder relative flex items-center justify-center group">
+                <img src="heroimg.jpeg" alt="Munthasir Rahman" class="w-full h-full object-cover grayscale contrast-125 transition-transform duration-700 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-chaos via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-4 left-4 right-4 font-mono text-xs text-kingly flex justify-between items-center border-t border-shoewax pt-3">
+                  <span>MUNTHASIR RAHMAN</span>
+                  <span class="text-dust">CHUADANGA, BD</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Software Stack Badges (Reference 6 Style) -->
+            <div class="absolute -right-4 sm:-right-6 top-10 flex flex-col gap-2.5 z-20">
+              <div class="w-10 h-10 rounded-lg bg-chaos border border-thunder text-kingly font-mono text-xs font-bold flex items-center justify-center shadow-lg" title="Laravel">LV</div>
+              <div class="w-10 h-10 rounded-lg bg-chaos border border-thunder text-kingly font-mono text-xs font-bold flex items-center justify-center shadow-lg" title="JavaScript">JS</div>
+              <div class="w-10 h-10 rounded-lg bg-chaos border border-thunder text-kingly font-mono text-xs font-bold flex items-center justify-center shadow-lg" title="Tailwind CSS">TW</div>
+              <div class="w-10 h-10 rounded-lg bg-chaos border border-thunder text-kingly font-mono text-xs font-bold flex items-center justify-center shadow-lg" title="UI/UX Architecture">UX</div>
+            </div>
+
+            <!-- Curved Vector Annotation Arrow (Reference 6) -->
+            <div class="absolute -right-16 top-0 hidden sm:flex items-center gap-2 pointer-events-none">
+              <span class="font-mono text-[10px] text-dust uppercase tracking-wider">CORE STACK</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#BCBCBC" stroke-width="1.5">
+                <path d="M18 6C12 6 6 12 6 18M6 18L10 14M6 18L2 14" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 Cols: Narrative Biography & Systems Philosophy -->
+        <div class="lg:col-span-7">
+          <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-4">
+            // 01. ABOUT ME
+          </h5>
+          <h2 class="about-heading font-display text-3xl lg:text-[42px] font-bold text-kingly leading-tight mb-6">
+            I'm Munthasir Rahman, an engineer who values <span class="font-serif-editorial italic text-dust">clean architecture</span> and pixel precision.
+          </h2>
+          <p class="font-sans text-base lg:text-lg text-spanish leading-relaxed mb-5">
+            Based in Chuadanga, Khulna, Bangladesh, I specialize in building responsive, user-friendly websites, custom Discord automation bots, and scalable full-stack applications that pair seamless backend logic with refined visual interfaces.
+          </p>
+          <p class="font-sans text-base text-spanish leading-relaxed mb-8">
+            I believe in building in public. My 25+ repositories on GitHub are free to explore, fork, and learn from as I actively contribute to the Laravel and open-source ecosystem. Currently, my engineering focus centers on architecting production-ready SaaS applications with Laravel, integrating AI/ML patterns, and orchestrating cloud-native deployments with Docker and Kubernetes toward launching my first open-source SaaS boilerplate.
+          </p>
+
+          <!-- 3-Column Metadata Strip -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-shoewax font-mono text-xs">
+            <div>
+              <span class="text-dull block mb-1">LOCATION</span>
+              <span class="text-kingly font-bold">Chuadanga, BD</span>
+            </div>
+            <div>
+              <span class="text-dull block mb-1">DIRECT EMAIL</span>
+              <a href="mailto:munthasirrahman@gmail.com" class="text-kingly font-bold hover:underline">munthasirrahman@gmail.com</a>
+            </div>
+            <div>
+              <span class="text-dull block mb-1">NEXT MILESTONE</span>
+              <span class="text-kingly font-bold">Open-Source SaaS Boilerplate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B: Three Pillars "How My Engineering Process Works" (Reference 3) -->
+      <div>
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+            How My Engineering Process Works
+          </h3>
+          <p class="text-spanish text-sm lg:text-base">
+            Three foundational pillars governing every SaaS platform, bot architecture, and interface system.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Pillar Card 01: Clean Code -->
+          <article class="spotlight-card rounded-2xl bg-card-surface border border-shoewax p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-shoewax border border-thunder text-kingly flex items-center justify-center font-mono text-lg font-bold mb-6">
+                {}
+              </div>
+              <h3 class="font-sans text-xl font-bold text-kingly mb-3">Clean Code Architecture</h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Writing maintainable, modular, and scalable codebases engineered for long-term stability, strict type safety, and effortless team handoff.
+              </p>
+            </div>
+            <!-- Recessed Bottom Schematic Viewport (Reference 3) -->
+            <div class="h-36 rounded-xl bg-chaos/80 border border-shoewax mt-6 flex items-center justify-center relative overflow-hidden">
+              <svg width="180" height="100" viewBox="0 0 180 100" fill="none">
+                <circle cx="90" cy="50" r="38" stroke="#4D4D4D" stroke-dasharray="3 3"/>
+                <circle cx="90" cy="50" r="24" stroke="#2B2B2B"/>
+                <rect x="74" y="36" width="32" height="28" rx="6" fill="#1A1A1A" stroke="#DEDEDE"/>
+                <text x="90" y="55" font-family="monospace" font-size="14" fill="#DEDEDE" text-anchor="middle">{ }</text>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Pillar Card 02: Creative Design -->
+          <article class="spotlight-card rounded-2xl bg-card-surface border border-shoewax p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-shoewax border border-thunder text-kingly flex items-center justify-center font-mono text-lg font-bold mb-6">
+                ✦
+              </div>
+              <h3 class="font-sans text-xl font-bold text-kingly mb-3">Creative UI/UX Design</h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Crafting intuitive, human-centered, and aesthetically refined interfaces that eliminate friction and elevate brand authority.
+              </p>
+            </div>
+            <!-- Recessed Bottom Schematic Viewport -->
+            <div class="h-36 rounded-xl bg-chaos/80 border border-shoewax mt-6 flex items-center justify-center relative overflow-hidden">
+              <svg width="180" height="100" viewBox="0 0 180 100" fill="none">
+                <line x1="30" y1="50" x2="150" y2="50" stroke="#4D4D4D" stroke-dasharray="2 2"/>
+                <line x1="90" y1="10" x2="90" y2="90" stroke="#4D4D4D" stroke-dasharray="2 2"/>
+                <polygon points="90,30 96,44 110,50 96,56 90,70 84,56 70,50 84,44" fill="#DEDEDE"/>
+                <circle cx="90" cy="50" r="28" stroke="#717171" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Pillar Card 03: Responsive & Cloud-Ready -->
+          <article class="spotlight-card rounded-2xl bg-card-surface border border-shoewax p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-shoewax border border-thunder text-kingly flex items-center justify-center font-mono text-lg font-bold mb-6">
+                ☁
+              </div>
+              <h3 class="font-sans text-xl font-bold text-kingly mb-3">Responsive & Cloud-Ready</h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Implementing a strict mobile-first approach across all viewports while containerizing backends for high-availability cloud deployment.
+              </p>
+            </div>
+            <!-- Recessed Bottom Schematic Viewport -->
+            <div class="h-36 rounded-xl bg-chaos/80 border border-shoewax mt-6 flex items-center justify-center relative overflow-hidden">
+              <svg width="180" height="100" viewBox="0 0 180 100" fill="none">
+                <rect x="40" y="24" width="70" height="48" rx="4" stroke="#4D4D4D"/>
+                <rect x="95" y="40" width="45" height="36" rx="4" fill="#0F0F0F" stroke="#DEDEDE"/>
+                <circle cx="117" cy="70" r="2" fill="#DEDEDE"/>
+                <path d="M75 72 L75 80 M60 80 L90 80" stroke="#4D4D4D"/>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: QUALITY SERVICES AND CAPABILITIES
+       References 7 (Horizontal Numbered Rows) & 4 (6-Card Bento Grid)
+       ========================================================================== -->
+  <section id="services" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-14">
+        <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // CAPABILITIES & SPECIALIZATIONS
+        </h5>
+        <h2 class="font-display text-3xl lg:text-[44px] font-bold text-kingly tracking-tight">
+          My Quality Services & Solutions
+        </h2>
+        <p class="text-spanish text-base mt-3">
+          From full-stack multi-tenant SaaS architecture to custom bot automation and high-fidelity interface systems.
+        </p>
+      </div>
+
+      <!-- Layer 1: Numbered Horizontal Service Accordion Rows (Reference 7) -->
+      <div class="mb-20 divide-y divide-shoewax border-y border-shoewax">
+        <!-- Row 01 -->
+        <div class="service-accordion-row group py-7 px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:bg-shoewax/40 cursor-pointer">
+          <div class="flex items-start md:items-center gap-6">
+            <span class="font-mono text-xl font-bold text-dust group-hover:text-kingly">01</span>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-kingly">Full-Stack Laravel & SaaS Development</h3>
+              <p class="font-sans text-sm text-spanish mt-1">Architecting multi-tenant web applications, RESTful APIs, and MySQL database schemas built for production scale.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 self-end md:self-center">
+            <span class="w-10 h-10 rounded-full border border-thunder group-hover:border-kingly flex items-center justify-center text-kingly group-hover:bg-kingly group-hover:text-chaos transition-all">
+              <span class="arrow-rotate font-mono text-sm">↗</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Row 02 -->
+        <div class="service-accordion-row group py-7 px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:bg-shoewax/40 cursor-pointer">
+          <div class="flex items-start md:items-center gap-6">
+            <span class="font-mono text-xl font-bold text-dust group-hover:text-kingly">02</span>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-kingly">Custom Discord Bots & Automation Systems</h3>
+              <p class="font-sans text-sm text-spanish mt-1">Engineering high-uptime Discord bots, automated server workflows, and custom web control dashboards.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 self-end md:self-center">
+            <span class="w-10 h-10 rounded-full border border-thunder group-hover:border-kingly flex items-center justify-center text-kingly group-hover:bg-kingly group-hover:text-chaos transition-all">
+              <span class="arrow-rotate font-mono text-sm">↗</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Row 03 -->
+        <div class="service-accordion-row group py-7 px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:bg-shoewax/40 cursor-pointer">
+          <div class="flex items-start md:items-center gap-6">
+            <span class="font-mono text-xl font-bold text-dust group-hover:text-kingly">03</span>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-kingly">UI/UX Architecture & Interactive Frontends</h3>
+              <p class="font-sans text-sm text-spanish mt-1">Designing user-centered wireframes and translating them into responsive HTML, Tailwind CSS, and GSAP experiences.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 self-end md:self-center">
+            <span class="w-10 h-10 rounded-full border border-thunder group-hover:border-kingly flex items-center justify-center text-kingly group-hover:bg-kingly group-hover:text-chaos transition-all">
+              <span class="arrow-rotate font-mono text-sm">↗</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Row 04 -->
+        <div class="service-accordion-row group py-7 px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:bg-shoewax/40 cursor-pointer">
+          <div class="flex items-start md:items-center gap-6">
+            <span class="font-mono text-xl font-bold text-dust group-hover:text-kingly">04</span>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-kingly">White-Label Agency & Open-Source Tooling</h3>
+              <p class="font-sans text-sm text-spanish mt-1">Partnering with agencies for confidential white-label delivery and building lightweight browser utilities.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 self-end md:self-center">
+            <span class="w-10 h-10 rounded-full border border-thunder group-hover:border-kingly flex items-center justify-center text-kingly group-hover:bg-kingly group-hover:text-chaos transition-all">
+              <span class="arrow-rotate font-mono text-sm">↗</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 2: 6-Card Technical Bento Grid (Reference 4) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Bento Card 01 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              &lt;/&gt;
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">Frontend Engineering</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Crafting modern, responsive interfaces with semantic HTML5, Tailwind CSS, JavaScript, TypeScript, and fluid GSAP motion.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            gsap.to('.ui', { autoAlpha: 1, ease: 'expo.out' })
+          </div>
+        </div>
+
+        <!-- Bento Card 02 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              {}
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">Backend & API Architecture</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Building secure, maintainable server-side applications and relational databases using PHP, Laravel, and MySQL.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            php artisan make:saas --architecture=clean
+          </div>
+        </div>
+
+        <!-- Bento Card 03 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              ⚡
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">Bot & Workflow Automation</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Developing custom Discord bots, bulk URL utilities, and automated event-driven pipelines with web dashboards.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            bot.login(process.env.AUTOMATION_TOKEN)
+          </div>
+        </div>
+
+        <!-- Bento Card 04 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              ❖
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">UI/UX System Design</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Designing cohesive component libraries, interactive prototypes, and high-contrast visual hierarchies focused on usability.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            tokens: { bg: '#0F0F0F', text: '#DEDEDE' }
+          </div>
+        </div>
+
+        <!-- Bento Card 05 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              ☁
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">Cloud-Native & DevOps R&D</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Structuring containerized environments with Docker, Kubernetes orchestration, and scalable deployment workflows.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            docker compose -f docker-compose.prod.yml up -d
+          </div>
+        </div>
+
+        <!-- Bento Card 06 -->
+        <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-lg bg-kingly text-chaos flex items-center justify-center font-mono text-sm font-bold mb-6">
+              ⚙
+            </div>
+            <h3 class="font-display text-lg font-bold text-kingly mb-2">AI/ML Integration Patterns</h3>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+              Embedding intelligent LLM APIs, automated data parsing, and smart workflows into full-stack web applications.
+            </p>
+          </div>
+          <div class="px-3.5 py-2 rounded-lg bg-chaos border border-shoewax font-mono text-xs text-dust truncate">
+            await ai.integrate({ model: 'enterprise-v4' })
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: FEATURED PORTFOLIO AND OPEN-SOURCE GITHUB SHOWCASE
+       References 3, 5, 7
+       ========================================================================== -->
+  <section id="projects" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header with Category Filter Pills -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+        <div>
+          <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-3">
+            // 02. SELECTED WORKS & GITHUB REPOSITORIES
+          </h5>
+          <h2 class="font-display text-3xl lg:text-[44px] font-bold text-kingly tracking-tight">
+            Featured Engineering Portfolio
+          </h2>
+        </div>
+
+        <!-- Category Filter Pills (Reference 3 & 7) -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="project-filter-btn px-4 py-2 rounded-full font-mono text-xs font-bold uppercase transition-all bg-kingly text-chaos" data-filter="all">
+            All (06)
+          </button>
+          <button class="project-filter-btn px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="webtools">
+            Web Tools & JS
+          </button>
+          <button class="project-filter-btn px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="laravel">
+            Laravel & SaaS
+          </button>
+          <button class="project-filter-btn px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="discord">
+            Discord Bots
+          </button>
+          <button class="project-filter-btn px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="uiux">
+            UI/UX & Studios
+          </button>
+        </div>
+      </div>
+
+      <!-- 6-Project Grid with Live DOM/SVG Interactive Schematic Chambers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-12">
+        <!-- Project Card 01: linkOpener -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="webtools">
+          <!-- Upper Live Schematic Chamber -->
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">linkOpenerEngine.js</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">PINNED REPO</span>
+            </div>
+            <!-- Mini URL queue wireframe -->
+            <div class="space-y-1.5 font-mono text-[11px]">
+              <div class="p-1.5 rounded bg-chaos border border-shoewax text-dust truncate flex items-center justify-between">
+                <span>https://laravel.com/docs</span>
+                <span class="text-kingly">✓ 200</span>
+              </div>
+              <div class="p-1.5 rounded bg-chaos border border-shoewax text-dust truncate flex items-center justify-between">
+                <span>https://github.com/munthasirdevs</span>
+                <span class="text-kingly">✓ 200</span>
+              </div>
+              <div class="flex items-center justify-between text-dull text-[10px] pt-1">
+                <span>DELAY: 250ms</span>
+                <span class="text-kingly font-bold">[LAUNCH QUEUE]</span>
+              </div>
+            </div>
+          </div>
+          <!-- Lower Content Chamber -->
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>linkOpener (Multi-Link Opener)</span>
+                <a href="https://github.com/munthasirdevs/linkOpener" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                A lightweight web utility that validates and opens multiple URLs in bulk. Users paste links one per line, auto-detect valid URLs, and launch them sequentially with an adjustable delay.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">JavaScript</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">HTML5</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Regex</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 02: XenonStudios -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="uiux">
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">XenonStudios.portal</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">PINNED REPO</span>
+            </div>
+            <!-- Bento Wireframe with Viewport Breakpoint Rulers -->
+            <div class="h-28 rounded-lg bg-chaos/80 border border-shoewax p-3 flex flex-col justify-between">
+              <div class="flex justify-between items-center text-[10px] font-mono text-dull border-b border-shoewax/60 pb-1">
+                <span>BREAKPOINT: 1440px</span>
+                <span class="text-dust">DESKTOP_VIEW</span>
+              </div>
+              <div class="text-center font-display text-lg font-bold text-kingly tracking-tight">
+                XENON STUDIOS
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <div class="h-2 rounded bg-shoewax"></div>
+                <div class="h-2 rounded bg-shoewax"></div>
+                <div class="h-2 rounded bg-thunder"></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>XenonStudios Creative Portal</span>
+                <a href="https://github.com/munthasirdevs/XenonStudios" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                Flagship agency and digital studio frontend engineered with semantic HTML architecture, responsive grid systems, and high-contrast typographic storytelling.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">HTML5</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Responsive UI</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 03: XenonOS -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="laravel">
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">XenonOS.blade.php</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">WEB OS & LARAVEL</span>
+            </div>
+            <!-- OS window control dashboard schematic -->
+            <div class="h-28 rounded-lg bg-chaos/80 border border-shoewax p-3 flex flex-col justify-between font-mono text-[11px]">
+              <div class="flex justify-between items-center text-dull">
+                <span>LARAVEL & BLADE</span>
+                <span class="text-kingly font-bold">MODULAR SYSTEM</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-kingly"></span>
+                <span class="text-dust text-[10px]">WINDOW MANAGEMENT: ACTIVE</span>
+              </div>
+              <div class="h-1.5 w-full bg-shoewax rounded-full overflow-hidden">
+                <div class="h-full bg-kingly w-[92%]"></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>XenonOS (Web OS Interface)</span>
+                <a href="https://github.com/munthasirdevs/XenonOS" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                Browser-based web operating system and modular Laravel administrative interface with window layering algorithms, dashboard widgets, and clean application routing.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Blade</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">PHP</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Laravel</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 04: GSX-BOT -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="discord">
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">clusterGateway.ts</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">DISCORD BOT</span>
+            </div>
+            <!-- Waveform & Commands Matrix -->
+            <div class="h-28 rounded-lg bg-chaos/80 border border-shoewax p-3 flex flex-col justify-between font-mono text-[11px]">
+              <div class="flex justify-between text-dull">
+                <span>COMMAND: /telemetry</span>
+                <span class="text-kingly">STATUS: LIVE</span>
+              </div>
+              <svg width="100%" height="24" viewBox="0 0 200 24" fill="none">
+                <path d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12" stroke="#BCBCBC" stroke-width="1.5" fill="none"/>
+              </svg>
+              <div class="text-[10px] text-dust">DISCORD.JS v14 // TYPESCRIPT</div>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>GSX-BOT (Automation Cluster)</span>
+                <a href="https://github.com/munthasirdevs/GSX-BOT" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                Multi-cluster Discord automation bot engineered with TypeScript and Discord.js v14, featuring event-driven gateways, slash commands, moderation rules, and real-time logging.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">TypeScript</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Discord.js</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Automation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 05: 3D-tag-cloud -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="webtools">
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">SphericalCloud.js</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">CREATIVE 3D</span>
+            </div>
+            <!-- 3D spherical point cloud schematic -->
+            <div class="h-28 rounded-lg bg-chaos/80 border border-shoewax p-3 flex flex-col justify-between font-mono text-[11px]">
+              <div class="flex justify-between text-dull">
+                <span>MATRIX: FIBONACCI SPHERE</span>
+                <span class="text-kingly">CANVAS 2D</span>
+              </div>
+              <div class="text-[10px] text-dust font-mono truncate">
+                rotY: 0.003, depthSortedNodes: 16
+              </div>
+              <div class="flex gap-1">
+                <div class="h-1.5 flex-1 bg-kingly rounded"></div>
+                <div class="h-1.5 flex-1 bg-dust rounded"></div>
+                <div class="h-1.5 flex-1 bg-thunder rounded"></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>3D-tag-cloud (Canvas 3D)</span>
+                <a href="https://github.com/munthasirdevs/3D-tag-cloud" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                Interactive 3D spherical tag cloud visualizer calculating dynamic rotation matrices, depth-sorted alpha, and cursor interaction on pure HTML5 Canvas.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">JavaScript</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Canvas 2D</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Mathematics</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 06: Monochrome Portfolio Architecture -->
+        <article class="project-grid-card spotlight-card rounded-2xl flex flex-col justify-between overflow-hidden" data-category="uiux">
+          <div class="h-52 bg-shoewax/50 border-b border-shoewax p-5 relative flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-dust">munthasir.com [v2026]</span>
+              <span class="px-2.5 py-0.5 rounded bg-chaos/90 border border-thunder font-mono text-[10px] text-kingly uppercase">DESIGN SYSTEM</span>
+            </div>
+            <!-- Vector frame with calligraphic mark preview -->
+            <div class="h-28 rounded-lg bg-chaos/80 border border-shoewax p-3 flex flex-col justify-between items-center text-center">
+              <div class="w-full flex justify-between text-[10px] font-mono text-dull">
+                <span>7-TONE MONOCHROME</span>
+                <span class="text-kingly">GSAP 3.12</span>
+              </div>
+              <span class="font-script text-2xl text-kingly">Munthasir</span>
+              <div class="text-[10px] font-mono text-dust">CANVAS 3D FIBONACCI SPHERE</div>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-display text-xl font-bold text-kingly mb-2 flex items-center justify-between">
+                <span>Monochrome Portfolio v2026</span>
+                <a href="#hero" class="text-dust hover:text-kingly arrow-rotate">↗</a>
+              </h3>
+              <p class="font-sans text-sm text-spanish leading-relaxed mb-6">
+                Bespoke personal engineering and UI/UX showcase built from the ground up using a 7-tone monochrome design system, HTML5 Canvas 3D geometry, and GSAP.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-shoewax font-mono text-[11px]">
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">HTML5</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded bg-shoewax/70 text-dust">GSAP</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Section Footer Link to Archive -->
+      <div class="text-center pt-8 border-t border-shoewax">
+        <a href="projects.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-shoewax/40 hover:bg-shoewax border border-thunder hover:border-kingly text-kingly font-mono text-xs font-bold uppercase tracking-widest transition-all">
+          <span>VIEW FULL REPOSITORY ARCHIVE (26 REPOSITORIES)</span>
+          <span class="arrow-rotate text-sm">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: INTERACTIVE USE-CASE TERMINAL (SaaS, Bots, Utilities, White-Label)
+       Reference 4 (Build For Real Use Cases)
+       ========================================================================== -->
+  <section id="use-cases" class="relative z-10 py-24 px-6 bg-shoewax/15 border-b border-shoewax">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="px-3 py-1 rounded-full bg-chaos border border-thunder font-mono text-xs text-dust uppercase tracking-wider inline-block mb-3">
+          ✦ ARCHITECTURAL SOLUTIONS
+        </span>
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-kingly">
+          Built For Real Engineering Use Cases
+        </h2>
+        <p class="text-spanish text-sm lg:text-base mt-2">
+          Clean APIs, automated bot pipelines, and modular SaaS foundations engineered so teams can ship faster with confidence.
+        </p>
+      </div>
+
+      <!-- 4-Button Tab Bar (Reference 4) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 p-1.5 rounded-xl bg-chaos border border-shoewax mb-6">
+        <button class="use-case-tab-btn py-3 px-4 rounded-lg font-mono text-xs font-bold uppercase transition-all bg-kingly text-chaos" data-case="saas">
+          SaaS Applications
+        </button>
+        <button class="use-case-tab-btn py-3 px-4 rounded-lg font-mono text-xs uppercase transition-all text-spanish hover:text-kingly" data-case="discord">
+          Discord Automation
+        </button>
+        <button class="use-case-tab-btn py-3 px-4 rounded-lg font-mono text-xs uppercase transition-all text-spanish hover:text-kingly" data-case="browser">
+          Browser Utilities
+        </button>
+        <button class="use-case-tab-btn py-3 px-4 rounded-lg font-mono text-xs uppercase transition-all text-spanish hover:text-kingly" data-case="whitelabel">
+          White-Label Delivery
+        </button>
+      </div>
+
+      <!-- Split Two-Pane Terminal Window (Reference 4) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 rounded-2xl bg-chaos border border-thunder overflow-hidden shadow-2xl">
+        <!-- Left Pane: Problem Context (5 Cols) -->
+        <div class="lg:col-span-5 p-8 border-b lg:border-b-0 lg:border-r border-shoewax flex flex-col justify-between bg-shoewax/10">
+          <div>
+            <h6 id="terminal-case-number" class="font-mono text-xs text-dull uppercase tracking-widest mb-3">
+              PROBLEM STATEMENT // 01
+            </h6>
+            <h3 id="terminal-case-problem" class="font-display text-2xl font-bold text-kingly mb-4 leading-snug">
+              Building scalable SaaS architecture from scratch is time-consuming.
+            </h3>
+            <p id="terminal-case-context" class="font-sans text-sm text-spanish leading-relaxed">
+              Founders and teams lose weeks wiring multi-tenant authentication, MySQL schema migrations, and responsive UI shells before writing core product logic.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-shoewax/60 flex items-center gap-2 font-mono text-xs text-dust">
+            <span class="w-2 h-2 rounded-full bg-kingly"></span>
+            <span>PRODUCTION TESTED RESOLUTION</span>
+          </div>
+        </div>
+
+        <!-- Right Pane: Terminal Code Solution (7 Cols) -->
+        <div class="lg:col-span-7 p-6 bg-chaos flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-shoewax font-mono text-xs text-spanish">
+            <span id="terminal-case-filename" class="text-dust">App/Services/TenantProvisioner.php</span>
+            <span class="text-dull">UTF-8 // PHP 8.3</span>
+          </div>
+          <pre class="font-mono text-xs sm:text-[13px] text-dust overflow-x-auto leading-relaxed"><code id="terminal-case-code">&lt;?php
+
+namespace App\Services;
+
+use App\Models\Tenant;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+
+class TenantProvisioner
+{
+    /**
+     * Provision an isolated database and queue workers for a new tenant.
+     */
+    public function provision(Tenant $tenant): bool
+    {
+        $dbName = "tenant_{$tenant->uuid}";
+        DB::statement("CREATE DATABASE IF NOT EXISTS \`{$dbName}\`");
+
+        config(['database.connections.tenant.database' => $dbName]);
+        DB::purge('tenant');
+
+        Artisan::call('migrate --database=tenant --force');
+        Artisan::call('queue:restart');
+
+        return true;
+    }
+}</code></pre>
+          <div class="pt-4 mt-4 border-t border-shoewax/60 flex justify-between font-mono text-[11px] text-dull">
+            <span>ISOLATED TENANCY // MYSQL</span>
+            <span>EXECUTION: 0.08s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: DUAL-COLUMN EXPERIENCE AND R&D TRAJECTORY TIMELINE
+       References 5 (Vertical Timeline Nodes) & 7 (Two-Column Layout)
+       ========================================================================== -->
+  <section id="experience" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-16">
+        <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // CHRONOLOGY & PROGRESSION
+        </h5>
+        <h2 class="font-display text-3xl lg:text-[44px] font-bold text-kingly tracking-tight">
+          Experience & Engineering Trajectory
+        </h2>
+        <p class="text-spanish text-base mt-3">
+          Parallel tracks documenting verified client delivery alongside continuous research and development.
+        </p>
+      </div>
+
+      <!-- Two-Column Timeline Grid (Reference 7) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Left Column: Professional Experience -->
+        <div>
+          <div class="flex items-center gap-3 mb-8 pb-3 border-b border-shoewax">
+            <span class="w-3 h-3 bg-kingly rounded-sm"></span>
+            <h3 class="font-display text-xl font-bold text-kingly tracking-tight">Professional Delivery Track</h3>
+          </div>
+
+          <!-- Vertical Timeline Axis (Reference 5) -->
+          <div class="border-l border-thunder pl-8 space-y-10 relative ml-3">
+            <!-- Card 01 -->
+            <div class="relative group">
+              <!-- Square Timeline Node (Reference 5) -->
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-kingly group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-kingly uppercase inline-block mb-2">
+                2024 — PRESENT
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Full-Stack & Bot Engineer</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">munthasirdevs // Independent SaaS & Automation Architect</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Architecting custom automation systems, Discord bots, and production-ready SaaS applications with Laravel. Spearheading open-source developer tools including linkOpener and the upcoming Laravel SaaS Boilerplate.
+              </p>
+            </div>
+
+            <!-- Card 02 -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dust group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dust uppercase inline-block mb-2">
+                2023 — PRESENT
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Web Developer & UI/UX Designer</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Munthasir.com // Global Freelance & White-Label Partner</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Delivered 23+ responsive web applications and brand interfaces with a 96% client satisfaction rate. Executed full-lifecycle frontend engineering (HTML, Tailwind CSS, JS) and PHP/MySQL backend development for international clients and agencies.
+              </p>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dull group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dull uppercase inline-block mb-2">
+                2022 — 2023
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Frontend & UI/UX Specialist</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">XenonStudios & Early Digital Ventures</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Established core mobile-first responsive workflows, interactive UI systems with Bootstrap, jQuery, and modern CSS, and foundational user-experience wireframing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: R&D Trajectory & Education -->
+        <div>
+          <div class="flex items-center gap-3 mb-8 pb-3 border-b border-shoewax">
+            <span class="w-3 h-3 bg-dust rounded-sm"></span>
+            <h3 class="font-display text-xl font-bold text-kingly tracking-tight">Architectural R&D & Systems Roadmap</h3>
+          </div>
+
+          <div class="border-l border-thunder pl-8 space-y-10 relative ml-3">
+            <!-- R&D 01 -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-kingly group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-kingly uppercase inline-block mb-2">
+                CURRENT FOCUS // 2026
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Cloud-Native Deployment & System Architecture</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Docker, Kubernetes & High-Availability Laravel</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Engineering containerized microservice patterns, CI/CD pipelines, and scalable multi-tenant database architectures for enterprise SaaS workloads.
+              </p>
+            </div>
+
+            <!-- R&D 02 -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dust group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dust uppercase inline-block mb-2">
+                ACTIVE RESEARCH // 2025–2026
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">AI/ML Integration Patterns & TypeScript Ecosystems</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Intelligent Web Apps & Type-Safe Frontends</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Integrating LLM orchestration, automated content pipelines, and strict TypeScript frontend state management into modern web applications.
+              </p>
+            </div>
+
+            <!-- R&D 03 -->
+            <div class="relative group">
+              <span class="absolute -left-[39px] top-1.5 w-3 h-3 bg-chaos border-2 border-dull group-hover:bg-kingly transition-colors"></span>
+              <span class="px-2.5 py-1 rounded bg-shoewax border border-thunder font-mono text-[11px] text-dull uppercase inline-block mb-2">
+                CORE FOUNDATION
+              </span>
+              <h3 class="font-display text-xl font-bold text-kingly">Full-Stack Web Engineering & Human-Centered UX</h3>
+              <h4 class="font-mono text-xs text-dust mb-3">Clean Code, Creative Design & Responsive Principles</h4>
+              <p class="font-sans text-sm text-spanish leading-relaxed">
+                Mastery of relational database modeling (MySQL), server-side PHP/Laravel architecture, and accessible, cross-device interface engineering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 8: TECHNICAL SKILLS MATRIX AND PROFICIENCY READOUT
+       Reference 7 (Percentage Readouts)
+       ========================================================================== -->
+  <section id="skills" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // 03. TECHNICAL ARSENAL
+        </h5>
+        <h2 class="font-display text-3xl lg:text-[44px] font-bold text-kingly tracking-tight">
+          Skills & Technology Stack
+        </h2>
+        <p class="text-spanish text-base mt-3">
+          A balanced full-stack toolkit combining pixel-level frontend control with battle-tested backend and automation infrastructure.
+        </p>
+      </div>
+
+      <!-- 12-Card Grid (Reference 7 Percentage Cards) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+        <!-- Skill 01 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            HTML5
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="98">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="98"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">HTML5 & Semantic DOM</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Accessibility, SEO</span>
+        </div>
+
+        <!-- Skill 02 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            CSS3
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="96">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="96"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">CSS3 & Responsive UI</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Grid, Flexbox, Vars</span>
+        </div>
+
+        <!-- Skill 03 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            TW
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="96">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="96"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">Tailwind & Bootstrap</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Design Tokens</span>
+        </div>
+
+        <!-- Skill 04 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            JS
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="94">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="94"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">JavaScript & GSAP</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">ES6+, Canvas 2D</span>
+        </div>
+
+        <!-- Skill 05 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            PHP
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="92">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="92"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">PHP 8.x Architecture</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">OOP, REST APIs</span>
+        </div>
+
+        <!-- Skill 06 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            LVL
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="95">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="95"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">Laravel Ecosystem</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Multi-Tenancy, Auth</span>
+        </div>
+
+        <!-- Skill 07 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            SQL
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="90">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="90"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">MySQL Database</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Indexing, Schema</span>
+        </div>
+
+        <!-- Skill 08 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            BOT
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="95">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="95"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">Discord Bots</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Slash, Webhooks</span>
+        </div>
+
+        <!-- Skill 09 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            UX
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="94">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="94"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">UI/UX & Wireframing</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Design Systems</span>
+        </div>
+
+        <!-- Skill 10 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            TS
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="85">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="85"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">TypeScript</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Strict Typing</span>
+        </div>
+
+        <!-- Skill 11 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            DCK
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="84">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="84"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">Docker & K8s</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">Containers, Cloud</span>
+        </div>
+
+        <!-- Skill 12 -->
+        <div class="spotlight-card rounded-2xl p-6 flex flex-col items-center text-center group">
+          <div class="w-12 h-12 rounded-lg bg-chaos border border-thunder font-mono text-xs font-bold text-kingly group-hover:bg-kingly group-hover:text-chaos flex items-center justify-center mb-4 transition-colors">
+            AI
+          </div>
+          <span class="skill-counter-val font-mono text-2xl font-bold text-kingly mb-1" data-target="86">0%</span>
+          <div class="w-full h-1 bg-chaos rounded-full overflow-hidden mb-3">
+            <div class="skill-progress-bar h-full bg-kingly w-0" data-percent="86"></div>
+          </div>
+          <h4 class="font-sans text-xs font-semibold text-dust">AI/ML Integration</h4>
+          <span class="font-mono text-[10px] text-dull mt-1">LLM APIs, Pipelines</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 9: COLLABORATION MODELS AND CLIENT ENDORSEMENTS
+       References 6 (Numbered Protocols) & 5 (Testimonial Grid)
+       ========================================================================== -->
+  <section id="testimonials" class="relative z-10 py-28 px-6 bg-chaos border-b border-shoewax">
+    <div class="max-w-7xl mx-auto">
+      <!-- Part A: Numbered Collaboration Protocols (Reference 6 Style) -->
+      <div class="mb-20 p-8 lg:p-10 rounded-2xl bg-shoewax/25 border border-thunder">
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-shoewax">
+          <h5 class="font-mono text-xs text-dust uppercase tracking-widest">
+            // COLLABORATION FRAMEWORKS
+          </h5>
+          <span class="font-mono text-xs text-dull">FOUR OPERATIONAL TRACKS</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Protocol 1 -->
+          <div>
+            <div class="font-mono text-4xl font-extrabold text-kingly mb-3">1</div>
+            <div class="inline-block px-3 py-1 rounded-full bg-kingly text-chaos font-mono text-xs font-bold mb-2">
+              SaaS Partnerships
+            </div>
+            <h4 class="font-mono text-xs text-dust mb-1">Co-Founding & Product Engineering</h4>
+            <p class="font-sans text-sm text-spanish">Building production-ready SaaS products together from architectural blueprint to cloud launch.</p>
+          </div>
+
+          <!-- Protocol 2 -->
+          <div>
+            <div class="font-mono text-4xl font-extrabold text-kingly mb-3">2</div>
+            <div class="inline-block px-3 py-1 rounded-full bg-kingly text-chaos font-mono text-xs font-bold mb-2">
+              Freelance Projects
+            </div>
+            <h4 class="font-mono text-xs text-dust mb-1">Bespoke Web & Bot Solutions</h4>
+            <p class="font-sans text-sm text-spanish">Custom web applications, interactive frontends, and automated Discord bot ecosystems.</p>
+          </div>
+
+          <!-- Protocol 3 -->
+          <div>
+            <div class="font-mono text-4xl font-extrabold text-kingly mb-3">3</div>
+            <div class="inline-block px-3 py-1 rounded-full bg-kingly text-chaos font-mono text-xs font-bold mb-2">
+              Agency Referrals
+            </div>
+            <h4 class="font-mono text-xs text-dust mb-1">Confidential Partner Execution</h4>
+            <p class="font-sans text-sm text-spanish">Reliable white-label full-stack and UI/UX development engineered to strict agency standards.</p>
+          </div>
+
+          <!-- Protocol 4 -->
+          <div>
+            <div class="font-mono text-4xl font-extrabold text-kingly mb-3">4</div>
+            <div class="inline-block px-3 py-1 rounded-full bg-kingly text-chaos font-mono text-xs font-bold mb-2">
+              Open Source
+            </div>
+            <h4 class="font-mono text-xs text-dust mb-1">Ecosystem Contributions</h4>
+            <p class="font-sans text-sm text-spanish">Collaborating on meaningful developer tools and Laravel open-source boilerplates.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B: Client Endorsements (Reference 5 Style) -->
+      <div>
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h3 class="font-display text-2xl lg:text-3xl font-bold text-kingly mb-3">
+            Verified Partner Endorsements
+          </h3>
+          <p class="text-spanish text-sm lg:text-base">
+            Feedback from SaaS founders, community leaders, and agency partners.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Endorsement 01 -->
+          <div class="spotlight-card rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="font-serif-editorial text-4xl text-kingly leading-none mb-4">“</div>
+              <p class="font-sans italic text-sm text-spanish leading-relaxed mb-6">
+                "Munthasir brings a rare combination of clean backend Laravel architecture and sharp UI/UX sensibility. Our SaaS portal launched ahead of schedule with zero bottlenecks."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-shoewax">
+              <div class="w-10 h-10 rounded-lg bg-thunder text-kingly font-mono font-bold flex items-center justify-center text-xs">
+                SF
+              </div>
+              <div>
+                <h4 class="font-sans font-bold text-sm text-kingly">SaaS Founder & Product Lead</h4>
+                <span class="font-mono text-[11px] text-dull">Enterprise Web Application Partner</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Endorsement 02 -->
+          <div class="spotlight-card rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="font-serif-editorial text-4xl text-kingly leading-none mb-4">“</div>
+              <p class="font-sans italic text-sm text-spanish leading-relaxed mb-6">
+                "The custom Discord bot and web dashboard engineered by Munthasir automated our entire community moderation and role workflow. Rock-solid code and instant communication."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-shoewax">
+              <div class="w-10 h-10 rounded-lg bg-thunder text-kingly font-mono font-bold flex items-center justify-center text-xs">
+                CO
+              </div>
+              <div>
+                <h4 class="font-sans font-bold text-sm text-kingly">Community Operations Director</h4>
+                <span class="font-mono text-[11px] text-dull">Custom Discord Automation Client</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Endorsement 03 -->
+          <div class="spotlight-card rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="font-serif-editorial text-4xl text-kingly leading-none mb-4">“</div>
+              <p class="font-sans italic text-sm text-spanish leading-relaxed mb-6">
+                "As a digital agency, finding a reliable white-label full-stack developer is critical. Munthasir consistently delivers responsive, pixel-accurate frontends that exceed client expectations."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-shoewax">
+              <div class="w-10 h-10 rounded-lg bg-thunder text-kingly font-mono font-bold flex items-center justify-center text-xs">
+                CP
+              </div>
+              <div>
+                <h4 class="font-sans font-bold text-sm text-kingly">Creative Agency Principal</h4>
+                <span class="font-mono text-[11px] text-dull">White-Label Development Partner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 10: DIRECT CONTACT PORTAL AND GLOBAL FOOTER
+       References 5 (Two-Column Contact Split) & 1 (Silver Watermark Emblem)
+       ========================================================================== -->
+  <section id="contact" class="relative z-10 pt-28 pb-16 px-6 bg-chaos">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-24 border-b border-shoewax">
+        <!-- Left Column: Heading & Contact Channels (5 Cols) -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <h5 class="section-eyebrow font-mono text-xs text-dust uppercase tracking-widest mb-3">
+              // 04. INITIATE CONNECTION
+            </h5>
+            <h2 class="font-display text-3xl lg:text-4xl font-bold text-kingly mb-4">
+              Let's build something production-ready together.
+            </h2>
+            <p class="font-sans text-base text-spanish mb-8 leading-relaxed">
+              Have a SaaS concept, custom Discord bot specification, white-label agency brief, or open-source collaboration in mind? Reach out directly.
+            </p>
+
+            <!-- Channel Pills (Reference 5) -->
+            <div class="space-y-3 font-mono text-xs">
+              <a href="mailto:munthasirrahman@gmail.com" class="copy-email-btn spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust hover:text-kingly cursor-pointer transition-all">
+                <span class="text-base">✉</span>
+                <span class="truncate">munthasirrahman@gmail.com</span>
+              </a>
+              <div class="spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust">
+                <span class="text-base">⌖</span>
+                <span>Chuadanga, Khulna, Bangladesh [GMT+6]</span>
+              </div>
+              <div class="spotlight-card p-4 rounded-xl flex items-center gap-4 text-dust">
+                <span class="w-2.5 h-2.5 rounded-full bg-kingly pulsing-dot"></span>
+                <span>Available for Freelance, SaaS & White-Label</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-8 mt-8 border-t border-shoewax font-mono text-xs text-dull">
+            <span>CHUADANGA GATEWAY TIME: </span>
+            <span class="text-kingly font-bold live-clock-bd">00:00:00 [GMT+6]</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Project Scoping Form (7 Cols) -->
+        <div class="lg:col-span-7">
+          <div class="spotlight-card p-8 lg:p-10 rounded-2xl bg-shoewax/20 border border-shoewax">
+            <h3 class="font-display text-xl font-bold text-kingly mb-6">
+              Project Architecture Brief
+            </h3>
+            
+            <form id="contact-project-form" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block font-mono text-xs text-dust mb-2">YOUR NAME</label>
+                  <input type="text" name="name" required placeholder="Adrian Cole" class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none transition-colors" />
+                </div>
+                <div>
+                  <label class="block font-mono text-xs text-dust mb-2">YOUR EMAIL</label>
+                  <input type="email" name="email" required placeholder="adrian@company.com" class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-mono text-xs text-dust mb-2">COLLABORATION TRACK</label>
+                <select name="track" class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-dust text-sm font-sans focus:outline-none transition-colors">
+                  <option value="SaaS Partnership">1. SaaS Architecture Partnership</option>
+                  <option value="Custom Web App">2. Freelance Web App / UI-UX Design</option>
+                  <option value="Discord Bot">3. Custom Discord Bot & Dashboard</option>
+                  <option value="Agency White-Label">4. Agency White-Label Retainer</option>
+                  <option value="Open-Source">5. Open-Source Collaboration</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-mono text-xs text-dust mb-2">PROJECT BRIEF & TIMELINE</label>
+                <textarea name="brief" rows="4" required placeholder="Tell me about your architecture, timeline, and goals..." class="w-full px-4 py-3.5 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly placeholder-dull text-sm font-sans focus:outline-none transition-colors"></textarea>
+              </div>
+
+              <button type="submit" id="contact-submit-btn" class="magnetic-btn w-full py-4 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
+                <span>SEND TRANSMISSION</span>
+                <span class="arrow-rotate">→</span>
+              </button>
+
+              <div id="contact-status-output" class="hidden p-3 rounded bg-chaos border border-shoewax mt-3 text-center"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-Width Architectural Footer (Reference 1 & 5) -->
+      <footer class="pt-12 flex flex-col items-center">
+        <!-- Centered Brushed Silver "Munthasir" Watermark Emblem (Reference 1) -->
+        <div class="mb-8 opacity-25 hover:opacity-60 transition-opacity duration-500 cursor-pointer text-center" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <span class="font-serif-editorial italic text-4xl sm:text-6xl text-kingly tracking-tight">
+            Munthasir
+          </span>
+        </div>
+
+        <!-- Footer Navigation Links -->
+        <div class="flex flex-wrap justify-center gap-6 font-mono text-xs text-spanish mb-8">
+          <a href="#hero" class="hover:text-kingly">HOME</a>
+          <a href="about.html" class="hover:text-kingly">ABOUT</a>
+          <a href="services.html" class="hover:text-kingly">SERVICES</a>
+          <a href="projects.html" class="hover:text-kingly">PROJECTS ARCHIVE</a>
+          <a href="skills.html" class="hover:text-kingly">SKILLS</a>
+          <a href="contact.html" class="hover:text-kingly">CONTACT</a>
+        </div>
+
+        <!-- Copyright & Scroll-To-Top Row -->
+        <div class="w-full flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-dull border-t border-shoewax/60 pt-8 gap-4">
+          <div>
+            MR_ © 2026 Munthasir Rahman (<a href="https://github.com/munthasirdevs" class="hover:underline text-dust">munthasirdevs</a>). All rights reserved.
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-dust">CHUADANGA, BD</span>
+            <button id="scroll-to-top-btn" class="w-8 h-8 rounded bg-shoewax hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos flex items-center justify-center transition-all" title="Back to Top">
+              ↑
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Application Scripts -->
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Initialize Preloader on Window Load
+    window.addEventListener('load', () => {
+      initPreloader();
+    });
+  </script>
+</body>
+</html>
+
