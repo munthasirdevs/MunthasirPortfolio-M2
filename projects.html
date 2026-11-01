@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Repositories Archive (26 Repositories) | Munthasir Rahman</title>
+  <meta name="description" content="Explore all 26 verified public GitHub repositories by Munthasir Rahman (munthasirdevs). Interactive showcases, sandboxes, and production code.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F'/><text x='50%' y='68%' font-family='monospace' font-weight='bold' font-size='56' fill='%23DEDEDE' text-anchor='middle'>MR</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-chaos text-spanish font-sans relative selection:bg-kingly selection:text-chaos">
+
+  <div class="film-grain-overlay"></div>
+  <div class="fluted-ribs-bg"></div>
+  <div id="matrix-grid-bg" class="matrix-grid-bg"></div>
+  <canvas id="ambient-3d-canvas" class="fixed inset-0 pointer-events-none z-[2] opacity-65"></canvas>
+
+  <!-- Top Glass Navigation Bar -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 z-40 h-20 glass-header">
+    <div class="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <a href="index.html" class="navbar-brand flex items-center gap-3 group">
+        <span class="font-mono text-xl font-extrabold text-kingly tracking-tighter">
+          MR<span class="text-dust blinking-cursor">_</span>
+        </span>
+        <span class="h-4 w-[1px] bg-thunder hidden sm:block"></span>
+        <span class="font-serif-editorial italic text-base text-dust group-hover:text-kingly transition-colors hidden sm:inline">
+          Munthasir
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">HOME</a>
+        <a href="about.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SERVICES</a>
+        <a href="projects.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-kingly border-b-2 border-kingly">PROJECTS ARCHIVE</a>
+        <a href="skills.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="nav-link py-2 font-mono text-xs uppercase tracking-widest text-spanish hover:text-kingly">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="contact.html" class="magnetic-btn hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/80 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+          <span>SCOPE A PROJECT</span>
+          <span class="arrow-rotate text-sm">↗</span>
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg border border-shoewax bg-shoewax/40 text-kingly" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-chaos/95 backdrop-blur-xl border-b border-shoewax px-6 py-6 space-y-4">
+      <a href="index.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">01 // HOME</a>
+      <a href="about.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">02 // ABOUT</a>
+      <a href="services.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">03 // SERVICES</a>
+      <a href="projects.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-kingly">04 // PROJECTS ARCHIVE</a>
+      <a href="skills.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">05 // SKILLS</a>
+      <a href="contact.html" class="mobile-nav-link block font-mono text-sm uppercase tracking-wider text-spanish">06 // CONTACT</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24">
+    <!-- Header with Command Search & Category Filter Bar -->
+    <section class="max-w-7xl mx-auto px-6 pb-12 border-b border-shoewax">
+      <div class="max-w-3xl mb-8">
+        <h5 class="font-mono text-xs text-dust uppercase tracking-widest mb-3">
+          // GITHUB.COM/MUNTHASIRDEVS // VERIFIED CODEBASE
+        </h5>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-kingly uppercase tracking-tight text-metallic">
+          PUBLIC REPOSITORIES ARCHIVE
+        </h1>
+        <p class="font-sans text-base lg:text-lg text-spanish mt-4 leading-relaxed">
+          I believe in building in public. Every single one of my 26 public GitHub repositories is showcased below with architectural context, technical specifications, and live interactive chambers.
+        </p>
+      </div>
+
+      <!-- Command Search Bar -->
+      <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between mb-8">
+        <div class="relative flex-1 max-w-2xl">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-dust text-sm">Q</span>
+          <input type="text" id="repo-search-input" placeholder="FILTER 26 REPOSITORIES BY NAME, STACK (JS, LARAVEL, BOT, 3D)..." class="w-full pl-12 pr-28 py-4 rounded-xl bg-shoewax/50 border border-thunder focus:border-kingly text-kingly placeholder-dull font-mono text-xs focus:outline-none transition-colors" />
+          <span id="repo-count-badge" class="absolute right-4 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded bg-chaos border border-shoewax font-mono text-[10px] text-dust">
+            26 Repositories
+          </span>
+        </div>
+
+        <a href="https://github.com/munthasirdevs" target="_blank" rel="noopener noreferrer" class="px-5 py-4 rounded-xl bg-shoewax/40 hover:bg-shoewax border border-thunder hover:border-kingly text-kingly font-mono text-xs flex items-center justify-center gap-2 transition-all">
+          <span>GITHUB.COM/MUNTHASIRDEVS</span>
+          <span class="text-sm">↗</span>
+        </a>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs font-bold uppercase transition-all bg-kingly text-chaos" data-filter="all">
+          All (26)
+        </button>
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="tools">
+          Tools & Utilities
+        </button>
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="saas">
+          Web Systems & SaaS
+        </button>
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="bot">
+          Discord & Automation
+        </button>
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="3d">
+          Creative & 3D Canvas
+        </button>
+        <button class="archive-filter-pill px-4 py-2 rounded-full font-mono text-xs uppercase transition-all bg-shoewax/40 text-spanish border border-shoewax hover:border-thunder" data-filter="studio">
+          Agencies & Portfolios
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ONE-BY-ONE REPOSITORY SHOWCASE LIST (All 26 Real Repositories)
+         ========================================================================== -->
+    <div id="repositories-showcase-container" class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+      <!-- 01: linkOpener -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="linkOpener" data-repo-desc="Multi-Link Opener bulk URL launcher with regex validation and sequential delay" data-repo-lang="JavaScript" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-kingly text-chaos font-mono text-[10px] font-bold uppercase">PINNED REPOSITORY</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">JavaScript</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>linkOpener</span>
+              <a href="https://github.com/munthasirdevs/linkOpener" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Multi-Link Opener is a lightweight web tool that validates and opens multiple URLs in bulk. Users paste links (one per line), auto-detect valid URLs, and launch them sequentially with an adjustable millisecond delay or all at once. Includes progress tracking, stop control, and individual link actions for efficient workflow automation.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> RFC-compliant URL regex validation engine</div>
+              <div class="flex items-center gap-2"><span>✓</span> Configurable sequential queue with adjustable throttle</div>
+              <div class="flex items-center gap-2"><span>✓</span> Zero third-party dependencies, purely native browser DOM</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/linkOpener" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Interactive Live Sandbox -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 sm:p-8 bg-shoewax/30 border border-thunder shadow-2xl">
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-shoewax font-mono text-xs">
+                <span class="text-kingly font-bold">LIVE EMBEDDED SANDBOX // linkOpener</span>
+                <span class="text-dust">STATUS: READY</span>
+              </div>
+              <label class="block font-mono text-xs text-dust mb-2">PASTE URLS (ONE PER LINE):</label>
+              <textarea id="sandbox-url-input" rows="3" class="w-full p-3 rounded-lg bg-chaos border border-shoewax focus:border-kingly text-kingly font-mono text-xs mb-3 focus:outline-none">https://laravel.com
+github.com/munthasirdevs
+https://tailwindcss.com</textarea>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center mb-4">
+                <div>
+                  <div class="flex justify-between font-mono text-xs text-dust mb-1">
+                    <span>DISPATCH DELAY:</span>
+                    <span id="sandbox-delay-display" class="text-kingly font-bold">250ms</span>
+                  </div>
+                  <input type="range" id="sandbox-delay-input" min="100" max="1000" step="50" value="250" class="w-full accent-kingly cursor-pointer" />
+                </div>
+                <button id="sandbox-launch-btn" class="w-full py-2.5 rounded-lg bg-kingly hover:bg-dust text-chaos font-mono text-xs font-bold uppercase tracking-wider transition-all">
+                  SIMULATE LAUNCH →
+                </button>
+              </div>
+              <div id="sandbox-log-output" class="p-3 rounded-lg bg-chaos border border-shoewax min-h-[60px] text-xs font-mono">
+                <span class="text-dull">// Ready. Click "Simulate Launch" to execute sequential queue.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02: 3D-tag-cloud -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="3D-tag-cloud" data-repo-desc="An interactive 3D spherical tag cloud that visualizes technologies on a rotating canvas with cursor tracking" data-repo-lang="JavaScript" data-repo-cat="3d">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">CREATIVE 3D</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">JavaScript</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>3D-tag-cloud</span>
+              <a href="https://github.com/munthasirdevs/3D-tag-cloud" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              An interactive 3D spherical tag cloud that visualizes technologies on a rotating HTML5 canvas. Features smooth mathematical rotation matrices, depth-sorted visual perception, and dynamic cursor-driven velocity dampening.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Mathematical Fibonacci sphere distribution</div>
+              <div class="flex items-center gap-2"><span>✓</span> Real-time mouse velocity tracking and inertia</div>
+              <div class="flex items-center gap-2"><span>✓</span> Pure vanilla Canvas 2D without Three.js overhead</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/3D-tag-cloud" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Live 3D Tag Cloud Canvas Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder text-center">
+              <div class="flex items-center justify-between pb-3 mb-2 border-b border-shoewax font-mono text-xs">
+                <span class="text-kingly font-bold">LIVE INTERACTIVE 3D CANVAS</span>
+                <span class="text-dust text-[11px]">MOVE CURSOR OVER SPHERE</span>
+              </div>
+              <div class="relative w-full h-[240px] flex items-center justify-center">
+                <canvas id="tag-cloud-canvas" class="w-full h-full cursor-crosshair"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03: XenonStudios -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="XenonStudios" data-repo-desc="Flagship digital agency and studio portal with responsive grid systems" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-kingly text-chaos font-mono text-[10px] font-bold uppercase">PINNED REPOSITORY</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML5 / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>XenonStudios</span>
+              <a href="https://github.com/munthasirdevs/XenonStudios" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Flagship agency and digital studio frontend engineered with semantic HTML architecture, responsive grid systems, and high-contrast typographic storytelling. Designed to establish commanding brand presence for tech studios.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> 100% Mobile-first fluid layout algorithms</div>
+              <div class="flex items-center gap-2"><span>✓</span> Architectural typography hierarchy with zero layout shift</div>
+              <div class="flex items-center gap-2"><span>✓</span> Modular component structure for client customization</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/XenonStudios" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Breakpoint Simulator Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder flex flex-col items-center">
+              <div class="w-full flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-shoewax font-mono text-xs">
+                <span id="xenon-width-label" class="text-kingly font-bold">Viewport: 100% (Desktop)</span>
+                <div class="flex gap-2">
+                  <button class="breakpoint-toggle-btn px-3 py-1 rounded font-mono text-[11px] bg-kingly text-chaos font-bold" data-width="100%">DESKTOP (1440)</button>
+                  <button class="breakpoint-toggle-btn px-3 py-1 rounded font-mono text-[11px] bg-shoewax/40 text-spanish" data-width="768px">TABLET (768)</button>
+                  <button class="breakpoint-toggle-btn px-3 py-1 rounded font-mono text-[11px] bg-shoewax/40 text-spanish" data-width="375px">MOBILE (375)</button>
+                </div>
+              </div>
+              <div id="xenon-preview-frame" class="w-full transition-all duration-300 rounded-xl bg-chaos border border-shoewax p-6 flex flex-col justify-between min-h-[200px]">
+                <div class="flex items-center justify-between border-b border-shoewax pb-3">
+                  <span class="font-display font-bold text-sm text-kingly tracking-wider">XENON_STUDIOS</span>
+                  <div class="flex gap-3 font-mono text-[10px] text-dull"><span>WORK</span><span>ABOUT</span><span>CONTACT</span></div>
+                </div>
+                <div class="py-6 text-center">
+                  <h4 class="font-display text-2xl font-extrabold text-kingly uppercase">CRAFTING DIGITAL VISIONS</h4>
+                  <p class="font-sans text-xs text-spanish mt-1">High-contrast branding and web systems for high-growth tech firms.</p>
+                </div>
+                <div class="flex justify-between items-center text-[10px] font-mono text-dull border-t border-shoewax pt-2">
+                  <span>© XENONSTUDIOS</span>
+                  <span class="text-dust">TAILWIND ARCHITECTURE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04: GSX-BOT -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="GSX-BOT" data-repo-desc="Multi-cluster Discord automation bot engineered with TypeScript and Discord.js" data-repo-lang="TypeScript" data-repo-cat="bot">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">AUTOMATION BOT</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">TypeScript</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>GSX-BOT</span>
+              <a href="https://github.com/munthasirdevs/GSX-BOT" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Production-ready Discord automation bot engineered with TypeScript and Discord.js v14. Built for high concurrency, event-driven gateway clusters, automated role workflows, security filtering, and server moderation.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Type-safe command and event handler registry</div>
+              <div class="flex items-center gap-2"><span>✓</span> Anti-raid protections and dynamic security regex filters</div>
+              <div class="flex items-center gap-2"><span>✓</span> Designed for real-time web dashboard synchronization</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/GSX-BOT" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Interactive Command Terminal Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder shadow-2xl">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-shoewax font-mono text-xs">
+                <span class="text-kingly font-bold">INTERACTIVE BOT TERMINAL</span>
+                <span class="text-dust">DISCORD.JS v14</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <button class="gsx-cmd-btn px-3 py-1.5 rounded bg-kingly text-chaos font-mono text-xs font-bold" data-cmd="/help">/help</button>
+                <button class="gsx-cmd-btn px-3 py-1.5 rounded bg-shoewax/60 text-spanish hover:text-kingly font-mono text-xs" data-cmd="/telemetry">/telemetry</button>
+                <button class="gsx-cmd-btn px-3 py-1.5 rounded bg-shoewax/60 text-spanish hover:text-kingly font-mono text-xs" data-cmd="/uptime">/uptime</button>
+                <button class="gsx-cmd-btn px-3 py-1.5 rounded bg-shoewax/60 text-spanish hover:text-kingly font-mono text-xs" data-cmd="/moderate">/moderate</button>
+              </div>
+              <pre id="gsx-terminal-output" class="p-4 rounded-lg bg-shoewax/20 border border-shoewax font-mono text-xs text-dust leading-relaxed overflow-x-auto min-h-[110px]">&gt; [GSX-BOT]: System Commands Registered:
+  - /telemetry : Output cluster heartbeat &amp; guild health
+  - /moderate  : Automated regex &amp; anti-raid ruleset
+  - /dashboard : Generate secure OAuth2 management session
+  - /uptime    : Real-time VPS container runtime status</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05: XenonOS -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="XenonOS" data-repo-desc="Web operating system and modular Laravel administrative interface" data-repo-lang="Blade" data-repo-cat="saas">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">LARAVEL & BLADE</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">Blade / PHP</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>XenonOS</span>
+              <a href="https://github.com/munthasirdevs/XenonOS" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Browser-based web operating system and modular Laravel administrative interface. Implements window management algorithms, dashboard widgets, and clean application routing inside Blade templates.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Blade component architecture and window layering</div>
+              <div class="flex items-center gap-2"><span>✓</span> PHP / Laravel service container and route controllers</div>
+              <div class="flex items-center gap-2"><span>✓</span> Extensible modular workspace framework</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/XenonOS" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Interactive Web OS Window Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder shadow-2xl">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-shoewax">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-thunder inline-block"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-dull inline-block"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-dust inline-block"></span>
+                  <span id="xenon-active-app" class="ml-2 font-mono text-xs text-kingly font-bold">XenonOS // Terminal v1.0</span>
+                </div>
+                <div class="flex gap-2">
+                  <button class="xenon-app-icon px-2.5 py-1 rounded bg-shoewax border border-kingly text-kingly font-mono text-xs" data-app="terminal">Terminal</button>
+                  <button class="xenon-app-icon px-2.5 py-1 rounded bg-shoewax border border-shoewax text-spanish font-mono text-xs" data-app="files">Files</button>
+                  <button class="xenon-app-icon px-2.5 py-1 rounded bg-shoewax border border-shoewax text-spanish font-mono text-xs" data-app="settings">System</button>
+                </div>
+              </div>
+              <pre id="xenon-app-body" class="p-4 rounded-lg bg-chaos font-mono text-xs text-dust leading-relaxed min-h-[120px] overflow-x-auto">root@xenonos:~$ php artisan route:list
++--------+----------+-----------------------+
+| Method | URI      | Action                |
++--------+----------+-----------------------+
+| GET    | /api/v1  | ApiController@index   |
+| POST   | /auth    | AuthController@login  |
++--------+----------+-----------------------+</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06: Particle-Sphere -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Particle-Sphere" data-repo-desc="Interactive HTML5 Canvas 3D particle sphere visualizer" data-repo-lang="HTML" data-repo-cat="3d">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">CANVAS EXPERIMENT</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML5 / JS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Particle-Sphere</span>
+              <a href="https://github.com/munthasirdevs/Particle-Sphere" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Interactive 3D particle sphere visualizer built directly on HTML5 Canvas. Demonstrates point-cloud rotation mathematics, dynamic perspective projection, and depth-based luminance scaling.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> 3D spherical coordinate matrix projection</div>
+              <div class="flex items-center gap-2"><span>✓</span> Lightweight pure 2D Canvas rendering loop</div>
+              <div class="flex items-center gap-2"><span>✓</span> Smooth continuous rotation with depth-cued alpha</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Particle-Sphere" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Canvas Particle Sphere Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder text-center">
+              <div class="flex items-center justify-between pb-3 mb-2 border-b border-shoewax font-mono text-xs">
+                <span class="text-kingly font-bold">CANVAS 3D PARTICLE RENDERER</span>
+                <span class="text-dust text-[11px]">MATHEMATICAL MATRIX</span>
+              </div>
+              <div class="relative w-full h-[220px] flex items-center justify-center">
+                <canvas id="particle-sphere-canvas" class="w-full h-full"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07: StudyBloom -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="StudyBloom" data-repo-desc="Distraction-free study sanctuary web application with focus timer and notes" data-repo-lang="HTML" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PRODUCTIVITY</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>StudyBloom</span>
+              <a href="https://github.com/munthasirdevs/StudyBloom" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              "Welcome to your happy little study spot! Learning feels easy, notes feel lighter, and ideas bloom brighter." A distraction-free study sanctuary designed to make focused learning intuitive with Pomodoro intervals and progress tracking.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Minimalist focus interval timer with audio alerts</div>
+              <div class="flex items-center gap-2"><span>✓</span> Study session progress tracking and goal checklists</div>
+              <div class="flex items-center gap-2"><span>✓</span> Ambient study mood atmosphere and clean layout</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/StudyBloom" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Interactive Timer Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 sm:p-8 bg-shoewax/30 border border-thunder shadow-2xl flex flex-col items-center text-center">
+              <span class="font-mono text-xs text-dust mb-2">FOCUS SANCTUARY // POMODORO</span>
+              <div id="studybloom-timer-display" class="font-display text-5xl sm:text-6xl font-extrabold text-kingly tracking-tight my-4">
+                25:00
+              </div>
+              <div class="flex gap-3">
+                <button id="studybloom-start-btn" class="px-6 py-2.5 rounded-lg bg-kingly text-chaos font-mono text-xs font-bold uppercase tracking-wider transition-all">
+                  START FOCUS
+                </button>
+                <button id="studybloom-reset-btn" class="px-4 py-2.5 rounded-lg bg-shoewax border border-thunder text-dust font-mono text-xs uppercase tracking-wider">
+                  RESET
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08: StudyBloom.V2 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="StudyBloom.V2" data-repo-desc="Upgraded study sanctuary interface with modern CSS variables, card elevations, and focus metrics" data-repo-lang="CSS" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PRODUCTIVITY V2</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">CSS / Modern UI</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>StudyBloom.V2</span>
+              <a href="https://github.com/munthasirdevs/StudyBloom.V2" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              The evolved second iteration of StudyBloom, rebuilt with modern CSS custom property tokens, refined elevation tiers, active study telemetry metrics, and high-contrast night study themes.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Refactored CSS design system tokens and variables</div>
+              <div class="flex items-center gap-2"><span>✓</span> Night study contrast mode with distraction elimination</div>
+              <div class="flex items-center gap-2"><span>✓</span> Live session streak and milestone tracking</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/StudyBloom.V2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Study Metrics & Checklist Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-4 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>STUDYBLOOM V2 // TELEMETRY</span>
+                <span class="text-kingly">ACTIVE SESSION</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust block text-[10px] uppercase">FOCUS EFFICIENCY</span>
+                  <span class="text-kingly font-bold text-xl">98.4%</span>
+                </div>
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust block text-[10px] uppercase">ACTIVE STREAK</span>
+                  <span class="text-kingly font-bold text-xl">5 DAYS</span>
+                </div>
+              </div>
+              <div class="space-y-2 pt-1">
+                <div class="flex items-center justify-between p-2 rounded bg-chaos/60 border border-shoewax/50">
+                  <span class="text-dust">Deep Work Interval #3</span>
+                  <span class="text-[10px] text-kingly bg-shoewax px-2 py-0.5 rounded">COMPLETED</span>
+                </div>
+                <div class="flex items-center justify-between p-2 rounded bg-chaos/60 border border-shoewax/50">
+                  <span class="text-dust">Algorithmic Review Notes</span>
+                  <span class="text-[10px] text-kingly bg-shoewax px-2 py-0.5 rounded">IN PROGRESS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 09: Sixolab-M2 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Sixolab-M2" data-repo-desc="High-conversion digital agency and technology solutions platform" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">AGENCY ARCHITECTURE</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / Tailwind</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Sixolab-M2</span>
+              <a href="https://github.com/munthasirdevs/Sixolab-M2" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              High-conversion digital agency and technology solutions platform engineered with modular service sections, clean responsive layouts, and modern visual hierarchy for business clients.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Mobile-first responsive grid system</div>
+              <div class="flex items-center gap-2"><span>✓</span> Interactive service cards and call-to-action blocks</div>
+              <div class="flex items-center gap-2"><span>✓</span> Semantic SEO metadata configuration</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Sixolab-M2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Wireframe Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>PORTAL: SIXOLAB-M2</span>
+                <span class="text-kingly">DEPLOYED // READY</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust block font-bold mb-1">01. CLOUD ARCHITECTURE</span>
+                  <p class="text-spanish text-[11px] font-sans">Scalable infrastructure setup.</p>
+                </div>
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust block font-bold mb-1">02. WEB PLATFORMS</span>
+                  <p class="text-spanish text-[11px] font-sans">High-performance digital products.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10: Client_Dashboard -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Client_Dashboard" data-repo-desc="Client management portal with real-time operational metrics and project tracking" data-repo-lang="HTML" data-repo-cat="saas">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">CLIENT PORTAL</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Client_Dashboard</span>
+              <a href="https://github.com/munthasirdevs/Client_Dashboard" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Modern client management portal with real-time operational metrics, project tracking cards, and responsive administrative dashboards designed for transparency and client communications.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Project milestone delivery tracker</div>
+              <div class="flex items-center gap-2"><span>✓</span> Real-time ticket management interface</div>
+              <div class="flex items-center gap-2"><span>✓</span> Metric telemetry cards with high-contrast UI</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Client_Dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Metrics Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder grid grid-cols-2 gap-4 font-mono text-xs">
+              <div class="p-4 rounded-xl bg-shoewax/30 border border-shoewax">
+                <span class="text-dull block mb-1">PROJECT STATUS</span>
+                <span class="font-display text-2xl font-bold text-kingly">ON TRACK</span>
+                <span class="text-dust text-[10px] block mt-1">Sprint 4 // 94% Complete</span>
+              </div>
+              <div class="p-4 rounded-xl bg-shoewax/30 border border-shoewax">
+                <span class="text-dull block mb-1">CLIENT SATISFACTION</span>
+                <span class="font-display text-2xl font-bold text-kingly">96%</span>
+                <span class="text-dust text-[10px] block mt-1">Verified Endorsement</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 11: GitNews -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="GitNews" data-repo-desc="Developer news aggregator and repository feed web portal" data-repo-lang="HTML" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">DEVELOPER NEWS</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / JS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>GitNews</span>
+              <a href="https://github.com/munthasirdevs/GitNews" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Developer news aggregator and repository feed web portal delivering real-time tech headlines, GitHub updates, release notes, and developer announcements in a clean readable feed.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> News category filter tabs (Releases, Tech, Open-Source)</div>
+              <div class="flex items-center gap-2"><span>✓</span> Fast client-side keyword search</div>
+              <div class="flex items-center gap-2"><span>✓</span> High-density reading layout with dark mode ergonomics</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/GitNews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- News Feed Ticker Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>FEED: GITHUB_RELEASES</span>
+                <span class="text-kingly">LIVE PULSE</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-kingly font-bold">Laravel v11.x Released</span>
+                <p class="text-spanish text-[11px] font-sans mt-1">Slim application skeleton, per-second rate limiting, and new health check routes.</p>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax">
+                <span class="text-kingly font-bold">Tailwind CSS v4 Engine</span>
+                <p class="text-spanish text-[11px] font-sans mt-1">Zero-configuration build pipeline with pure CSS theme variables.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 12: gitlink-real-estate -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="gitlink-real-estate" data-repo-desc="Modern real estate web portal with property filters and architectural layouts" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">REAL ESTATE</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>gitlink-real-estate</span>
+              <a href="https://github.com/munthasirdevs/gitlink-real-estate" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Modern real estate web portal featuring property search filters, interactive architectural cards, price breakdowns, and location maps for luxury property developments.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Property amenity and square-footage filter</div>
+              <div class="flex items-center gap-2"><span>✓</span> High-resolution architectural gallery cards</div>
+              <div class="flex items-center gap-2"><span>✓</span> Direct inquiry and lead generation form</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/gitlink-real-estate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>PROPERTY SPECIFICATION</span>
+                <span class="text-kingly font-bold">$1,250,000</span>
+              </div>
+              <div class="p-4 rounded-xl bg-chaos border border-shoewax flex justify-between items-center">
+                <div>
+                  <h4 class="font-display font-bold text-base text-kingly">The Obsidian Residence</h4>
+                  <span class="text-dust text-[11px] font-sans">4 Beds • 3.5 Baths • 3,800 Sq Ft</span>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-shoewax text-kingly font-mono text-[10px]">VERIFIED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 13: BlogV1 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="BlogV1" data-repo-desc="Server-side PHP blogging engine with clean object-oriented architecture" data-repo-lang="PHP" data-repo-cat="saas">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">SERVER-SIDE PHP</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">PHP / MySQL</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>BlogV1</span>
+              <a href="https://github.com/munthasirdevs/BlogV1" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Server-side PHP blogging engine built with clean object-oriented code, relational content storage, category filtering, and responsive article layouts.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> OOP PHP controller-service architecture</div>
+              <div class="flex items-center gap-2"><span>✓</span> Relational MySQL database schema design</div>
+              <div class="flex items-center gap-2"><span>✓</span> Markdown article renderer and slug generator</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/BlogV1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder font-mono text-xs text-dust overflow-x-auto">
+              <div class="text-dull border-b border-shoewax pb-2 mb-3">// PostController.php</div>
+<pre class="leading-relaxed">&lt;?php
+class PostController {
+  public function show(string $slug): View {
+    $post = $this->postService->findBySlug($slug);
+    return view('articles.show', ['post' => $post]);
+  }
+}</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 14: admin-panel -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="admin-panel" data-repo-desc="Lightweight administrative dashboard template with sidebar navigation and statistics" data-repo-lang="HTML" data-repo-cat="saas">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">DASHBOARD UI</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>admin-panel</span>
+              <a href="https://github.com/munthasirdevs/admin-panel" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Lightweight administrative dashboard template featuring collapsible sidebar navigation, user statistics charts, notification feed, and data table layouts for backoffice tools.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Collapsible sidebar with keyboard access</div>
+              <div class="flex items-center gap-2"><span>✓</span> User permission toggles and status badges</div>
+              <div class="flex items-center gap-2"><span>✓</span> Responsive data tables with pagination mockups</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/admin-panel" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder font-mono text-xs space-y-3">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>SYSTEM SWITCHES</span>
+                <span class="text-kingly">ACTIVE</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded bg-chaos border border-shoewax">
+                <span>Maintenance Mode</span>
+                <span class="px-2 py-0.5 rounded bg-shoewax text-dust text-[10px]">OFF</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded bg-chaos border border-shoewax">
+                <span>Automated DB Backups</span>
+                <span class="px-2 py-0.5 rounded bg-kingly text-chaos text-[10px] font-bold">ON (DAILY)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 15: lead_scraping_automation -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="lead_scraping_automation" data-repo-desc="Automated data extraction and lead generation pipeline with Python" data-repo-lang="Python" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PYTHON AUTOMATION</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">Python</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>lead_scraping_automation</span>
+              <a href="https://github.com/munthasirdevs/lead_scraping_automation" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Automated data extraction and lead generation pipeline utilizing Python, parsing scripts, and structured data export for sales and marketing intelligence.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Asynchronous HTTP requests with rate-limiting throttling</div>
+              <div class="flex items-center gap-2"><span>✓</span> HTML parsing with BeautifulSoup and regex filters</div>
+              <div class="flex items-center gap-2"><span>✓</span> Automated CSV / JSON data export pipelines</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/lead_scraping_automation" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder font-mono text-xs text-dust">
+              <div class="text-dull border-b border-shoewax pb-2 mb-3">pipeline_runner.py</div>
+<pre class="leading-relaxed">&gt; [SCRAPER INITIATED]
+&gt; Parsing targeted endpoints...
+&gt; Extracted: 480 verified leads
+&gt; Export completed: output/leads_2026.csv
+&gt; Status: 200 OK (Execution: 1.42s)</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 16: MuntahaPortfolio-M2 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="MuntahaPortfolio-M2" data-repo-desc="Flagship monochrome architectural portfolio built with Tailwind, Canvas 3D & GSAP" data-repo-lang="CSS" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-kingly text-chaos font-mono text-[10px] font-bold uppercase">CURRENT FLAGSHIP</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">CSS3 / Tailwind / GSAP</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>MuntahaPortfolio-M2</span>
+              <a href="https://github.com/munthasirdevs/MuntahaPortfolio-M2" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              The exact flagship personal portfolio you are experiencing right now. Engineered from the ground up using a 7-tone monochrome architectural design system, HTML5 Canvas 3D Fibonacci sphere, and fluid planar GSAP choreography.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> 7-tone grayscale palette (#0F0F0F Chaos Black to #DEDEDE Kingly Cloud)</div>
+              <div class="flex items-center gap-2"><span>✓</span> 260-node Fibonacci sphere + 2 Keplerian orbital rings</div>
+              <div class="flex items-center gap-2"><span>✓</span> 3.1s Calligraphic Preloader sequence and planar cursor spotlight</div>
+            </div>
+            <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Experience Home Portal</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <!-- Monochrome Design Token Inspector Chamber -->
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>7-TONE TOKEN PALETTE</span>
+                <span class="text-kingly font-bold">SYSTEM ACTIVE</span>
+              </div>
+              <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 pt-2 text-center">
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#0F0F0F] rounded mb-1 border border-shoewax"></div><span class="text-[9px] text-dull">#0F0F0F</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#2B2B2B] rounded mb-1"></div><span class="text-[9px] text-dull">#2B2B2B</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#4D4D4D] rounded mb-1"></div><span class="text-[9px] text-dull">#4D4D4D</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#717171] rounded mb-1"></div><span class="text-[9px] text-dull">#717171</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#979797] rounded mb-1"></div><span class="text-[9px] text-dull">#979797</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#BCBCBC] rounded mb-1"></div><span class="text-[9px] text-dull">#BCBCBC</span></div>
+                <div class="p-2 rounded bg-chaos border border-shoewax"><div class="h-6 w-full bg-[#DEDEDE] rounded mb-1"></div><span class="text-[9px] text-dull">#DEDEDE</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 17: famewoven-M3 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="famewoven-M3" data-repo-desc="Creative digital studio web platform engineered for modern brands" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">CREATIVE STUDIO</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / Tailwind</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>famewoven-M3</span>
+              <a href="https://github.com/munthasirdevs/famewoven-M3" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Creative digital studio web platform engineered for modern brands, featuring high-contrast editorial typography, dynamic media showcase grids, and seamless responsive layout flows.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Editorial typographic grid alignments</div>
+              <div class="flex items-center gap-2"><span>✓</span> Clean portfolio item showcase layouts</div>
+              <div class="flex items-center gap-2"><span>✓</span> Performance-optimized image loading strategies</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/famewoven-M3" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder text-center space-y-4">
+              <span class="font-mono text-xs text-dust">EDITORIAL BRAND SHOWCASE</span>
+              <h3 class="font-serif-editorial italic text-3xl text-kingly">FAMEWOVEN CREATIVE</h3>
+              <p class="font-sans text-xs text-spanish max-w-sm mx-auto">Elevating brand narratives through meticulous digital craftsmanship.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 18: famewaven -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="famewaven" data-repo-desc="Specialized brand experience and digital agency showcase template" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">BRAND PORTAL</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>famewaven</span>
+              <a href="https://github.com/munthasirdevs/famewaven" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Specialized brand experience and digital showcase template focusing on brand storytelling, visual identity presentation, and interactive service exploration for creative agencies.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Brand narrative flow and media showcases</div>
+              <div class="flex items-center gap-2"><span>✓</span> Interactive service feature cards</div>
+              <div class="flex items-center gap-2"><span>✓</span> Accessible contrast and semantic markups</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/famewaven" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>IDENTITY SPECIFICATION</span>
+                <span class="text-kingly">FAMEWAVEN // STUDIO</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 pt-1">
+                <div class="p-3 rounded bg-shoewax/30 border border-shoewax">
+                  <span class="text-dust text-[10px] uppercase block mb-1">TYPOGRAPHY</span>
+                  <span class="text-kingly font-bold">Syne / Inter</span>
+                </div>
+                <div class="p-3 rounded bg-shoewax/30 border border-shoewax">
+                  <span class="text-dust text-[10px] uppercase block mb-1">COLOR ARCHITECTURE</span>
+                  <span class="text-kingly font-bold">Monochrome Core</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 19: soulofcyrus -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="soulofcyrus" data-repo-desc="Narrative-driven creative web experience with atmospheric dark visual design" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">NARRATIVE WEB</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>soulofcyrus</span>
+              <a href="https://github.com/munthasirdevs/soulofcyrus" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Narrative-driven creative web experience with atmospheric dark visual design, custom storytelling sections, and elegant typography crafted for immersive digital engagement.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Story chapter flow and typographic hierarchy</div>
+              <div class="flex items-center gap-2"><span>✓</span> Dark mood aesthetic with subtle borders</div>
+              <div class="flex items-center gap-2"><span>✓</span> Responsive design across mobile and desktop</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/soulofcyrus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder p-8 text-center space-y-3">
+              <span class="font-mono text-[11px] text-dull">CHAPTER 01 // ORIGIN</span>
+              <h4 class="font-display text-2xl font-bold text-kingly">THE SHADOWS OF CYRUS</h4>
+              <p class="font-sans text-xs text-spanish max-w-sm mx-auto">An atmospheric personal journey exploring identity, code, and creative vision.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 20: Planto -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Planto" data-repo-desc="Botanical and plant care e-commerce web interface with product catalogs" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">E-COMMERCE UI</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Planto</span>
+              <a href="https://github.com/munthasirdevs/Planto" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Botanical and plant care e-commerce web interface with product catalogs, plant care guides, and responsive shopping cart UI designed for green lifestyle brands.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Product card grid with pricing and care tags</div>
+              <div class="flex items-center gap-2"><span>✓</span> Responsive cart layout and checkout wireframe</div>
+              <div class="flex items-center gap-2"><span>✓</span> Clean botanical color accents within dark theme</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Planto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>BOTANICAL CARE SYSTEM</span>
+                <span class="text-kingly font-bold">$38.00</span>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax flex justify-between items-center">
+                <div>
+                  <h4 class="font-display font-bold text-sm text-kingly">Monstera Deliciosa</h4>
+                  <span class="text-dust text-[10px] font-sans">Water every 7 days • Indirect sunlight</span>
+                </div>
+                <span class="px-2 py-1 rounded bg-shoewax text-kingly text-[10px]">IN STOCK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 21: Portfolio -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Portfolio" data-repo-desc="Foundational personal developer portfolio establishing semantic structure and layout" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PORTFOLIO V1</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Portfolio</span>
+              <a href="https://github.com/munthasirdevs/Portfolio" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              The inaugural personal developer portfolio establishing foundational web design patterns, semantic HTML5 structure, responsive layout styling, and project catalog presentation.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Foundational semantic HTML5 layout architecture</div>
+              <div class="flex items-center gap-2"><span>✓</span> Pure CSS responsive viewport media queries</div>
+              <div class="flex items-center gap-2"><span>✓</span> Lightweight zero-dependency load times</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>MILESTONE: V1 FOUNDATION</span>
+                <span class="text-kingly">HISTORICAL BASELINE</span>
+              </div>
+              <div class="p-3 rounded bg-shoewax/30 border border-shoewax">
+                <span class="text-dust text-[10px] uppercase block mb-1">ARCHITECTURE PRINCIPLE</span>
+                <p class="text-spanish text-[11px] font-sans">100% hand-crafted semantic HTML5 and vanilla CSS grid structures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 22: Developer-Portfolio -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Developer-Portfolio" data-repo-desc="Second-generation developer showcase with interactive JavaScript tabs and progress indicators" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PORTFOLIO V2</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / JavaScript</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Developer-Portfolio</span>
+              <a href="https://github.com/munthasirdevs/Developer-Portfolio" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Second-generation developer showcase introducing dynamic JavaScript micro-interactions, dark aesthetic styling, interactive skill progress indicators, and expanded case studies.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Dynamic JavaScript tab navigation and filters</div>
+              <div class="flex items-center gap-2"><span>✓</span> Animated skill proficiency indicators</div>
+              <div class="flex items-center gap-2"><span>✓</span> Dark-mode focused visual presentation</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Developer-Portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>MILESTONE: V2 INTERACTIVE</span>
+                <span class="text-kingly">JS ENHANCED</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 pt-1">
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust text-[10px] uppercase block mb-1">INTERACTION LAYER</span>
+                  <span class="text-kingly font-bold">Client Scripts</span>
+                </div>
+                <div class="p-3 rounded bg-chaos border border-shoewax">
+                  <span class="text-dust text-[10px] uppercase block mb-1">LAYOUT ENGINE</span>
+                  <span class="text-kingly font-bold">Flexbox / Grid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 23: portfolioV3 -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="portfolioV3" data-repo-desc="Third-iteration modern developer portfolio utilizing glassmorphic aesthetics and modern CSS" data-repo-lang="CSS" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">PORTFOLIO V3</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">CSS3 / Glassmorphism</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>portfolioV3</span>
+              <a href="https://github.com/munthasirdevs/portfolioV3" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Third-iteration modern developer portfolio utilizing glassmorphic aesthetics, advanced CSS utility structuring, high-contrast monochrome accents, and refined mobile UX.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Advanced CSS backdrop-filter glassmorphic elevation</div>
+              <div class="flex items-center gap-2"><span>✓</span> High-contrast monochrome typography ratio</div>
+              <div class="flex items-center gap-2"><span>✓</span> Mobile-optimized touch-gesture interactions</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/portfolioV3" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>MILESTONE: V3 GLASSMORPHISM</span>
+                <span class="text-kingly">MODERN UI</span>
+              </div>
+              <div class="p-4 rounded-xl bg-shoewax/30 border border-shoewax backdrop-blur-md">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-kingly font-bold">GLASSMORPHIC CARD</span>
+                  <span class="text-[10px] text-dust">backdrop-filter: blur(12px)</span>
+                </div>
+                <p class="text-spanish text-[11px] font-sans">Sophisticated depth layering with subtle monochrome translucent borders.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 24: Website-prototype -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Website-prototype" data-repo-desc="Experimental prototyping environment for testing new UI patterns and JavaScript features" data-repo-lang="HTML" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">R&amp;D SANDBOX</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / JavaScript</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Website-prototype</span>
+              <a href="https://github.com/munthasirdevs/Website-prototype" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              Experimental prototyping environment for rapid testing of new interactive UI patterns, CSS grid variations, and vanilla JavaScript components before deploying them to production client repositories.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Rapid sandbox testing for layout experiments</div>
+              <div class="flex items-center gap-2"><span>✓</span> Component isolation and performance profiling</div>
+              <div class="flex items-center gap-2"><span>✓</span> Prototyping responsive breakpoint edge cases</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Website-prototype" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-shoewax/30 border border-thunder font-mono text-xs space-y-2">
+              <div class="text-dull border-b border-shoewax pb-2 mb-2">PROTOTYPE COMPONENT TESTING</div>
+              <div class="flex gap-2">
+                <button class="px-3 py-1.5 rounded bg-kingly text-chaos font-bold">Button: Active</button>
+                <button class="px-3 py-1.5 rounded bg-shoewax border border-thunder text-dust">Button: Inactive</button>
+              </div>
+              <div class="p-3 rounded bg-chaos border border-shoewax text-dust text-[11px] mt-2">
+                Component state successfully isolated in prototyping harness.
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 25: munthasirdevs -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="munthasirdevs" data-repo-desc="Official GitHub profile README and developer manifesto repository" data-repo-lang="Markdown" data-repo-cat="tools">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">DEVELOPER MANIFESTO</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">Markdown</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>munthasirdevs</span>
+              <a href="https://github.com/munthasirdevs/munthasirdevs" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              The official GitHub profile README repository serving as the public developer manifesto, chronicling active full-stack engineering milestones, SaaS projects, and core technical proficiencies.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Verified GitHub profile README manifesto</div>
+              <div class="flex items-center gap-2"><span>✓</span> Active technology stack taxonomy &amp; contact links</div>
+              <div class="flex items-center gap-2"><span>✓</span> Open-source project milestones and community contributions</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/munthasirdevs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder font-mono text-xs text-dust overflow-x-auto">
+              <div class="text-dull border-b border-shoewax pb-2 mb-3">munthasirdevs / README.md</div>
+<pre class="leading-relaxed">### Hello World! I'm Munthasir Rahman 👋
+- 🔭 Working on: Production-ready SaaS with Laravel
+- ⚡ Building: Custom Discord bots &amp; web control dashboards
+- 💬 Ask me about: Full-Stack PHP, TypeScript &amp; UI/UX</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 26: Irfan_S_Mahi -->
+      <article class="repo-showcase-item pb-16 border-b border-shoewax" data-repo-name="Irfan_S_Mahi" data-repo-desc="Custom personal branding and portfolio platform crafted for client delivery" data-repo-lang="HTML" data-repo-cat="studio">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded bg-shoewax border border-thunder text-kingly font-mono text-[10px] uppercase">CLIENT IDENTITY</span>
+              <span class="px-2 py-0.5 rounded bg-shoewax border border-thunder font-mono text-[10px] text-dust">HTML / CSS</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold text-kingly mb-3 flex items-center gap-2">
+              <span>Irfan_S_Mahi</span>
+              <a href="https://github.com/munthasirdevs/Irfan_S_Mahi" target="_blank" rel="noopener noreferrer" class="text-dust hover:text-kingly arrow-rotate text-xl">↗</a>
+            </h2>
+            <p class="font-sans text-sm text-spanish leading-relaxed mb-5">
+              A bespoke personal branding and digital portfolio platform crafted for private client delivery. Engineered with tailored typography, custom project showcase cards, and lightweight responsive structure.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-dust mb-6">
+              <div class="flex items-center gap-2"><span>✓</span> Custom brand identity and bespoke typographic palette</div>
+              <div class="flex items-center gap-2"><span>✓</span> Personalized case study cards and media galleries</div>
+              <div class="flex items-center gap-2"><span>✓</span> Lightweight zero-dependency responsive architecture</div>
+            </div>
+            <a href="https://github.com/munthasirdevs/Irfan_S_Mahi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-shoewax/60 hover:bg-kingly border border-thunder hover:border-kingly text-kingly hover:text-chaos font-mono text-xs uppercase tracking-wider transition-all">
+              <span>Inspect on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="spotlight-card rounded-2xl p-6 bg-chaos border border-thunder space-y-3 font-mono text-xs">
+              <div class="flex justify-between border-b border-shoewax pb-2 text-dull">
+                <span>CLIENT SPECIFICATION</span>
+                <span class="text-kingly">STATUS: DELIVERED</span>
+              </div>
+              <div class="p-4 rounded-xl bg-shoewax/30 border border-shoewax">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-kingly font-bold">Irfan S Mahi Portfolio</span>
+                  <span class="text-[10px] text-dust">Client Release v1.0</span>
+                </div>
+                <p class="text-spanish text-[11px] font-sans">Bespoke digital presence tailored to client personal brand guidelines.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-shoewax py-12 px-6 bg-chaos text-center font-mono text-xs text-dull">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MR_ © 2026 Munthasir Rahman. All 26 public repositories verified from github.com/munthasirdevs.</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-kingly">HOME</a>
+        <a href="about.html" class="hover:text-kingly">ABOUT</a>
+        <a href="services.html" class="hover:text-kingly">SERVICES</a>
+        <a href="skills.html" class="hover:text-kingly">SKILLS</a>
+        <a href="contact.html" class="hover:text-kingly">CONTACT</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ambient-3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
